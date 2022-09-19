@@ -28,10 +28,11 @@ You can then visit `http://localhost` to play the game. Any changes made will be
     * graphics - folder containing all the images/animations used by the game. The `CompileArt` script compiles this into a single png and placed into the `site/public/img` folder
 * site
     * public
-        * audio
+        * audio - Contains all the audio used by the game
+            * background - Contains the background song audios
         * img
     * src
-        * client
-        * server
-        * scripts
+        * client - Contains all the code ran on the web page (incl game)
+        * server - All the code used to run the test server
+        * scripts - Contains script to compile art into one image
 

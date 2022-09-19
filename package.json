@@ -1,0 +1,93 @@
+{
+    "name": "jsgame",
+    "version": "1.0.0",
+    "description": "## Subheading A",
+    "devDependencies": {
+        "@types/deep-freeze": "^0.1.2",
+        "@types/enzyme": "^3.10.8",
+        "@types/express": "^4.17.11",
+        "@types/jest": "^24.9.1",
+        "@types/lodash": "^4.14.168",
+        "@types/node": "^12.19.15",
+        "@types/react": "^16.14.2",
+        "@types/react-dom": "^16.9.10",
+        "@types/react-redux": "^7.1.16",
+        "code-prettify": "^0.1.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.6",
+        "express": "^4.17.1",
+        "jest": "^24.9.0",
+        "jest-extended": "^0.11.5",
+        "nodemon": "^1.19.4",
+        "npm-watch": "^0.7.0",
+        "pngjs": "^6.0.0",
+        "pre-commit": "^1.2.2",
+        "prettier": "2.0.1",
+        "ts-jest": "^24.3.0",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-etc": "^1.13.9",
+        "typescript": "^4.2.2",
+        "webpack": "^4.46.0",
+        "webpack-cli": "^3.3.12"
+    },
+    "dependencies": {
+        "@babel/polyfill": "^7.12.1",
+        "@babel/preset-env": "^7.12.11",
+        "@babel/register": "^7.12.10",
+        "@cimacmillan/refunc": "^1.0.3",
+        "@rooks/use-boundingclientrect": "^3.6.0",
+        "gl-matrix": "^3.3.0",
+        "lodash": "^4.17.20",
+        "madge": "^3.12.0",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
+        "react-markdown": "^4.3.1",
+        "react-redux": "^7.2.2",
+        "seedrandom": "^3.0.5",
+        "xml2js": "^0.4.23"
+    },
+    "scripts": {
+        "clean": "rm -rf ./site/build/",
+        "check-type": "tsc",
+        "build": "tsc -w",
+        "buildnowatch": "tsc",
+        "ppack": "npx webpack --config webpackprod.config.js -o site/public/js/main.js",
+        "pack": "npx webpack --config webpack.config.js -o site/public/js/main.js",
+        "server": "nodemon site/build/server/Run.js --delay 1",
+        "compileArt": "node site/src/scripts/CompileArt.js",
+        "compileArt-w": "watch 'npm run-script compileArt' res/graphics",
+        "convertAudio": "node site/src/scripts/ConvertAudio.js",
+        "generate": "node site/build/server/Generator.js",
+        "watch": "npm-watch",
+        "full-rebuild": "npm run-script clean && npm run-script build && npm run-script pack && npm run-script server",
+        "test-unit": "npx jest site/src/",
+        "test": "npm run-script test-unit",
+        "circular": "npx madge --circular site/src/**/*",
+        "changelog": "npx git log --pretty=format:\"* *%cs* - %s\" > ./site/public/doc/announcements.md"
+    },
+    "pre-commit": [],
+    "prettier": {
+        "tabWidth": 4
+    },
+    "watch": {
+        "full-rebuild": {
+            "patterns": [
+                "site/src"
+            ],
+            "extensions": "ts,tsx",
+            "quiet": true,
+            "inherit": true
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cimacmillan/jsgame.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cimacmillan/jsgame/issues"
+    },
+    "homepage": "https://github.com/cimacmillan/jsgame#readme"
+}

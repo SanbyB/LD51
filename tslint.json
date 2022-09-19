@@ -1,0 +1,17 @@
+{
+    "defaultSeverity": "warn",
+    "extends": [
+        "tslint:latest",
+        "tslint-etc",
+        "tslint-config-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-unused-variable": true,
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "indent": [true, "spaces", 4],
+        "no-unused-declaration": true
+    },  
+    "rulesDirectory": []
+}
