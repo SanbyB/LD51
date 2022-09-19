@@ -8,7 +8,6 @@ export interface TextureCoordinate {
 }
 
 export interface Sprite {
-    textureCoordinate: TextureCoordinate;
     pixelCoordinate: TextureCoordinate;
     spriteSheetWidth: number;
     spriteSheetHeight: number;
@@ -25,16 +24,12 @@ interface AnimationHash {
 export class SpriteSheet {
     private spriteHash: SpriteHash = {};
     private animationHash: AnimationHash = {};
-    public readonly imageData: ImageData;
 
     public constructor(
         private width: number,
         private height: number,
-        private texture: WebGLTexture,
-        private image: HTMLImageElement
-    ) {
-        this.imageData = getImageData(image);
-    }
+        public readonly image: HTMLImageElement
+    ) {}
 
     public registerSprite(
         name: string,
@@ -44,12 +39,6 @@ export class SpriteSheet {
         yPixel: number
     ) {
         this.spriteHash[name] = {
-            textureCoordinate: this.getTextureCoordinate(
-                width,
-                height,
-                xPixel,
-                yPixel
-            ),
             pixelCoordinate: {
                 textureX: xPixel,
                 textureY: yPixel,
@@ -81,12 +70,6 @@ export class SpriteSheet {
 
         for (let i = 0; i < frameCount; i++) {
             this.animationHash[name].push({
-                textureCoordinate: this.getTextureCoordinate(
-                    spriteWidth,
-                    spriteHeight,
-                    xPos,
-                    yPos
-                ),
                 pixelCoordinate: {
                     textureX: xPos,
                     textureY: yPos,
@@ -147,28 +130,7 @@ export class SpriteSheet {
         return this.height;
     }
 
-    public getTexture() {
-        return this.texture;
-    }
-
     public getImage() {
         return this.image;
-    }
-
-    public getTextureCoordinate(
-        width: number,
-        height: number,
-        xPixel: number,
-        yPixel: number
-    ): TextureCoordinate {
-        const amount = 0.1;
-        const xOffset = amount / this.width;
-        const yOffset = amount / this.height;
-        return {
-            textureX: (xPixel / this.width) + xOffset,
-            textureY: (yPixel / this.height) + yOffset,
-            textureWidth: (width / this.width) - xOffset * 2,
-            textureHeight: (height / this.height) - yOffset * 2,
-        };
     }
 }

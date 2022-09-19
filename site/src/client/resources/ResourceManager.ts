@@ -11,12 +11,10 @@ export class ResourceManager {
     public manifest: LoadedManifest;
 
     public async load(
-        gl: WebGLRenderingContext,
         audio: AudioContext,
         store: Store<State, Actions>
     ) {
         this.manifest = await this.loadManifest(
-            gl,
             audio,
             defaultManifest,
             (percentage: number) => store.getActions().setGameLoadPercentage(percentage)
@@ -24,7 +22,6 @@ export class ResourceManager {
     }
 
     public async loadManifest(
-        gl: WebGLRenderingContext,
         audio: AudioContext,
         manifest: ResourceManifest,
         setPercentage: (percentage: number) => void
@@ -63,7 +60,6 @@ export class ResourceManager {
         for (const key in manifest.spritesheets) {
             const spritesheetManifest = manifest.spritesheets[key];
             const [sheet, json] = await loadSpriteSheet(
-                gl,
                 spritesheetManifest
             );
             loadedManifest.spritesheets[key] = sheet;

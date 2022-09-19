@@ -1,11 +1,11 @@
-import { FOV, ASPECT_RATIO, ZNEAR, ZFAR } from "./Config";
+import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT } from "./Config";
 import { BallEntity } from "./engine/entities/BallEntity";
 import { Game } from "./Game";
 import { Audios } from "./resources/manifests/Audios";
 import { InputState } from "./services/input/InputService";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { Camera } from "./types";
-import { randomSelection } from "./util/math";
+import { randomIntRange, randomSelection } from "./util/math";
 
 export class GameScript {
     private game: Game;
@@ -22,24 +22,13 @@ export class GameScript {
 
     public update() {}
 
-    // Add all the content for the new game
     public newGame() {
-        const ball = new BallEntity(this.serviceLocator);
-        this.serviceLocator.getWorld().addEntity(ball);
-
-        this.camera = {
-            position: {
-                x: 0,
-                y: 0
-            },
-            height: 0,
-            angle: 0,
-            fov: FOV,
-            aspectRatio: ASPECT_RATIO,
-            zNear: ZNEAR,
-            zFar: ZFAR,
+        for (let i = 0; i < 10; i++) {
+            const x = randomIntRange(0, WIDTH);
+            const y = randomIntRange(0, HEIGHT);
+            const ball = new BallEntity(this.serviceLocator, x, y);
+            this.serviceLocator.getWorld().addEntity(ball);
         }
-        this.serviceLocator.getRenderService().attachCamera(() => this.camera);
     }
 
     public resumeGame() {

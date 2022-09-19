@@ -7,7 +7,6 @@ import { AudioService } from "./services/audio/AudioService";
 import { InputService } from "./services/input/InputService";
 import { ProcedureService } from "./services/jobs/ProcedureService";
 import { ParticleService } from "./services/particle/ParticleService";
-import { RenderService, ScreenBuffer } from "./services/render";
 
 import { ServiceLocator } from "./services/ServiceLocator";
 import { State } from "./ui/State";
@@ -24,16 +23,14 @@ export class Game {
     private isHidden: boolean = false;
 
     public async init(
-        openGL: WebGLRenderingContext,
+        canvas: CanvasRenderingContext2D,
         store: Store<State, Actions>
     ) {
         this.store = store;
 
         const audioContext = new AudioContext();
-        const screen = new ScreenBuffer(openGL, WIDTH, HEIGHT);
-
         const resourceManager = new ResourceManager();
-        await resourceManager.load(openGL, audioContext, store);
+        await resourceManager.load(audioContext, store);
 
         const world = new World();
 
@@ -45,16 +42,15 @@ export class Game {
             this,
             resourceManager,
             world,
-            new RenderService(resourceManager),
             new AudioService(audioContext),
             store,
             scriptingService,
             inputService,
-            new ParticleService()
+            new ParticleService(),
+            canvas
         );
 
         this.serviceLocator.getInputService().init(this.serviceLocator);
-        this.serviceLocator.getRenderService().init(screen.getOpenGL());
         this.serviceLocator.getWorld().init(this.serviceLocator);
         this.serviceLocator.getParticleService().init(this.serviceLocator);
         this.serviceLocator.getScriptingService().init(this.serviceLocator);
@@ -95,6 +91,8 @@ export class Game {
     }
 
     private update = () => {
+        this.serviceLocator.getCanvas().clearRect(0, 0, WIDTH, HEIGHT);
+
         this.serviceLocator.getScriptingService().update();
         this.serviceLocator.getWorld().performSync(this.serviceLocator);
         ProcedureService.update();
@@ -106,9 +104,6 @@ export class Game {
         }
     };
 
-    private draw = () => {
-        this.serviceLocator.getRenderService().draw();
-    };
 
     private mainLoop = (
         instance: TimeControlledLoop,
@@ -135,6 +130,5 @@ export class Game {
         setFPSProportion(1 / actualProportion);
 
         this.update();
-        this.draw();
     };
 }

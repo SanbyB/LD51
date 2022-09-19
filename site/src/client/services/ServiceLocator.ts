@@ -8,19 +8,18 @@ import { Store } from "@cimacmillan/refunc";
 import { AudioService } from "./audio/AudioService";
 import { InputService } from "./input/InputService";
 import { ParticleService } from "./particle/ParticleService";
-import { RenderService } from "./render";
 
 export class ServiceLocator {
     public constructor(
         private game: Game,
         private resourceManager: ResourceManager,
         private world: World,
-        private renderService: RenderService,
         private audioService: AudioService,
         private store: Store<State, Actions>,
         private gameScript: GameScript,
         private inputService: InputService,
         private particleService: ParticleService,
+        private canvas: CanvasRenderingContext2D
     ) {}
 
     public getGame() {
@@ -35,8 +34,8 @@ export class ServiceLocator {
         return this.world;
     }
 
-    public getRenderService() {
-        return this.renderService;
+    public getCanvas() {
+        return this.canvas;
     }
 
     public getAudioService() {

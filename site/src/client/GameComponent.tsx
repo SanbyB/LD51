@@ -21,7 +21,7 @@ export const GameComponent: React.FunctionComponent<GameComponentProps> = (
     const game = useGame();
     React.useEffect(() => {
         game.init(
-            (canvas.current as CanvasComponent).getOpenGL(),
+            (canvas.current as CanvasComponent).getRenderContext(),
             props.store
         );
     }, []);

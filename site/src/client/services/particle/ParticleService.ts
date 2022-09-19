@@ -1,15 +1,11 @@
 import { ConsistentArray } from "../../util/array/ConsistentArray";
 import { fpsNorm } from "../../util/time/GlobalFPSController";
-import { TextRender } from "../render/services/TextRenderService";
-import { ParticleRender, RenderItem } from "../render/types/RenderInterface";
 import { ServiceLocator } from "../ServiceLocator";
 
 export type ParticleType = {
     type: "Particle",
-    particle: ParticleRender
 } | {
     type: "Text",
-    particle: TextRender
 }
 
 
@@ -27,7 +23,6 @@ export interface Particle {
 
 class ParticleInstance {
     private x = 0;
-    private renderItem: RenderItem;
     private type: "Particle" | "Text";
 
     public constructor(
@@ -37,38 +32,18 @@ class ParticleInstance {
     ) {
         const rendered = particle.render(0);
         this.type = rendered.type;
-        this.renderItem = this.getRenderService().createItem(rendered.particle as any);
     }
 
     public update() {
         this.x += fpsNorm(1);
         if (this.x > this.particle.life) {
-            this.getRenderService().freeItem(this.renderItem);
             this.removeSelf();
         } else {
-            this.getRenderService().updateItem(
-                this.renderItem,
-                this.particle.render(this.x / this.particle.life).particle as any
-            );
         }
     }
 
     public destroy() {
-        this.getRenderService().freeItem(this.renderItem);
         this.removeSelf();
-    }
-
-    private getRenderService() {
-        switch (this.type) {
-            case "Particle":
-                return this.serviceLocator
-                    .getRenderService()
-                    .particleRenderService;
-            case "Text":
-                return this.serviceLocator
-                    .getRenderService()
-                    .textRenderService;
-        }
     }
 }
 

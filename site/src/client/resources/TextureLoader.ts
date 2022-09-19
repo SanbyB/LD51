@@ -43,7 +43,6 @@ export function loadTextureFromURL(
 }
 
 export async function loadSpriteSheet(
-    gl: WebGLRenderingContext,
     url: string
 ): Promise<[SpriteSheet, SpriteSheetManifestJson]> {
     const imageUrl = url + ".png";
@@ -51,9 +50,7 @@ export async function loadSpriteSheet(
 
     const image = await loadImage(imageUrl);
     const json = await loadJson<SpriteSheetManifestJson>(manifestUrl);
-
-    const texture = loadTextureFromImage(gl, image);
-    return [new SpriteSheet(image.width, image.height, texture, image), json];
+    return [new SpriteSheet(image.width, image.height, image), json];
 }
 
 export function getImageData(img: HTMLImageElement) {
