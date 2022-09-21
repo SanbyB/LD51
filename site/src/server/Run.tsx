@@ -11,13 +11,6 @@ const app = Express();
 
 app.use(Express.static(INDEX_DIRECTORY));
 
-// app.get("/", (req: Express.Request, res: Express.Response) => {
-//     try {
-//         res.sendFile(INDEX_DIRECTORY + "index.html", INDEX_DIRECTORY);
-//     } catch (err) {
-//         console.log(err);
-//     }
-// });
 
 app.use(function (
     err: HttpException,
