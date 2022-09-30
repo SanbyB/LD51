@@ -1,4 +1,5 @@
 import { ServiceLocator } from "../../services/ServiceLocator";
+import { CanvasHelper } from "../../util/CanvasHelper";
 import { Entity } from "../Entity";
 
 
@@ -14,16 +15,8 @@ export class MinerEntity implements Entity {
 
     public update(serviceLocator: ServiceLocator) {
         this.time += 0.02;
-        const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
-        const ball = spriteSheet.getAnimationInterp("miner", this.time);
-        serviceLocator.getCanvas().drawImage(
-            spriteSheet.getImage(),
-            ball.pixelCoordinate.textureX,
-            ball.pixelCoordinate.textureY,
-            ball.pixelCoordinate.textureWidth - 1,
-            ball.pixelCoordinate.textureHeight - 1,
-            this.x, this.y, 50, 50
-        );
+
+        CanvasHelper.drawAnimationInterp(serviceLocator, "miner", this.time, this.x, this.y, 50, 50);
     };
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {

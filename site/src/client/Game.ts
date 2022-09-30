@@ -42,7 +42,7 @@ export class Game {
             this,
             resourceManager,
             world,
-            new AudioService(audioContext),
+            new AudioService(audioContext, resourceManager),
             store,
             scriptingService,
             inputService,

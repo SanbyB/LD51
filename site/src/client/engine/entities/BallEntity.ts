@@ -1,22 +1,11 @@
 import { DOM_HEIGHT, DOM_WIDTH, HEIGHT } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
+import { CanvasHelper } from "../../util/CanvasHelper";
 import { Entity } from "../Entity";
 
 const BALL_WIDTH = 30;
 const BALL_HEIGHT = 30;
 
-function drawSprite(serviceLocator: ServiceLocator, sprite: string, x: number, y: number, width: number, height: number) {
-    const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
-    const ball = spriteSheet.getSprite(sprite);
-    serviceLocator.getCanvas().drawImage(
-        spriteSheet.getImage(),
-        ball.pixelCoordinate.textureX,
-        ball.pixelCoordinate.textureY,
-        ball.pixelCoordinate.textureWidth - 1,
-        ball.pixelCoordinate.textureHeight - 1,
-        x, y, width, height
-    );
-}
 
 export class BallEntity implements Entity {
 
@@ -34,15 +23,13 @@ export class BallEntity implements Entity {
             this.y = HEIGHT - BALL_HEIGHT;
             this.yVel = -Math.abs(this.yVel) * 0.8;
 
-            serviceLocator.getAudioService().play(
-                serviceLocator.getResourceManager().getAudio("boing"), Math.abs(this.yVel)
-            );
+            serviceLocator.getAudioService().play("boing", Math.abs(this.yVel));
         } else {
             this.y += this.yVel;
             this.yVel += 0.1;
         }
 
-        drawSprite(serviceLocator, "glorp", this.x, this.y, BALL_WIDTH, BALL_HEIGHT);
+        CanvasHelper.drawSprite(serviceLocator, "glorp", this.x, this.y, BALL_WIDTH, BALL_HEIGHT);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {

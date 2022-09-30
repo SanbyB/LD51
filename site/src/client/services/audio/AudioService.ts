@@ -1,6 +1,8 @@
 import { vec2 } from "gl-matrix";
 import { endsWith } from "lodash";
+import { ResourceManager } from "../../resources/ResourceManager";
 import { Camera } from "../../types";
+import { ServiceLocator } from "../ServiceLocator";
 import { AudioMetadata, AudioObject } from "./AudioObject";
 
 const MIN_GAIN = 0;
@@ -21,8 +23,9 @@ export class AudioService {
     } | undefined = undefined;
     private isPaused = false;
 
-    constructor(private context: AudioContext) {
+    constructor(private context: AudioContext, private resourceManager: ResourceManager) {
         window.AudioContext = window.AudioContext;
+        
     }
 
     public attachCamera(camera: () => Camera) {
@@ -30,11 +33,12 @@ export class AudioService {
     }
 
     public play(
-        audioObject: AudioObject,
+        name: string,
         gain: number = 1,
         pan: number = 0,
         onEnded: () => void = () => {}
     ): AudioBufferSourceNode | undefined {
+        const audioObject = this.resourceManager.getAudio(name);
         if (this.canPlay(audioObject)) {
             return playSound(audioObject, this.context, gain, pan, onEnded);
         }
