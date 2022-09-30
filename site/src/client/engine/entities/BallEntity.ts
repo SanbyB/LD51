@@ -1,5 +1,4 @@
 import { DOM_HEIGHT, DOM_WIDTH, HEIGHT } from "../../Config";
-import { Audios } from "../../resources/manifests/Audios";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { Entity } from "../Entity";
 
@@ -36,7 +35,7 @@ export class BallEntity implements Entity {
             this.yVel = -Math.abs(this.yVel) * 0.8;
 
             serviceLocator.getAudioService().play(
-                serviceLocator.getResourceManager().manifest.audio[Audios.ENEMY_KILLED], Math.abs(this.yVel)
+                serviceLocator.getResourceManager().getAudio("boing"), Math.abs(this.yVel)
             );
         } else {
             this.y += this.yVel;

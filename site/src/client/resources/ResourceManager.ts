@@ -4,7 +4,7 @@ import { State } from "../ui/State";
 import { Store } from "@cimacmillan/refunc";
 // import { setLoadPercentage } from "../ui/actions/GameStartActions";
 import { defaultManifest, SpriteSheets } from "./manifests/Resources";
-import { loadSpriteSheet } from "./TextureLoader";
+import { loadJson, loadSpriteSheet } from "./TextureLoader";
 import { LoadedManifest, ResourceManifest } from "./Types";
 
 export class ResourceManager {
@@ -27,8 +27,14 @@ export class ResourceManager {
         setPercentage: (percentage: number) => void
     ) {
         setPercentage(0);
+
+        const audio_json = await loadJson<{
+            name: string,
+            file: string
+        }[]>("./audio/manifest.json");
+
         const total =
-            Object.keys(manifest.audio).length +
+            audio_json.length +
             Object.keys(manifest.spritesheets).reduce(
                 (prevValue: number, next: string) => {
                     return (
@@ -48,11 +54,10 @@ export class ResourceManager {
             audio: {},
         };
 
-        for (const key in manifest.audio) {
-            loadedManifest.audio[key] = await loadSound(
-                manifest.audio[key].url,
-                audio,
-                manifest.audio[key].metadata
+        for (const audio_info of audio_json) {
+            loadedManifest.audio[audio_info.name] = await loadSound(
+                audio_info.file,
+                audio
             );
             increment();
         }
@@ -92,5 +97,9 @@ export class ResourceManager {
 
     public getDefaultSpriteSheet() {
         return this.manifest.spritesheets[SpriteSheets.SPRITE]
+    }
+
+    public getAudio(name: string) {
+        return this.manifest.audio[name];
     }
 }

@@ -22,6 +22,7 @@
 # npm run start 
 
 sudo npm run compileArt-w &
+sudo npm run compileAudio-w &
 sudo npm run build &
 sudo npm run ppack &
 sudo npm run server

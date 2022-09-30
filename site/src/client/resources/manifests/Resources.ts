@@ -1,5 +1,4 @@
 import { ResourceManifestBuilder } from "../ResourceManifestBuilder";
-import { audios } from "./Audios";
 
 export enum SpriteSheets {
     SPRITE = "SPRITE",
@@ -7,6 +6,5 @@ export enum SpriteSheets {
 
 const manifest: ResourceManifestBuilder = new ResourceManifestBuilder();
 manifest.Spritesheet(SpriteSheets.SPRITE, "img/out");
-manifest.Builder(audios);
 
 export const defaultManifest = manifest;

@@ -5,5 +5,4 @@ export interface AudioMetadata {
 export interface AudioObject {
     buffer: AudioBuffer;
     timeSinceLastPlayed?: number;
-    metadata: AudioMetadata;
 }

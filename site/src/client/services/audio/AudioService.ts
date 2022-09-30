@@ -154,9 +154,8 @@ export class AudioService {
 
 export function loadSound(
     url: string,
-    context: AudioContext,
-    metadata?: AudioMetadata
-): Promise<AudioObject> {
+    context: AudioContext
+    ): Promise<AudioObject> {
     return new Promise((resolve) => {
         const request = new XMLHttpRequest();
         request.open("GET", url, true);
@@ -168,8 +167,7 @@ export function loadSound(
                 request.response,
                 (audioBuffer: AudioBuffer) => {
                     resolve({
-                        buffer: audioBuffer,
-                        metadata,
+                        buffer: audioBuffer
                     });
                 },
                 (e) => console.log(e)

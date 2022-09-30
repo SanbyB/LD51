@@ -10,7 +10,7 @@ export function logFPS(callback: (number: number) => void) {
     getInstance().logFPS(callback);
 }
 
-const REPORTING_INTERVAL_SECS = 10;
+const REPORTING_INTERVAL_SECS = 3;
 
 class GlobalFPSController {
     private proportion = 1;

@@ -1,7 +1,6 @@
 import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT } from "./Config";
 import { BallEntity } from "./engine/entities/BallEntity";
 import { Game } from "./Game";
-import { Audios } from "./resources/manifests/Audios";
 import { InputState } from "./services/input/InputService";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { Camera } from "./types";
@@ -34,10 +33,5 @@ export class GameScript {
     public resumeGame() {
         this.serviceLocator.getInputService().setInputState(InputState.DEFAULT);
         this.game.setUpdateWorld(true);
-        this.serviceLocator.getAudioService().play(
-            this.serviceLocator.getResourceManager().manifest.audio[randomSelection([Audios.START])],
-            undefined,
-            undefined,
-        );
     }
 }
