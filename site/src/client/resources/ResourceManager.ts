@@ -31,7 +31,7 @@ export class ResourceManager {
         const audio_json = await loadJson<{
             name: string,
             file: string
-        }[]>("./audio/manifest.json");
+        }[]>("./manifest.json");
 
         const total =
             audio_json.length +
@@ -100,6 +100,9 @@ export class ResourceManager {
     }
 
     public getAudio(name: string) {
+        if (!this.manifest.audio[name]) {
+            throw new Error(`No audio with name ${name}. Audios are ${JSON.stringify(this.manifest.audio)}`);
+        }
         return this.manifest.audio[name];
     }
 }

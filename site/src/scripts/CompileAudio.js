@@ -24,7 +24,7 @@ function main() {
             }
         });
 
-    writeJson(site_dir + audio_dir + manifest_file, output);
+    writeJson(site_dir + manifest_file, output);
 
 }
 
