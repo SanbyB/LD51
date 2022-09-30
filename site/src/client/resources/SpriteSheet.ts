@@ -114,7 +114,7 @@ export class SpriteSheet {
         if (!animation) {
             console.log(`Animation ${name} missing`);
         }
-        const frame = Math.floor(interp * animation.length);
+        const frame = Math.floor(interp * animation.length) % animation.length;
         return this.getAnimationFrame(name, frame);
     }
 

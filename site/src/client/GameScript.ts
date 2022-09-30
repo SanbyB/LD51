@@ -1,5 +1,6 @@
 import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT } from "./Config";
 import { BallEntity } from "./engine/entities/BallEntity";
+import { MinerEntity } from "./engine/entities/MinerEntity";
 import { Game } from "./Game";
 import { InputState } from "./services/input/InputService";
 import { ServiceLocator } from "./services/ServiceLocator";
@@ -28,6 +29,8 @@ export class GameScript {
             const ball = new BallEntity(this.serviceLocator, x, y);
             this.serviceLocator.getWorld().addEntity(ball);
         }
+
+        this.serviceLocator.getWorld().addEntity(new MinerEntity(this.serviceLocator, 10, 10));
     }
 
     public resumeGame() {
