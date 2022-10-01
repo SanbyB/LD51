@@ -28,13 +28,14 @@ export class GameScript {
 
     public newGame() {
         // Create and add the map to the world
-        this.scientist = new Scientist(this.serviceLocator, 10, 10);
-        this.serviceLocator.getWorld().addEntity(this.scientist);
         const mapLoader = new MapLoader(this.serviceLocator);
         const entities = mapLoader.getEntities();
         for (let entity of entities) {
             this.serviceLocator.getWorld().addEntity(entity);
         }
+
+        this.scientist = new Scientist(this.serviceLocator, 10, 10);
+        this.serviceLocator.getWorld().addEntity(this.scientist);
 
         for (let i = 0; i < 10; i++) {
             const x = randomIntRange(0, WIDTH);
