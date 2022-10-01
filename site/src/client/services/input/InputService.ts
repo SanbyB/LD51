@@ -54,6 +54,9 @@ export class InputService {
     private attachWindowHooks() {
         window.addEventListener("keydown", this.onKeyDown);
         window.addEventListener("keyup", this.onKeyUp);
+        document.getElementById("main_canvas").addEventListener("mousemove", this.onMouseMove);
+        document.getElementById("main_canvas").addEventListener("mousedown", this.onMouseDown);
+        document.getElementById("main_canvas").addEventListener("mouseup", this.onMouseUp);
     }
 
     private onKeyUp = (keyboardEvent: KeyboardEvent) => {
@@ -65,4 +68,16 @@ export class InputService {
         this.keydown[keyboardEvent.code] = true;
         this.controlScheme.onKeyDown(keyboardEvent.code, this.keydown);
     };
+
+    private onMouseMove = (event: MouseEvent) => {
+        this.controlScheme.onMouseMove(event);
+    }
+
+    private onMouseDown = (event: MouseEvent) => {
+        this.controlScheme.onMouseDown(event);
+    }
+
+    private onMouseUp = (event: MouseEvent) => {
+        this.controlScheme.onMouseUp(event);
+    }
 }

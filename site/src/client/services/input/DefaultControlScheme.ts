@@ -47,4 +47,15 @@ export class DefaultControlScheme implements ControlScheme {
     }
 
     public onKeyUp(key: string, keysDown: { [key: string]: boolean }) {}
+
+    public onMouseMove = (event: MouseEvent) => {
+        var rect = (event.target as any).getBoundingClientRect();
+        
+    }
+
+    public onMouseDown = (event: MouseEvent) => {
+    }
+
+    public onMouseUp = (event: MouseEvent) => {
+    }
 }

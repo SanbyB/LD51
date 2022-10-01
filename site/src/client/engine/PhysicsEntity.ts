@@ -91,9 +91,6 @@ export class PhysicsEntity implements Entity {
     }
 
     private collisionCheck(serviceLocator: ServiceLocator){
-        console.log("tile");
-        console.log(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT));
-        console.log(serviceLocator.getScriptingService().getMap().getTile(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT)));
         let left: number = Math.floor(this.x/TILE_WIDTH);
         let lleft: number = Math.floor(this.x + 1/TILE_WIDTH);
         let right: number = Math.floor((this.x + this.width)/TILE_WIDTH);
