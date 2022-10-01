@@ -2,7 +2,7 @@ import { ServiceLocator } from "../../services/ServiceLocator";
 import { Entity } from "../Entity";
 import { Zombie } from "./ZombieEntity";
 
-const SPAWN_INTERVAL = 4000;
+const SPAWN_INTERVAL = 10000;
 
 export class ZombieSpawner implements Entity {
     private spawn_int: any = undefined;
