@@ -14,7 +14,7 @@ export class Zombie extends CharacterEntity {
     private walking_right = true;
     
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "zombie", ZOMBIE_WIDTH, ZOMBIE_HEIGHT, "test_tube");
+        super(serviceLocator, x, y, "zombie", ZOMBIE_WIDTH, ZOMBIE_HEIGHT, "zombie_hand");
     }
 
     public update(serviceLocator: ServiceLocator) {
