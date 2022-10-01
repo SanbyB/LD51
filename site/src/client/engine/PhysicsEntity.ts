@@ -9,8 +9,8 @@ export class PhysicsEntity implements Entity {
     // position and movement variables
     public x: number = 0;
     public y: number = 0;
-    protected xVel: number = 0;
-    protected yVel: number = 0;
+    public xVel: number = 0;
+    public yVel: number = 0;
     protected frictCoeff = 0.05;
     protected collides: boolean = true;
 

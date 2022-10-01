@@ -38,7 +38,27 @@ export class PlayerController{
                 this.players.splice(parseInt(i), 1);
             }
         }
+        this.follow();
+        console.log("folowing");
     }
 
+    public follow(){
+        for(const player of this.players){
+            if(player != this.state){
+                if(Math.abs(player.x - this.state.x) > 50 || Math.abs(player.y - this.state.y) > 50){
+                    const angle = player.getDirectionToTravelTo(this.state);
+                    const rads = (angle / 180) * Math.PI;
+                    player.xVel += Math.sin(rads) * player.speed;
+                    player.yVel += -Math.cos(rads) * player.speed;
+                }
+            }
+        }
+    }
+
+    // public spread(){
+    //     for(const player of this.players){
+
+    //     }
+    // }
 
 }

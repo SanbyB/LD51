@@ -16,7 +16,7 @@ export class CharacterEntity extends PhysicsEntity {
     protected maxHp: number = 20;
     public hp: number = 20;
     protected attackStrength: number = 5;
-    protected speed: number = 0.5;
+    public speed: number = 0.5;
     protected damage: number = 5;
 
     // Animation frame to draw

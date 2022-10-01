@@ -41,7 +41,7 @@ export class GameScript {
         }
 
         const zombie = new Zombie(this.serviceLocator, 60, 10);
-        this.serviceLocator.getWorld().addEntity(zombie);
+        // this.serviceLocator.getWorld().addEntity(zombie);
     }
 
     public resumeGame() {
