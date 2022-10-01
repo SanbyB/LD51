@@ -75,6 +75,26 @@ export class CanvasHelper {
         canvas.restore();
     }
 
+    public static drawRectangle(
+        serviceLocator: ServiceLocator, 
+        x: number, 
+        y: number, 
+        width: number, 
+        height: number,
+        degrees: number = 0
+        ) {
+        const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
+        const canvas =  serviceLocator.getCanvas();
+        canvas.save();
+        canvas.translate(((x - this.camera_x) * this.scale) + WIDTH/2, ((y - this.camera_y) * this.scale) + HEIGHT/2);
+        var rad = degrees * Math.PI / 180;    
+        canvas.rotate(rad);
+        canvas.beginPath();
+        canvas.rect(-width/2, -height/2, width, height);
+        canvas.stroke();
+        canvas.restore();
+    }
+
     public static drawSprite(serviceLocator: ServiceLocator, sprite: string, x: number, y: number, width: number, height: number,
         scale_x: number = 1,
         scale_y: number = 1,

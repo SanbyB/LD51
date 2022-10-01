@@ -7,7 +7,8 @@ import { PhysicsEntity } from "../PhysicsEntity";
 
 export class CharacterEntity extends PhysicsEntity {
 
-    protected hp: number = 20;
+    protected maxHp: number = 20;
+    protected hp: number = 10;
     protected attackStrength: number = 5;
     protected speed: number = 0.5;
 
@@ -24,7 +25,7 @@ export class CharacterEntity extends PhysicsEntity {
         y: number, 
         animation: string,
         animation_width: number, 
-        animation_height: number
+        animation_height: number,
         ) {
         super(serviceLocator, x, y);
         this.animation = animation;
@@ -37,6 +38,7 @@ export class CharacterEntity extends PhysicsEntity {
         this.movement();
         this.updateAnimationFrame();
         this.drawMovingAnimation(serviceLocator);
+        this.drawHpBar(serviceLocator);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
@@ -63,6 +65,16 @@ export class CharacterEntity extends PhysicsEntity {
         const scale_x = this.animation_facing_right ? 1 : -1;
         CanvasHelper.drawAnimation(serviceLocator, this.animation, Math.floor(this.animation_frame), this.x, this.y, this.animation_width, this.animation_height, scale_x);
     }
+
+    private drawHpBar(serviceLocator: ServiceLocator) {
+        CanvasHelper.drawRectangle(
+            serviceLocator,
+            this.x,
+            this.y, 
+            this.animation_width,
+            this.animation_height
+        );
+    } 
 
     private updateAnimationFrame() {
         const speed = Math.sqrt(this.xVel * this.xVel + this.yVel * this.yVel) * CHARACTER_ANIMATION_MULTIPLIER;
