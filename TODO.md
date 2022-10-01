@@ -5,9 +5,9 @@
     * ~~Only tiles in viewport rendered~~
 
 * Map Loader
-    * load PNG data in res/graphics (map.png)
-    * For R/G/B value of X, load tile with image Y (collideable vs non)
-    * For R/G/B value of X, load entity (zombie / zombie spawn point etc) switch statement
+    * ~~load PNG data in res/graphics (map.png)~~
+    * ~~For R/G/B value of X, load tile with image Y (collideable vs non)~~
+    * ~~For R/G/B value of X, load entity (zombie / zombie spawn point etc) switch statement~~
 
 * Character Entity
     * Draw character with animation (walk, standing still)
