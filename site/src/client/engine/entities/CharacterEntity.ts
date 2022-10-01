@@ -4,6 +4,7 @@ import { animation } from "../../util/animation/Animations";
 import { GameAnimation } from "../../util/animation/GameAnimation";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { randomFloatRange, randomIntRange } from "../../util/math";
+import { Entity } from "../Entity";
 import { PhysicsEntity } from "../PhysicsEntity";
 import { DeadBody } from "./DeadBody";
 import { Particle } from "./Particle";
@@ -24,7 +25,7 @@ export class CharacterEntity extends PhysicsEntity {
     protected animation_width = 0;
     protected animation_height = 0;
     protected animation_facing_right = true;
-    protected show_health = false;
+    // protected show_health = false;
     protected show_health_timeout: any = undefined;
 
     protected hand_image = "";
@@ -88,7 +89,7 @@ export class CharacterEntity extends PhysicsEntity {
     }
 
     private drawHpBar(serviceLocator: ServiceLocator) {
-        if (!this.show_health) return;
+        // if (!this.show_health) return;
 
         const x = this.x;
         const y = this.y - this.animation_height / 2;
@@ -136,9 +137,9 @@ export class CharacterEntity extends PhysicsEntity {
             this.onDeath();
         }
 
-        this.show_health = true;
-        this.show_health_timeout && clearTimeout(this.show_health_timeout);
-        this.show_health_timeout = setTimeout(() => this.show_health = false, CHARACTER_HEALTH_SHOWN);
+        // this.show_health = true;
+        // this.show_health_timeout && clearTimeout(this.show_health_timeout);
+        // this.show_health_timeout = setTimeout(() => this.show_health = false, CHARACTER_HEALTH_SHOWN);
 
         const rads = (from_angle / 180) * Math.PI;
         this.xVel += Math.sin(rads) * CHARACTER_ATTACK_BUMP_STRENGTH;
@@ -221,6 +222,11 @@ export class CharacterEntity extends PhysicsEntity {
         if (speed < CHARACTER_ANIMATION_SPEED_THRESHOLD) {
             this.animation_frame = 0;
         }
+    }
+
+    // TODO replace with pathfinding 
+    public getDirectionToTravelTo(otherEntity: PhysicsEntity): number {
+        return this.angleTo(otherEntity);
     }
 
 }

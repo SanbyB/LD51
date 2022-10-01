@@ -1,4 +1,6 @@
+import { TILE_HEIGHT, TILE_WIDTH } from "./Config";
 import { BallEntity } from "./engine/entities/BallEntity";
+import { ZombieSpawner } from "./engine/entities/ZombieSpawner";
 import { Entity } from "./engine/Entity";
 import { GameMap } from "./Map";
 import { Sprite } from "./resources/SpriteSheet";
@@ -65,6 +67,9 @@ export class MapLoader {
 
         // Entites
         switch (g) {
+            case 255:
+                entities.push(new ZombieSpawner(this.serviceLocator, x * TILE_WIDTH, y * TILE_HEIGHT))
+                break;
         }
 
         gameMap.setTile(x, y, {

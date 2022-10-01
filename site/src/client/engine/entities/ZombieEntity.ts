@@ -19,13 +19,32 @@ export class Zombie extends CharacterEntity {
 
     public update(serviceLocator: ServiceLocator) {
         super.update(serviceLocator);
-
-        this.xVel += this.walking_right ? ZOMBIE_SPEED : -ZOMBIE_SPEED;
-
+        this.tryMoveToPlayer(serviceLocator);
         this.tryAttackPlayer(serviceLocator);
     }
 
+    private tryMoveToPlayer(serviceLocator: ServiceLocator) {
+        const closestPlayer = this.getClostestPlayer(serviceLocator);
+        if (!closestPlayer) return;
+        const angle = this.getDirectionToTravelTo(serviceLocator.getScriptingService().scientist);
+        const rads = (angle / 180) * Math.PI;
+        this.xVel += Math.sin(rads) * ZOMBIE_SPEED;
+        this.yVel += -Math.cos(rads) * ZOMBIE_SPEED;
+    }
+
     private tryAttackPlayer(serviceLocator: ServiceLocator) {
+        let closestPlayer: Player = this.getClostestPlayer(serviceLocator);
+        if (!closestPlayer) return;
+        const closestPlayerDistance = this.distanceTo(closestPlayer);
+        const angleTo = this.angleTo(closestPlayer);
+        this.setHand(this.angleTo(closestPlayer));
+
+        if (closestPlayerDistance < ZOMBIE_ATTACK_DISTANCE) {
+            this.doAttack(angleTo);
+        }
+    }   
+
+    private getClostestPlayer(serviceLocator: ServiceLocator): Player {
         let closestPlayer: Player = undefined;
         let closestPlayerDistance = -1;
         for (let entity of serviceLocator.getWorld().getEntityArray()) {
@@ -38,16 +57,8 @@ export class Zombie extends CharacterEntity {
                 }
             }
         }
-
-        if (!closestPlayer) return;
-
-        const angleTo = this.angleTo(closestPlayer);
-        this.setHand(this.angleTo(closestPlayer));
-
-        if (closestPlayerDistance < ZOMBIE_ATTACK_DISTANCE) {
-            this.doAttack(angleTo);
-        }
-    }   
+        return closestPlayer;
+    }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
         setInterval(() => {

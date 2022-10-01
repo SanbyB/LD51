@@ -36,14 +36,14 @@
 * Zombie Entity
     * ~~Animation is zombie~~
     * Searches for nearest character with A* or some other path finding
-    * Walks towards target
-    * When near, damages with animation
+    * ~~Walks towards target~~
+    * ~~When near, damages with animation~~
     * (stretch) variations in zombie art / size / power
     * Dead body is removed after time
 
 * Zombie Spawn Point
-    * Every 10 s?
-    * Spawns a bunch of zombies with some probability
+    * ~~Every 10 s?~~
+    * ~~Spawns a bunch of zombies with some probability~~
 
 * Tasks
     * Simon Says
