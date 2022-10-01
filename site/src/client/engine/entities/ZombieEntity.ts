@@ -1,4 +1,4 @@
-import { CHARACTER_ATTACK_DISTANCE } from "../../Config";
+import { CHARACTER_ATTACK_DISTANCE, ZOMBIE_ATTACK_DISTANCE } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { CharacterEntity } from "./CharacterEntity";
@@ -44,7 +44,7 @@ export class Zombie extends CharacterEntity {
         const angleTo = this.angleTo(closestPlayer);
         this.setHand(this.angleTo(closestPlayer));
 
-        if (closestPlayerDistance < CHARACTER_ATTACK_DISTANCE) {
+        if (closestPlayerDistance < ZOMBIE_ATTACK_DISTANCE) {
             this.doAttack(angleTo);
         }
     }   
