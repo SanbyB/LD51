@@ -3,12 +3,12 @@ import { CanvasHelper } from "../../util/CanvasHelper";
 import { Player } from "./Player";
 
 
-const SCIENTIST_WIDTH = 30;
-const SCIENTIST_HEIGHT = 30;
+const BOMBER_WIDTH = 30;
+const BOMBER_HEIGHT = 30;
 
-export class Scientist extends Player {
-
-    public name: string = "Scientist";
+export class Bomber extends Player {
+    
+    public name: string = "Bomber";
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y);
@@ -16,7 +16,7 @@ export class Scientist extends Player {
 
     public update(serviceLocator: ServiceLocator) {
         super.update(serviceLocator);
-        CanvasHelper.drawAnimation(serviceLocator, "miner", 0, this.x, this.y, SCIENTIST_WIDTH, SCIENTIST_HEIGHT);
+        CanvasHelper.drawAnimation(serviceLocator, "miner", 0, this.x, this.y, BOMBER_WIDTH, BOMBER_HEIGHT);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {

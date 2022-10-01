@@ -1,4 +1,4 @@
-import { DOM_HEIGHT, DOM_WIDTH, HEIGHT } from "../Config";
+import { DOM_HEIGHT, DOM_WIDTH, HEIGHT, TILE_HEIGHT, TILE_WIDTH } from "../Config";
 import { ServiceLocator } from "../services/ServiceLocator";
 import { Entity } from "./Entity";
 
@@ -13,6 +13,10 @@ export class PhysicsEntity implements Entity {
     protected yVel: number = 0;
     protected frictCoeff = 0.05;
 
+    // size of img
+    protected width = 30;
+    protected height = 30;
+
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         this.x = x;
@@ -24,11 +28,11 @@ export class PhysicsEntity implements Entity {
         this.y += this.yVel;
         this.friction();
         this.boundCheck();
+        this.collisionCheck(serviceLocator);
     }
 
     // Movement functions to call when you want the entity to move
     public moveRight(speed: number){
-        console.log(this.xVel);
         this.xVel += speed;
     }
     public moveDown(speed: number){
@@ -83,6 +87,37 @@ export class PhysicsEntity implements Entity {
         }else if(this.y > DOM_HEIGHT){
             this.yVel = -this.yVel;
             this.y = DOM_HEIGHT;
+        }
+    }
+
+    private collisionCheck(serviceLocator: ServiceLocator){
+        console.log("tile");
+        console.log(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT));
+        console.log(serviceLocator.getScriptingService().getMap().getTile(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT)));
+        let left: number = Math.floor(this.x/TILE_WIDTH);
+        let right: number = Math.floor((this.x + this.width)/TILE_WIDTH);
+        let up: number = Math.floor(this.y/TILE_HEIGHT);
+        let low: number = Math.floor((this.y + this.height)/TILE_HEIGHT);
+        // set tile to be the getTile function
+        let tile = (x: number, y: number) => serviceLocator.getScriptingService().getMap().getTile(x, y);
+
+        if(tile(left, up)){
+            if(tile(left, low)){
+                this.xVel = -this.xVel;
+                this.x = right * TILE_WIDTH;
+            }else{
+                this.yVel = -this.yVel;
+                this.y = low * TILE_HEIGHT;
+            }
+        }else if(tile(right, low)){
+            if(tile(right, up)){
+                this.xVel = -this.xVel;
+                // DONT THINK THIS WILL WORK
+                this.x = left * TILE_WIDTH;
+            }else{
+                this.yVel = -this.yVel;
+                this.y = up * TILE_HEIGHT;
+            }
         }
     }
 

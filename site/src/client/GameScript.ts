@@ -26,6 +26,7 @@ export class GameScript {
         // Create and add the map to the world
         const mapLoader = new MapLoader(this.serviceLocator);
         const entities = mapLoader.getEntities();
+        this.gameMap = entities[0] as GameMap;
         for (let entity of entities) {
             this.serviceLocator.getWorld().addEntity(entity);
         }
