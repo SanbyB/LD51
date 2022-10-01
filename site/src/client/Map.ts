@@ -6,9 +6,6 @@ import { CanvasHelper } from "./util/CanvasHelper";
 const TILE_WIDTH = 32;
 const TILE_HEIGHT = 32;
 
-// Map is 64x64 tiles
-const MAP_WIDTH = 1000;
-const MAP_HEIGHT = 1000;
 
 interface Tile {
     image: string;
@@ -17,16 +14,14 @@ interface Tile {
 
 export class GameMap implements Entity {
     private tiles: Tile[][];
-    private mapWidth: number = MAP_WIDTH;
-    private mapHeight: number = MAP_HEIGHT;
 
-    public constructor(serviceLocator: ServiceLocator) {
+    public constructor(serviceLocator: ServiceLocator, private mapWidth: number, private mapHeight: number) {
         this.tiles = [];
         for (let x = 0; x < this.mapWidth; x++) {
             this.tiles[x] = [];
             for (let y = 0; y < this.mapHeight; y++) {
                 this.tiles[x][y] = {
-                    image: "tile",
+                    image: "missing_tile",
                     collides: false
                 }
             }
@@ -68,7 +63,19 @@ export class GameMap implements Entity {
     }
 
     public getTile(x: number, y: number) {
+        return this.tiles[x][y];
+    }
 
+    public setTile(x: number, y: number, tile: Tile) {
+        this.tiles[x][y] = tile;
+    }
+
+    public getWidth() {
+        return this.mapWidth;
+    }
+
+    public getHeight() {
+        return this.mapHeight;
     }
     
 }

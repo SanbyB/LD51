@@ -4,6 +4,7 @@ import { MinerEntity } from "./engine/entities/MinerEntity";
 import { Scientist } from "./engine/entities/Scientist";
 import { Game } from "./Game";
 import { GameMap } from "./Map";
+import { MapLoader } from "./MapLoader";
 import { InputState } from "./services/input/InputService";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { Camera } from "./types";
@@ -27,10 +28,13 @@ export class GameScript {
 
     public newGame() {
         // Create and add the map to the world
-        this.gameMap = new GameMap(this.serviceLocator);
-        this.serviceLocator.getWorld().addEntity(this.gameMap);
         this.scientist = new Scientist(this.serviceLocator, 10, 10);
         this.serviceLocator.getWorld().addEntity(this.scientist);
+        const mapLoader = new MapLoader(this.serviceLocator);
+        const entities = mapLoader.getEntities();
+        for (let entity of entities) {
+            this.serviceLocator.getWorld().addEntity(entity);
+        }
 
         for (let i = 0; i < 10; i++) {
             const x = randomIntRange(0, WIDTH);
