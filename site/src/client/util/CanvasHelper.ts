@@ -43,38 +43,84 @@ export class CanvasHelper {
         }
     }
 
-    public static drawImage(serviceLocator: ServiceLocator, sprite: Sprite, x: number, y: number, width: number, height: number) {
+    public static drawImage(
+        serviceLocator: ServiceLocator, 
+        sprite: Sprite, 
+        x: number, 
+        y: number, 
+        width: number, 
+        height: number,
+        scale_x: number = 1,
+        scale_y: number = 1,
+        degrees: number = 0
+        ) {
         const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
+        const canvas =  serviceLocator.getCanvas();
+        canvas.save();
+        canvas.translate(((x - this.camera_x) * this.scale) + WIDTH/2, ((y - this.camera_y) * this.scale) + HEIGHT/2);
+        var rad = degrees * Math.PI / 180;    
+        canvas.rotate(rad);
+        canvas.scale(scale_x, scale_y);
         serviceLocator.getCanvas().drawImage(
             spriteSheet.getImage(),
             sprite.pixelCoordinate.textureX,
             sprite.pixelCoordinate.textureY,
             sprite.pixelCoordinate.textureWidth,
             sprite.pixelCoordinate.textureHeight,
-            (x - this.camera_x) * this.scale + WIDTH / 2, 
-            (y - this.camera_y) * this.scale + HEIGHT / 2, 
-            (width * this.scale), 
-            (height * this.scale)
+            -width/2 * this.scale, 
+            -height/2 * this.scale, 
+            width * this.scale, 
+            height * this.scale
         );
+        canvas.restore();
     }
 
-    public static drawSprite(serviceLocator: ServiceLocator, sprite: string, x: number, y: number, width: number, height: number) {
+    public static drawRectangle(
+        serviceLocator: ServiceLocator, 
+        x: number, 
+        y: number, 
+        width: number, 
+        height: number,
+        degrees: number = 0
+        ) {
+        const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
+        const canvas =  serviceLocator.getCanvas();
+        canvas.save();
+        canvas.translate(((x - this.camera_x) * this.scale) + WIDTH/2, ((y - this.camera_y) * this.scale) + HEIGHT/2);
+        var rad = degrees * Math.PI / 180;    
+        canvas.rotate(rad);
+        canvas.beginPath();
+        canvas.rect(-width/2, -height/2, width, height);
+        canvas.stroke();
+        canvas.restore();
+    }
+
+    public static drawSprite(serviceLocator: ServiceLocator, sprite: string, x: number, y: number, width: number, height: number,
+        scale_x: number = 1,
+        scale_y: number = 1,
+        degrees: number = 0) {
         const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
         const ball = spriteSheet.getSprite(sprite);
-        this.drawImage(serviceLocator, ball, x, y, width, height);
+        this.drawImage(serviceLocator, ball, x, y, width, height, scale_x, scale_y, degrees);
     }
 
-    public static drawAnimation(serviceLocator: ServiceLocator, animation: string, frame: number, x: number, y: number, width: number, height: number) {
+    public static drawAnimation(serviceLocator: ServiceLocator, animation: string, frame: number, x: number, y: number, width: number, height: number,
+        scale_x: number = 1,
+        scale_y: number = 1,
+        degrees: number = 0) {
         const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
         const ball = spriteSheet.getAnimationFrame(animation, frame);
-        this.drawImage(serviceLocator, ball, x, y, width, height);
+        this.drawImage(serviceLocator, ball, x, y, width, height, scale_x, scale_y, degrees);
 
     }
     
-    public static drawAnimationInterp(serviceLocator: ServiceLocator, animation: string, frame: number, x: number, y: number, width: number, height: number) {
+    public static drawAnimationInterp(serviceLocator: ServiceLocator, animation: string, frame: number, x: number, y: number, width: number, height: number,
+        scale_x: number = 1,
+        scale_y: number = 1,
+        degrees: number = 0) {
         const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
         const ball = spriteSheet.getAnimationInterp(animation, frame);
-        this.drawImage(serviceLocator, ball, x, y, width, height);
+        this.drawImage(serviceLocator, ball, x, y, width, height, scale_x, scale_y, degrees);
     }
 
 }

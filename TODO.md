@@ -10,7 +10,7 @@
     * ~~For R/G/B value of X, load entity (zombie / zombie spawn point etc) switch statement~~
 
 * Character Entity
-    * Draw character with animation (walk, standing still)
+    * ~~Draw character with animation (walk, standing still)~~
     * Has health
     * Has death image
     * Display health bar
@@ -34,7 +34,7 @@
     * (stretch) not sure?
     
 * Zombie Entity
-    * Animation is zombie
+    * ~~Animation is zombie~~
     * Searches for nearest character with A* or some other path finding
     * Walks towards target
     * When near, damages with animation
@@ -74,5 +74,5 @@
     * Camera tween movement
 
 * Bugs
-    * Image has weird lines when drawing, add padding to CompileArt
+    * ~~Image has weird lines when drawing, add padding to CompileArt~~
 

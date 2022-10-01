@@ -2,38 +2,59 @@
     "glorp": {
         "x": 0,
         "y": 0,
-        "width": 32,
-        "height": 32
+        "width": 33,
+        "height": 33
     },
     "map": {
         "x": 0,
-        "y": 32,
-        "width": 32,
-        "height": 32
+        "y": 33,
+        "width": 33,
+        "height": 33
     },
     "miner": {
         "x": 0,
-        "y": 64,
-        "width": 256,
-        "height": 32,
+        "y": 66,
+        "width": 257,
+        "height": 33,
         "frames": 8
     },
     "missing_tile": {
-        "x": 32,
+        "x": 33,
         "y": 0,
-        "width": 32,
-        "height": 32
+        "width": 33,
+        "height": 33
+    },
+    "scientist": {
+        "x": 33,
+        "y": 33,
+        "width": 65,
+        "height": 33,
+        "frames": 2
+    },
+    "soldier": {
+        "x": 66,
+        "y": 0,
+        "width": 65,
+        "height": 33,
+        "frames": 2
     },
     "tile": {
-        "x": 32,
-        "y": 32,
-        "width": 32,
-        "height": 32
+        "x": 98,
+        "y": 33,
+        "width": 33,
+        "height": 33
     },
     "tile_crate": {
-        "x": 64,
+        "x": 131,
         "y": 0,
-        "width": 32,
-        "height": 32
+        "width": 33,
+        "height": 33
+    },
+    "zombie": {
+        "x": 131,
+        "y": 33,
+        "width": 65,
+        "height": 33,
+        "frames": 2
     }
 }

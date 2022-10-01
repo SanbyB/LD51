@@ -1,3 +1,4 @@
+import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { CharacterEntity } from "./CharacterEntity";
@@ -10,8 +11,14 @@ export class Player extends CharacterEntity {
     // TO REMOVE: degbug zoom function
     public zoom: string = "none";
 
-    public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y);
+    public constructor(
+        serviceLocator: ServiceLocator, 
+        x: number, 
+        y: number,
+        animation: string,
+        animation_width: number, 
+        animation_height: number) {
+        super(serviceLocator, x, y, animation, animation_width, animation_height);
         this.speed = 1;
     }
 
@@ -32,5 +39,4 @@ export class Player extends CharacterEntity {
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
     }
-
 }
