@@ -10,27 +10,21 @@ export class DefaultControlScheme implements ControlScheme {
 
     public poll(keysDown: { [key: string]: boolean }) {
        
-
-        
         if (keysDown.KeyW) {
-            this.serviceLocator.getScriptingService().scientist.moveDown(-0.2);
+            console.log("w");
+            this.serviceLocator.getScriptingService().controller.state.moveDown(-0.2);
         }
         if (keysDown.KeyS) {
-            this.serviceLocator.getScriptingService().scientist.moveDown(0.2);
+            console.log("s");
+            this.serviceLocator.getScriptingService().controller.state.moveDown(0.2);
         }
         if (keysDown.KeyA) {
-            this.serviceLocator.getScriptingService().scientist.moveRight(-0.2);
+            console.log("a");
+            this.serviceLocator.getScriptingService().controller.state.moveRight(-0.2);
         }
         if (keysDown.KeyD) {
-            this.serviceLocator.getScriptingService().scientist.moveRight(0.2);
-        }
-        // TO REMOVE
-        this.serviceLocator.getScriptingService().scientist.zoom = "none";
-        if (keysDown.KeyE) {
-            this.serviceLocator.getScriptingService().scientist.zoom = "in";
-        }
-        if (keysDown.KeyQ) {
-            this.serviceLocator.getScriptingService().scientist.zoom = "out";
+            console.log("d");
+            this.serviceLocator.getScriptingService().controller.state.moveRight(0.2);
         }
 
 

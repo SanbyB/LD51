@@ -39,6 +39,7 @@
     * Walks towards target
     * When near, damages with animation
     * (stretch) variations in zombie art / size / power
+    * Dead body is removed after time
 
 * Zombie Spawn Point
     * Every 10 s?

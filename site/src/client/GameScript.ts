@@ -4,6 +4,7 @@ import { Zombie } from "./engine/entities/ZombieEntity";
 import { Game } from "./Game";
 import { GameMap } from "./Map";
 import { MapLoader } from "./MapLoader";
+import { PlayerController } from "./PlayerController";
 import { InputState } from "./services/input/InputService";
 import { ServiceLocator } from "./services/ServiceLocator";
 
@@ -11,7 +12,7 @@ export class GameScript {
     private game: Game;
     private serviceLocator: ServiceLocator;
     private gameMap: GameMap;
-    public scientist: Scientist;
+    public controller: PlayerController;
 
     public constructor(game: Game) {
         this.game = game;
@@ -21,7 +22,9 @@ export class GameScript {
         this.serviceLocator = serviceLocator;
     }
 
-    public update() {}
+    public update() {
+        this.controller.update(this.serviceLocator);
+    }
 
     public newGame() {
         // Create and add the map to the world
@@ -32,8 +35,10 @@ export class GameScript {
             this.serviceLocator.getWorld().addEntity(entity);
         }
 
-        this.scientist = new Scientist(this.serviceLocator, 10, 10);
-        this.serviceLocator.getWorld().addEntity(this.scientist);
+        this.controller = new PlayerController(this.serviceLocator);
+        for(const player of this.controller.players){
+            this.serviceLocator.getWorld().addEntity(player);
+        }
 
         const zombie = new Zombie(this.serviceLocator, 60, 10);
         this.serviceLocator.getWorld().addEntity(zombie);

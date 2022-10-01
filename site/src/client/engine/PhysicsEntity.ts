@@ -7,8 +7,8 @@ import { Entity } from "./Entity";
 export class PhysicsEntity implements Entity {
 
     // position and movement variables
-    protected x: number = 0;
-    protected y: number = 0;
+    public x: number = 0;
+    public y: number = 0;
     protected xVel: number = 0;
     protected yVel: number = 0;
     protected frictCoeff = 0.05;
@@ -91,9 +91,6 @@ export class PhysicsEntity implements Entity {
     }
 
     private collisionCheck(serviceLocator: ServiceLocator){
-        console.log("tile");
-        console.log(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT));
-        console.log(serviceLocator.getScriptingService().getMap().getTile(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT)));
         let left: number = Math.floor(this.x/TILE_WIDTH);
         let lleft: number = Math.floor(this.x + 1/TILE_WIDTH);
         let right: number = Math.floor((this.x + this.width)/TILE_WIDTH);

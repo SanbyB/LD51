@@ -11,12 +11,11 @@ export class Bomber extends Player {
     public name: string = "Bomber";
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y);
+        super(serviceLocator, x, y, "miner", BOMBER_WIDTH, BOMBER_HEIGHT);
     }
 
     public update(serviceLocator: ServiceLocator) {
         super.update(serviceLocator);
-        CanvasHelper.drawAnimation(serviceLocator, "miner", 0, this.x, this.y, BOMBER_WIDTH, BOMBER_HEIGHT);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {

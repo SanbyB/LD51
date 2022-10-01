@@ -11,12 +11,11 @@ export class Solider extends Player {
     public name: string = "Solider";
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y);
+        super(serviceLocator, x, y, "soldier", SOLDIER_WIDTH, SOLDIER_HEIGHT);
     }
 
     public update(serviceLocator: ServiceLocator) {
         super.update(serviceLocator);
-        CanvasHelper.drawAnimation(serviceLocator, "miner", 0, this.x, this.y, SOLDIER_WIDTH, SOLDIER_HEIGHT);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
