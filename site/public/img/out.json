@@ -1,13 +1,19 @@
 {
-    "glorp": {
+    "dead_body": {
         "x": 0,
         "y": 0,
         "width": 33,
         "height": 33
     },
-    "map": {
+    "glorp": {
         "x": 0,
         "y": 33,
+        "width": 33,
+        "height": 33
+    },
+    "map": {
+        "x": 33,
+        "y": 0,
         "width": 33,
         "height": 33
     },
@@ -20,39 +26,39 @@
     },
     "missing_tile": {
         "x": 33,
-        "y": 0,
+        "y": 33,
         "width": 33,
         "height": 33
     },
     "scientist": {
-        "x": 33,
-        "y": 33,
-        "width": 65,
-        "height": 33,
-        "frames": 2
-    },
-    "soldier": {
         "x": 66,
         "y": 0,
         "width": 65,
         "height": 33,
         "frames": 2
     },
-    "tile": {
-        "x": 98,
+    "soldier": {
+        "x": 66,
         "y": 33,
-        "width": 33,
-        "height": 33
+        "width": 65,
+        "height": 33,
+        "frames": 2
     },
-    "tile_crate": {
+    "tile": {
         "x": 131,
         "y": 0,
         "width": 33,
         "height": 33
     },
-    "zombie": {
+    "tile_crate": {
         "x": 131,
         "y": 33,
+        "width": 33,
+        "height": 33
+    },
+    "zombie": {
+        "x": 164,
+        "y": 0,
         "width": 65,
         "height": 33,
         "frames": 2
