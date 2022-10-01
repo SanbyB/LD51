@@ -3,8 +3,10 @@ import { ServiceLocator } from "../../services/ServiceLocator";
 import { animation } from "../../util/animation/Animations";
 import { GameAnimation } from "../../util/animation/GameAnimation";
 import { CanvasHelper } from "../../util/CanvasHelper";
+import { randomFloatRange, randomIntRange } from "../../util/math";
 import { PhysicsEntity } from "../PhysicsEntity";
 import { DeadBody } from "./DeadBody";
+import { Particle } from "./Particle";
 
 
 
@@ -127,6 +129,8 @@ export class CharacterEntity extends PhysicsEntity {
         
         this.hp -= damage;
 
+        this.spewBlood(from_angle);
+
         if (this.hp <= 0) {
             this.hp = 0;
             this.onDeath();
@@ -140,6 +144,24 @@ export class CharacterEntity extends PhysicsEntity {
         this.xVel += Math.sin(rads) * CHARACTER_ATTACK_BUMP_STRENGTH;
         this.yVel -= Math.cos(rads) * CHARACTER_ATTACK_BUMP_STRENGTH;
 
+    }
+
+    private spewBlood(from_angle: number) {
+        for (let i = 0; i < 10; i++) {
+            const rads = (from_angle / 180) * Math.PI + randomFloatRange(-0.3, 0.3);
+            const speed = randomFloatRange(1, 2);
+            this.serviceLocator.getWorld().addEntity(
+                new Particle(this.serviceLocator,
+                    this.x + randomFloatRange(-this.width/4, this.width/4), 
+                    this.y + randomFloatRange(-this.height/4, this.height/4), 
+                    randomIntRange(1, 6), 
+                    "#FF0000", 
+                    20,
+                    Math.sin(rads) * speed,
+                    -Math.cos(rads) * speed
+                    )
+            );
+        }
     }
 
     public onDeath() {

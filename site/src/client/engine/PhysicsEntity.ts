@@ -12,6 +12,7 @@ export class PhysicsEntity implements Entity {
     protected xVel: number = 0;
     protected yVel: number = 0;
     protected frictCoeff = 0.05;
+    protected collides: boolean = true;
 
     // size of img
     protected width = 30;
@@ -74,6 +75,8 @@ export class PhysicsEntity implements Entity {
 
     // Check if the entity hits a boundary
     private boundCheck(){
+        if (!this.collides) return;
+
         if(this.x < 0){
             this.xVel = -this.xVel;
             this.x = 0;
@@ -91,6 +94,8 @@ export class PhysicsEntity implements Entity {
     }
 
     private collisionCheck(serviceLocator: ServiceLocator){
+        if (!this.collides) return;
+
         let left: number = Math.floor(this.x/TILE_WIDTH);
         let lleft: number = Math.floor(this.x + 1/TILE_WIDTH);
         let right: number = Math.floor((this.x + this.width)/TILE_WIDTH);
