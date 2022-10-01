@@ -26,7 +26,7 @@ export class Zombie extends CharacterEntity {
     private tryMoveToPlayer(serviceLocator: ServiceLocator) {
         const closestPlayer = this.getClostestPlayer(serviceLocator);
         if (!closestPlayer) return;
-        const angle = this.getDirectionToTravelTo(serviceLocator.getScriptingService().scientist);
+        const angle = this.getDirectionToTravelTo(closestPlayer);
         const rads = (angle / 180) * Math.PI;
         this.xVel += Math.sin(rads) * ZOMBIE_SPEED;
         this.yVel += -Math.cos(rads) * ZOMBIE_SPEED;
