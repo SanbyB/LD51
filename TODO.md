@@ -1,8 +1,8 @@
 
 * Map
-    * 2D Grid of tiles
-    * Tile can have image or be empty + collidable
-    * Only tiles in viewport rendered
+    * ~~2D Grid of tiles~~
+    * ~~Tile can have image or be empty + collidable~~
+    * ~~Only tiles in viewport rendered~~
 
 * Map Loader
     * load PNG data in res/graphics (map.png)
@@ -14,6 +14,7 @@
     * Has health
     * Has death image
     * Display health bar
+    * Hand rendering
 
 * Controllable Character
     * Move character with input service
@@ -72,4 +73,6 @@
         * Blood
     * Camera tween movement
 
+* Bugs
+    * Image has weird lines when drawing, add padding to CompileArt
 

@@ -1596,6 +1596,18 @@ eval("/* WEBPACK VAR INJECTION */(function(global) {\r\nObject.defineProperty(ex
 
 /***/ }),
 
+/***/ "./site/build/client/Map.js":
+/*!**********************************!*\
+  !*** ./site/build/client/Map.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.GameMap = void 0;\nconst CanvasHelper_1 = __webpack_require__(/*! ./util/CanvasHelper */ \"./site/build/client/util/CanvasHelper.js\");\n// Each tile is 64x64 pixels\nconst TILE_WIDTH = 32;\nconst TILE_HEIGHT = 32;\n// Map is 64x64 tiles\nconst MAP_WIDTH = 1000;\nconst MAP_HEIGHT = 1000;\nclass GameMap {\n    constructor(serviceLocator) {\n        this.mapWidth = MAP_WIDTH;\n        this.mapHeight = MAP_HEIGHT;\n        this.tiles = [];\n        for (let x = 0; x < this.mapWidth; x++) {\n            this.tiles[x] = [];\n            for (let y = 0; y < this.mapHeight; y++) {\n                this.tiles[x][y] = {\n                    image: \"tile\",\n                    collides: false\n                };\n            }\n        }\n    }\n    update(serviceLocator) {\n        // Only draw tiles within camera\n        const { x, y, width, height } = CanvasHelper_1.CanvasHelper.getCamera().bounds;\n        const PADDING = 8;\n        const startX = Math.floor(Math.max(x / TILE_WIDTH - PADDING / 2, 0));\n        const startY = Math.floor(Math.max(y / TILE_HEIGHT - PADDING / 2, 0));\n        const endWidth = Math.floor(Math.min(width / TILE_WIDTH + PADDING, this.mapWidth));\n        const endHeight = Math.floor(Math.min(height / TILE_HEIGHT + PADDING, this.mapHeight));\n        for (let x = startX; x < startX + endWidth; x++) {\n            for (let y = startY; y < startY + endHeight; y++) {\n                const tile = this.tiles[x][y];\n                CanvasHelper_1.CanvasHelper.drawSprite(serviceLocator, tile.image, x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);\n            }\n        }\n    }\n    onAddedToWorld(serviceLocator) {\n    }\n    onRemovedFromWorld(serviceLocator) {\n    }\n    getTile(x, y) {\n    }\n}\nexports.GameMap = GameMap;\n//# sourceMappingURL=Map.js.map\n\n//# sourceURL=webpack:///./site/build/client/Map.js?");
+
+/***/ }),
+
 /***/ "./site/build/client/SiteContainer.js":
 /*!********************************************!*\
   !*** ./site/build/client/SiteContainer.js ***!
