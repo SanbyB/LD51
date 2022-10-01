@@ -28,7 +28,6 @@ export class PhysicsEntity implements Entity {
 
     // Movement functions to call when you want the entity to move
     public moveRight(speed: number){
-        console.log(this.xVel);
         this.xVel += speed;
     }
     public moveDown(speed: number){

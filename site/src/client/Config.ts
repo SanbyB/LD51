@@ -30,3 +30,8 @@ export const IS_DEV_MODE = () => false;
 // Each tile is 64x64 pixels
 export const TILE_WIDTH = 32;
 export const TILE_HEIGHT = 32;
+
+
+// Increase this to make character animation faster
+export const CHARACTER_ANIMATION_MULTIPLIER = 0.1;
+export const CHARACTER_ANIMATION_SPEED_THRESHOLD = 0.01;

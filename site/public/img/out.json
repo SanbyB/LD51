@@ -31,14 +31,21 @@
         "height": 32,
         "frames": 2
     },
-    "tile": {
+    "soldier": {
         "x": 64,
         "y": 0,
+        "width": 64,
+        "height": 32,
+        "frames": 2
+    },
+    "tile": {
+        "x": 96,
+        "y": 32,
         "width": 32,
         "height": 32
     },
     "tile_crate": {
-        "x": 96,
+        "x": 128,
         "y": 0,
         "width": 32,
         "height": 32
