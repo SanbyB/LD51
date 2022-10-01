@@ -14,6 +14,7 @@ export class CharacterEntity extends PhysicsEntity {
     }
 
     public update(serviceLocator: ServiceLocator) {
+        super.update(serviceLocator);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
@@ -22,6 +23,6 @@ export class CharacterEntity extends PhysicsEntity {
     }
 
     public movement(){
-        
+
     }
 }

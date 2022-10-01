@@ -12,6 +12,7 @@ export class Player extends CharacterEntity {
     }
 
     public update(serviceLocator: ServiceLocator) {
+        super.update(serviceLocator);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {

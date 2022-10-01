@@ -14,7 +14,8 @@ export class Scientist extends Player {
     }
 
     public update(serviceLocator: ServiceLocator) {
-        CanvasHelper.drawSprite(serviceLocator, "scientist", this.x, this.y, SCIENTIST_WIDTH, SCIENTIST_HEIGHT);
+        super.update(serviceLocator);
+        CanvasHelper.drawAnimation(serviceLocator, "miner", 0, this.x, this.y, SCIENTIST_WIDTH, SCIENTIST_HEIGHT);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {

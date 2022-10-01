@@ -27,11 +27,11 @@ export class PhysicsEntity implements Entity {
     }
 
     // Movement functions to call when you want the entity to move
-    public moveLeft(speed: number){
-        this.xVel += speed;
+    public moveRight(speed: number){
+        this.xVel = speed;
     }
     public moveDown(speed: number){
-        this.yVel += speed;
+        this.yVel = speed;
     }
 
     // Friction function to run on each update
