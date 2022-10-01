@@ -118,11 +118,11 @@ export class PhysicsEntity implements Entity {
         // right collision
         else if(tile(right, up) && tile(right, uup)){
             this.xVel = -this.xVel;
-            this.x = left * TILE_WIDTH;
+            this.x = (left + 1) * TILE_WIDTH - this.width;
         }
         else if(tile(right, low) && tile(right, llow)){
             this.xVel = -this.xVel;
-            this.x = left * TILE_WIDTH;
+            this.x = (left + 1) * TILE_WIDTH - this.width;
         }
 
         // up collision
@@ -138,11 +138,11 @@ export class PhysicsEntity implements Entity {
         // low collision
         else if(tile(right, low) && tile(rright, low)){
             this.yVel = -this.yVel;
-            this.y = up * TILE_HEIGHT;
+            this.y = (up + 1) * TILE_HEIGHT - this.height;
         }
         else if(tile(left, low) && tile(lleft, low)){
             this.yVel = -this.yVel;
-            this.y = up * TILE_HEIGHT;
+            this.y = (up + 1) * TILE_HEIGHT - this.height;
         }
         
     }
