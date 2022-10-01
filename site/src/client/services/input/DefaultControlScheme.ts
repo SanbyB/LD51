@@ -1,3 +1,4 @@
+import { CanvasHelper } from "../../util/CanvasHelper";
 import { ServiceLocator } from "../ServiceLocator";
 import { ControlScheme } from "./ControlScheme";
 
@@ -7,6 +8,29 @@ export class DefaultControlScheme implements ControlScheme {
     public poll(keysDown: { [key: string]: boolean }) {
         if (keysDown.Space) {
             console.log("Space is down");
+        }
+
+
+
+        // TODO remove
+        const camera = CanvasHelper.getCamera();
+        if (keysDown.KeyW) {
+            CanvasHelper.setCamera(camera.x, camera.y - 1, camera.scale);
+        }
+        if (keysDown.KeyS) {
+            CanvasHelper.setCamera(camera.x, camera.y + 1, camera.scale);
+        }
+        if (keysDown.KeyA) {
+            CanvasHelper.setCamera(camera.x - 1, camera.y, camera.scale);
+        }
+        if (keysDown.KeyD) {
+            CanvasHelper.setCamera(camera.x + 1, camera.y, camera.scale);
+        }
+        if (keysDown.KeyE) {
+            CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 1.01);
+        }
+        if (keysDown.KeyQ) {
+            CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 0.99);
         }
     }
 
