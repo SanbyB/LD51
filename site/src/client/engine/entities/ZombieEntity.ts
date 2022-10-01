@@ -1,3 +1,4 @@
+import { CHARACTER_ATTACK_DISTANCE } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { CharacterEntity } from "./CharacterEntity";
@@ -20,7 +21,33 @@ export class Zombie extends CharacterEntity {
         super.update(serviceLocator);
 
         this.xVel += this.walking_right ? ZOMBIE_SPEED : -ZOMBIE_SPEED;
+
+        this.tryAttackPlayer(serviceLocator);
     }
+
+    private tryAttackPlayer(serviceLocator: ServiceLocator) {
+        let closestPlayer: Player = undefined;
+        let closestPlayerDistance = -1;
+        for (let entity of serviceLocator.getWorld().getEntityArray()) {
+            if (entity instanceof Player) {
+                const playerEntity = entity as Player;
+                const dis = this.distanceTo(playerEntity);
+                if (closestPlayer == undefined || dis < closestPlayerDistance) {
+                    closestPlayer = playerEntity;
+                    closestPlayerDistance = dis;
+                }
+            }
+        }
+
+        if (!closestPlayer) return;
+
+        const angleTo = this.angleTo(closestPlayer);
+        this.setHand(this.angleTo(closestPlayer));
+
+        if (closestPlayerDistance < CHARACTER_ATTACK_DISTANCE) {
+            this.doAttack(angleTo);
+        }
+    }   
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
         setInterval(() => {

@@ -149,7 +149,17 @@ export class PhysicsEntity implements Entity {
         
     }
 
+    public distanceTo(otherEntity: PhysicsEntity) {
+        const diffX = otherEntity.x - this.x;
+        const diffY = otherEntity.y - this.y;
+        return Math.sqrt((diffX * diffX) + (diffY * diffY));
+    }
 
+    public angleTo(otherEntity: PhysicsEntity) {
+        const diffX = otherEntity.x - this.x;
+        const diffY = otherEntity.y - this.y;
+        return (Math.atan2(diffX, -diffY) / Math.PI) * 180;
+    }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
     }

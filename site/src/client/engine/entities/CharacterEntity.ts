@@ -182,6 +182,9 @@ export class CharacterEntity extends PhysicsEntity {
     }
 
     public doAttack(angle: number) {
+        if (this.hand_attack.isPlaying()) {
+            return;
+        }
         this.hand_attack.start();
         const entities = this.serviceLocator.getWorld().getEntityArray();
         for (let entity of entities) {
