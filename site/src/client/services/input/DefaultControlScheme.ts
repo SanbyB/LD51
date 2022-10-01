@@ -43,12 +43,12 @@ export class DefaultControlScheme implements ControlScheme {
         let diffY = (event.y - rect.y) - (rect.height / 2);
         let angle = (Math.atan2(diffX, -diffY) / Math.PI) * 180;
         let distance = Math.sqrt(diffX * diffX + diffY * diffY) * CHARACTER_MOUSE_DISANCE_INFLUENCE;
-        this.serviceLocator.getScriptingService().scientist.setHand(angle, distance);
+        this.serviceLocator.getScriptingService().controller.state.setHand(angle, distance);
     }   
 
     public onMouseDown = (event: MouseEvent) => {
-        this.serviceLocator.getScriptingService().scientist.doAttack(
-            this.serviceLocator.getScriptingService().scientist.getHandAngle()
+        this.serviceLocator.getScriptingService().controller.state.doAttack(
+            this.serviceLocator.getScriptingService().controller.state.getHandAngle()
         );
     }
 

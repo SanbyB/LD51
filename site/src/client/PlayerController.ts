@@ -33,6 +33,11 @@ export class PlayerController{
     public update(serviceLocator: ServiceLocator){
         const camera = CanvasHelper.getCamera();
         CanvasHelper.setCamera(this.state.x, this.state.y, camera.scale);
+        for(const i in this.players){
+            if(this.players[i].hp <= 0){
+                this.players.splice(parseInt(i), 1);
+            }
+        }
     }
 
 

@@ -9,7 +9,7 @@ const BOMBER_HEIGHT = 30;
 export class Bomber extends Player {
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "bomber", BOMBER_WIDTH, BOMBER_HEIGHT);
+        super(serviceLocator, x, y, "miner", BOMBER_WIDTH, BOMBER_HEIGHT);
     }
 
     public update(serviceLocator: ServiceLocator) {
