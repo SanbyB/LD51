@@ -28,10 +28,11 @@ export class PhysicsEntity implements Entity {
 
     // Movement functions to call when you want the entity to move
     public moveRight(speed: number){
-        this.xVel = speed;
+        console.log(this.xVel);
+        this.xVel += speed;
     }
     public moveDown(speed: number){
-        this.yVel = speed;
+        this.yVel += speed;
     }
 
     // Friction function to run on each update
@@ -69,11 +70,19 @@ export class PhysicsEntity implements Entity {
 
     // Check if the entity hits a boundary
     private boundCheck(){
-        if(this.x < 0 || this.x > DOM_WIDTH){
+        if(this.x < 0){
             this.xVel = -this.xVel;
+            this.x = 0;
+        }else if(this.x > DOM_WIDTH){
+            this.xVel = -this.xVel;
+            this.x = DOM_WIDTH;
         }
-        if(this.y < 0 || this.y > DOM_HEIGHT){
+        if(this.y < 0){
             this.yVel = -this.yVel;
+            this.y = 0;
+        }else if(this.y > DOM_HEIGHT){
+            this.yVel = -this.yVel;
+            this.y = DOM_HEIGHT;
         }
     }
 

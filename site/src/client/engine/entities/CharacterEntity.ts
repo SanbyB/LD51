@@ -15,6 +15,7 @@ export class CharacterEntity extends PhysicsEntity {
 
     public update(serviceLocator: ServiceLocator) {
         super.update(serviceLocator);
+        this.movement();
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
@@ -23,6 +24,11 @@ export class CharacterEntity extends PhysicsEntity {
     }
 
     public movement(){
-
+        if(Math.abs(this.xVel) > this.speed){
+            this.xVel = Math.sign(this.xVel) * this.speed;
+        }
+        if(Math.abs(this.yVel) > this.speed){
+            this.yVel = Math.sign(this.yVel) *  this.speed;
+        }
     }
 }

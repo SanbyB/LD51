@@ -12,30 +12,25 @@ export class DefaultControlScheme implements ControlScheme {
             console.log("Space is down");
         }
 
-        // TODO remove
-        const camera = CanvasHelper.getCamera();
+        
         if (keysDown.KeyW) {
-            CanvasHelper.setCamera(camera.x, camera.y - 1, camera.scale);
-            this.serviceLocator.getScriptingService().scientist.moveDown(-1);
+            this.serviceLocator.getScriptingService().scientist.moveDown(-0.2);
         }
         if (keysDown.KeyS) {
-            CanvasHelper.setCamera(camera.x, camera.y + 1, camera.scale);
-            this.serviceLocator.getScriptingService().scientist.moveDown(1);
+            this.serviceLocator.getScriptingService().scientist.moveDown(0.2);
         }
         if (keysDown.KeyA) {
-            CanvasHelper.setCamera(camera.x - 1, camera.y, camera.scale);
-            this.serviceLocator.getScriptingService().scientist.moveRight(-1);
+            this.serviceLocator.getScriptingService().scientist.moveRight(-0.2);
         }
         if (keysDown.KeyD) {
-            CanvasHelper.setCamera(camera.x + 1, camera.y, camera.scale);
-            this.serviceLocator.getScriptingService().scientist.moveRight(1);
+            this.serviceLocator.getScriptingService().scientist.moveRight(0.2);
         }
-        if (keysDown.KeyE) {
-            CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 1.01);
-        }
-        if (keysDown.KeyQ) {
-            CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 0.99);
-        }
+        // if (keysDown.KeyE) {
+        //     CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 1.01);
+        // }
+        // if (keysDown.KeyQ) {
+        //     CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 0.99);
+        // }
     }
 
     public onKeyDown(key: string, keysDown: { [key: string]: boolean }) {}
