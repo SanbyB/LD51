@@ -61,6 +61,10 @@ export class GameMap implements Entity {
 
     // returns if the tile collides
     public getTile(x: number, y: number) {
+        let tilex = this.tiles[x];
+        if(tilex == undefined){
+            return true;
+        }
         let tile: Tile = this.tiles[x][y];
         if(tile == undefined){
             return true;

@@ -95,30 +95,56 @@ export class PhysicsEntity implements Entity {
         console.log(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT));
         console.log(serviceLocator.getScriptingService().getMap().getTile(Math.floor(this.x/TILE_WIDTH), Math.floor(this.y/TILE_HEIGHT)));
         let left: number = Math.floor(this.x/TILE_WIDTH);
+        let lleft: number = Math.floor(this.x + 1/TILE_WIDTH);
         let right: number = Math.floor((this.x + this.width)/TILE_WIDTH);
+        let rright: number = Math.floor((this.x + this.width - 1)/TILE_WIDTH);
         let up: number = Math.floor(this.y/TILE_HEIGHT);
+        let uup: number = Math.floor((this.y + 1)/TILE_HEIGHT);
         let low: number = Math.floor((this.y + this.height)/TILE_HEIGHT);
+        let llow: number = Math.floor((this.y + this.height - 1)/TILE_HEIGHT);
         // set tile to be the getTile function
         let tile = (x: number, y: number) => serviceLocator.getScriptingService().getMap().getTile(x, y);
 
-        if(tile(left, up)){
-            if(tile(left, low)){
-                this.xVel = -this.xVel;
-                this.x = right * TILE_WIDTH;
-            }else{
-                this.yVel = -this.yVel;
-                this.y = low * TILE_HEIGHT;
-            }
-        }else if(tile(right, low)){
-            if(tile(right, up)){
-                this.xVel = -this.xVel;
-                // DONT THINK THIS WILL WORK
-                this.x = left * TILE_WIDTH;
-            }else{
-                this.yVel = -this.yVel;
-                this.y = up * TILE_HEIGHT;
-            }
+        // left collision
+        if(tile(left, up) && tile(left, uup)){
+            this.xVel = -this.xVel;
+            this.x = right * TILE_WIDTH;
         }
+        else if(tile(left, low) && tile(left, llow)){
+            this.xVel = -this.xVel;
+            this.x = right * TILE_WIDTH;
+        }
+
+        // right collision
+        else if(tile(right, up) && tile(right, uup)){
+            this.xVel = -this.xVel;
+            this.x = left * TILE_WIDTH;
+        }
+        else if(tile(right, low) && tile(right, llow)){
+            this.xVel = -this.xVel;
+            this.x = left * TILE_WIDTH;
+        }
+
+        // up collision
+        else if(tile(right, up) && tile(rright, up)){
+            this.yVel = -this.yVel;
+            this.y = low * TILE_HEIGHT;
+        }
+        else if(tile(left, up) && tile(lleft, up)){
+            this.yVel = -this.yVel;
+            this.y = low * TILE_HEIGHT;
+        }
+
+        // low collision
+        else if(tile(right, low) && tile(rright, low)){
+            this.yVel = -this.yVel;
+            this.y = up * TILE_HEIGHT;
+        }
+        else if(tile(left, low) && tile(lleft, low)){
+            this.yVel = -this.yVel;
+            this.y = up * TILE_HEIGHT;
+        }
+        
     }
 
 
