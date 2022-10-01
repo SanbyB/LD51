@@ -8,10 +8,8 @@ const ENGINEER_HEIGHT = 30;
 
 export class Engineer extends Player {
     
-    public name: string = "Engineer";
-
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "miner", ENGINEER_WIDTH, ENGINEER_HEIGHT);
+        super(serviceLocator, x, y, "mechanic", ENGINEER_WIDTH, ENGINEER_HEIGHT);
     }
 
     public update(serviceLocator: ServiceLocator) {

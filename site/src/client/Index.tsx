@@ -5,9 +5,6 @@ import { SiteContainer } from "./SiteContainer";
 import { game, gameContext } from "./GameContext";
 import { store } from "./ui/State";
 
-// For viewing deployed version
-console.log(VERSION);
-
 (global as any).game = game;
 
 const render = () => {

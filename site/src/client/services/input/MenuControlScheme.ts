@@ -9,4 +9,13 @@ export class MenuControlScheme implements ControlScheme {
     public onKeyDown(key: string, keysDown: { [key: string]: boolean }) {}
 
     public onKeyUp(key: string, keysDown: { [key: string]: boolean }) {}
+
+    public onMouseMove = (event: MouseEvent) => {
+    }
+
+    public onMouseDown = (event: MouseEvent) => {
+    }
+
+    public onMouseUp = (event: MouseEvent) => {
+    }
 }

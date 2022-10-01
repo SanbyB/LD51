@@ -11,9 +11,9 @@
 
 * Character Entity
     * ~~Draw character with animation (walk, standing still)~~
-    * Has health
-    * Has death image
-    * Display health bar
+    * ~~Has health~~
+    * ~~Has death image~~
+    * ~~Display health bar~~
     * Hand rendering
 
 * Controllable Character
@@ -76,4 +76,9 @@
 
 * Bugs
     * ~~Image has weird lines when drawing, add padding to CompileArt~~
+
+Engineer - Spanner
+Axe - Soldier
+Thermometer - Scientist
+Bomber - detonator
 

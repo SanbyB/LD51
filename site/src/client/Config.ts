@@ -40,3 +40,15 @@ export const CHARACTER_HEALTH_WIDTH = 20;
 export const CHARACTER_HEALTH_HEIGHT = 2;
 export const CHARACTER_HEALTH_SHOWN = 2000;
 
+export const CHARACTER_HAND_SIZE = 10;
+export const CHARACTER_HAND_DISTANCE = 10;
+export const CHARACTER_LOWER_DROP = 4;
+export const CHARACTER_MOUSE_DISANCE_INFLUENCE = 0.2;
+
+export const CHARACTER_ATTACK_DISTANCE = 32;
+export const CHARACTER_ATTACK_ARC = 80; // degrees
+export const CHARACTER_ATTACK_BUMP_STRENGTH = 8;
+
+export const ZOMBIE_ATTACK_DISTANCE = 20;
+
+
