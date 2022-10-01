@@ -11,7 +11,7 @@ export class Scientist extends Player {
     public name: string = "Scientist";
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "scientist", SCIENTIST_WIDTH, SCIENTIST_HEIGHT);
+        super(serviceLocator, x, y, "scientist", SCIENTIST_WIDTH, SCIENTIST_HEIGHT, "test_tube");
     }
 
     public update(serviceLocator: ServiceLocator) {

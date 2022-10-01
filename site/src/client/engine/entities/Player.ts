@@ -13,8 +13,9 @@ export class Player extends CharacterEntity {
         y: number,
         animation: string,
         animation_width: number, 
-        animation_height: number) {
-        super(serviceLocator, x, y, animation, animation_width, animation_height, "test_tube");
+        animation_height: number,
+        hand_image: string) {
+        super(serviceLocator, x, y, animation, animation_width, animation_height, hand_image);
         this.speed = 1;
     }
 

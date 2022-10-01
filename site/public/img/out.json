@@ -11,22 +11,28 @@
         "width": 33,
         "height": 33
     },
-    "map": {
+    "knife": {
         "x": 33,
         "y": 0,
+        "width": 17,
+        "height": 17
+    },
+    "map": {
+        "x": 33,
+        "y": 17,
         "width": 33,
         "height": 33
     },
     "miner": {
         "x": 0,
         "y": 66,
-        "width": 257,
+        "width": 65,
         "height": 33,
-        "frames": 8
+        "frames": 2
     },
     "missing_tile": {
-        "x": 33,
-        "y": 33,
+        "x": 65,
+        "y": 50,
         "width": 33,
         "height": 33
     },
@@ -38,40 +44,46 @@
         "frames": 2
     },
     "soldier": {
-        "x": 66,
-        "y": 33,
+        "x": 65,
+        "y": 83,
         "width": 65,
         "height": 33,
         "frames": 2
     },
+    "spanner": {
+        "x": 0,
+        "y": 99,
+        "width": 17,
+        "height": 17
+    },
     "test_tube": {
-        "x": 131,
-        "y": 0,
+        "x": 17,
+        "y": 99,
         "width": 17,
         "height": 17
     },
     "tile": {
-        "x": 131,
-        "y": 17,
+        "x": 98,
+        "y": 33,
         "width": 33,
         "height": 33
     },
     "tile_crate": {
-        "x": 164,
-        "y": 0,
+        "x": 0,
+        "y": 116,
         "width": 33,
         "height": 33
     },
     "zombie": {
-        "x": 164,
-        "y": 33,
+        "x": 33,
+        "y": 116,
         "width": 65,
         "height": 33,
         "frames": 2
     },
     "zombie_hand": {
-        "x": 197,
-        "y": 0,
+        "x": 34,
+        "y": 99,
         "width": 17,
         "height": 17
     }
