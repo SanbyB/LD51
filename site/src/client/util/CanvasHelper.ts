@@ -81,16 +81,23 @@ export class CanvasHelper {
         y: number, 
         width: number, 
         height: number,
-        degrees: number = 0
+        degrees: number = 0,
+        fill: boolean = false,
+        color: string = "#000000"
         ) {
-        const spriteSheet = serviceLocator.getResourceManager().getDefaultSpriteSheet();
         const canvas =  serviceLocator.getCanvas();
         canvas.save();
         canvas.translate(((x - this.camera_x) * this.scale) + WIDTH/2, ((y - this.camera_y) * this.scale) + HEIGHT/2);
         var rad = degrees * Math.PI / 180;    
         canvas.rotate(rad);
         canvas.beginPath();
+        canvas.fillStyle = color;
         canvas.rect(-width/2, -height/2, width, height);
+        if (fill) {
+            canvas.fillRect(-width/2, -height/2, width, height);
+        } else {
+            canvas.rect(-width/2, -height/2, width, height);
+        }
         canvas.stroke();
         canvas.restore();
     }

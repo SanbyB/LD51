@@ -35,3 +35,8 @@ export const TILE_HEIGHT = 32;
 // Increase this to make character animation faster
 export const CHARACTER_ANIMATION_MULTIPLIER = 0.1;
 export const CHARACTER_ANIMATION_SPEED_THRESHOLD = 0.01;
+
+export const CHARACTER_HEALTH_WIDTH = 20;
+export const CHARACTER_HEALTH_HEIGHT = 2;
+export const CHARACTER_HEALTH_SHOWN = 2000;
+
