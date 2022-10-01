@@ -108,7 +108,7 @@ export class GameAnimation {
     }
 
     public isPlaying() {
-        return this.isPlaying;
+        return this.playing;
     }
     private tweenFunction = (x: number) => x;
 }

@@ -39,12 +39,6 @@ export class DefaultControlScheme implements ControlScheme {
 
     public onKeyDown(key: string, keysDown: { [key: string]: boolean }) {
 
-        if (key == "Space") {
-            const zombie = this.serviceLocator.getWorld().getEntityArray().find(entity => entity instanceof Zombie) as Zombie | undefined;
-            if (zombie) {
-                zombie.onDamage(5);
-            }
-        }
     }
 
     public onKeyUp(key: string, keysDown: { [key: string]: boolean }) {}
@@ -59,6 +53,9 @@ export class DefaultControlScheme implements ControlScheme {
     }   
 
     public onMouseDown = (event: MouseEvent) => {
+        this.serviceLocator.getScriptingService().scientist.doAttack(
+            this.serviceLocator.getScriptingService().scientist.getHandAngle()
+        );
     }
 
     public onMouseUp = (event: MouseEvent) => {

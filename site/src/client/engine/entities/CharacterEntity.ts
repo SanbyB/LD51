@@ -1,7 +1,7 @@
-import { clear } from "console";
-import { config } from "process";
-import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD, CHARACTER_HAND_DISTANCE, CHARACTER_HAND_SIZE, CHARACTER_HEALTH_HEIGHT, CHARACTER_HEALTH_SHOWN, CHARACTER_HEALTH_WIDTH, CHARACTER_LOWER_DROP } from "../../Config";
+import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD, CHARACTER_ATTACK_ARC, CHARACTER_ATTACK_BUMP_STRENGTH, CHARACTER_ATTACK_DISTANCE, CHARACTER_HAND_DISTANCE, CHARACTER_HAND_SIZE, CHARACTER_HEALTH_HEIGHT, CHARACTER_HEALTH_SHOWN, CHARACTER_HEALTH_WIDTH, CHARACTER_LOWER_DROP } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
+import { animation } from "../../util/animation/Animations";
+import { GameAnimation } from "../../util/animation/GameAnimation";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { PhysicsEntity } from "../PhysicsEntity";
 import { DeadBody } from "./DeadBody";
@@ -14,6 +14,7 @@ export class CharacterEntity extends PhysicsEntity {
     protected hp: number = 20;
     protected attackStrength: number = 5;
     protected speed: number = 0.5;
+    protected damage: number = 5;
 
     // Animation frame to draw
     protected animation = "";
@@ -28,20 +29,25 @@ export class CharacterEntity extends PhysicsEntity {
     protected hand_angle = 90;
     protected hand_dis = CHARACTER_HAND_DISTANCE;
 
+    public hand_attack: GameAnimation;
+
     public constructor(
         private serviceLocator: ServiceLocator, 
         x: number, 
         y: number, 
-        animation: string,
+        animation_name: string,
         animation_width: number, 
         animation_height: number,
         hand_image: string
         ) {
         super(serviceLocator, x, y);
-        this.animation = animation;
+        this.animation = animation_name;
         this.animation_width = animation_width;
         this.animation_height = animation_height
         this.hand_image = hand_image;
+        this.hand_attack = animation(x => {
+            this.hand_dis = (1 - x) * CHARACTER_HAND_DISTANCE + CHARACTER_HAND_DISTANCE
+        }).driven(true).speed(100).whenDone(() => this.hand_dis = CHARACTER_HAND_DISTANCE);
     }
 
     public update(serviceLocator: ServiceLocator) {
@@ -54,6 +60,7 @@ export class CharacterEntity extends PhysicsEntity {
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
+   
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
     }
@@ -115,7 +122,7 @@ export class CharacterEntity extends PhysicsEntity {
         CanvasHelper.drawSprite(serviceLocator, this.hand_image, x, y, CHARACTER_HAND_SIZE, CHARACTER_HAND_SIZE);
     }
 
-    public onDamage(damage: number) {
+    public onDamage(damage: number, from_angle: number) {
         if (this.hp == 0) return;
         
         this.hp -= damage;
@@ -128,6 +135,11 @@ export class CharacterEntity extends PhysicsEntity {
         this.show_health = true;
         this.show_health_timeout && clearTimeout(this.show_health_timeout);
         this.show_health_timeout = setTimeout(() => this.show_health = false, CHARACTER_HEALTH_SHOWN);
+
+        const rads = (from_angle / 180) * Math.PI;
+        this.xVel += Math.sin(rads) * CHARACTER_ATTACK_BUMP_STRENGTH;
+        this.yVel -= Math.cos(rads) * CHARACTER_ATTACK_BUMP_STRENGTH;
+
     }
 
     public onDeath() {
@@ -137,7 +149,45 @@ export class CharacterEntity extends PhysicsEntity {
 
     public setHand(angle: number, distance: number = CHARACTER_HAND_DISTANCE) {
         this.hand_angle = angle;
-        this.hand_dis = Math.min(distance, CHARACTER_HAND_DISTANCE);
+
+        if (!this.hand_attack.isPlaying()) {
+            this.hand_dis = Math.min(distance, CHARACTER_HAND_DISTANCE);
+        }
+    }
+
+    public getHandAngle() {
+        return this.hand_angle;
+    }
+
+    public doAttack(angle: number) {
+        this.hand_attack.start();
+        const entities = this.serviceLocator.getWorld().getEntityArray();
+        for (let entity of entities) {
+            if (!(entity instanceof CharacterEntity) || entity == this) {
+                continue;
+            }
+            const otherCharacter = entity as CharacterEntity;
+            this.tryAttack(angle, otherCharacter);
+        }
+    }
+
+    private tryAttack(angle: number, character: CharacterEntity) {
+        const diffX = character.x - this.x;
+        const diffY = character.y - this.y;
+        const distance = Math.sqrt((diffX * diffX) + (diffY * diffY));
+        if (distance > CHARACTER_ATTACK_DISTANCE) {
+            return;
+        }
+
+        const angleToCharacter = (Math.atan2(diffX, -diffY) / Math.PI) * 180;
+        const angleDiff = Math.abs(angleToCharacter - angle);
+
+        if (angleDiff > CHARACTER_ATTACK_ARC/2) {
+            return;
+        }
+        
+        character.onDamage(this.damage, angleToCharacter);
+        
     }
 
     private updateAnimationFrame() {
