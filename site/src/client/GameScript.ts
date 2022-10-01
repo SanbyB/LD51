@@ -1,5 +1,6 @@
 import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT } from "./Config";
 import { Scientist } from "./engine/entities/Scientist";
+import { Zombie } from "./engine/entities/ZombieEntity";
 import { Game } from "./Game";
 import { GameMap } from "./Map";
 import { MapLoader } from "./MapLoader";
@@ -26,12 +27,16 @@ export class GameScript {
         // Create and add the map to the world
         const mapLoader = new MapLoader(this.serviceLocator);
         const entities = mapLoader.getEntities();
+        this.gameMap = entities[0] as GameMap;
         for (let entity of entities) {
             this.serviceLocator.getWorld().addEntity(entity);
         }
 
         this.scientist = new Scientist(this.serviceLocator, 10, 10);
         this.serviceLocator.getWorld().addEntity(this.scientist);
+
+        const zombie = new Zombie(this.serviceLocator, 60, 10);
+        this.serviceLocator.getWorld().addEntity(zombie);
     }
 
     public resumeGame() {

@@ -116,8 +116,8 @@ const xAxis = new InsertionAxis(false);
 function insertPngFileIntoNewManifest(manifest, obj) {
     const [ manifestWidth, manifestHeight ] = getManifestSize(manifest);
 
-    const width = obj.png.width;
-    const height = obj.png.height;
+    const width = obj.png.width + 1;
+    const height = obj.png.height + 1;
 
     let smallestSize = undefined;
     let bestManifest = undefined;

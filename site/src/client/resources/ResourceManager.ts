@@ -72,16 +72,16 @@ export class ResourceManager {
                 if (!json[key].frames) {
                     sheet.registerSprite(
                         key,
-                        json[key].width,
-                        json[key].height,
+                        json[key].width - 1,
+                        json[key].height - 1,
                         json[key].x,
                         json[key].y
                     );
                 } else {
                     sheet.registerAnimation(
                         key,
-                        json[key].width / json[key].frames,
-                        json[key].height,
+                        json[key].width / json[key].frames - 1,
+                        json[key].height - 1,
                         json[key].x,
                         json[key].y,
                         json[key].frames,
