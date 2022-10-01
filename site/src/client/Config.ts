@@ -27,3 +27,6 @@ export const SCENERY_PIXEL_DENSITY = 10;
 export const IS_DEV_MODE = () => false;
 // export const IS_DEV_MODE = () => false;
 
+// Each tile is 64x64 pixels
+export const TILE_WIDTH = 32;
+export const TILE_HEIGHT = 32;

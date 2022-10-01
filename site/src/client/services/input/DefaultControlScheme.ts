@@ -25,12 +25,15 @@ export class DefaultControlScheme implements ControlScheme {
         if (keysDown.KeyD) {
             this.serviceLocator.getScriptingService().scientist.moveRight(0.2);
         }
-        // if (keysDown.KeyE) {
-        //     CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 1.01);
-        // }
-        // if (keysDown.KeyQ) {
-        //     CanvasHelper.setCamera(camera.x, camera.y, camera.scale * 0.99);
-        // }
+        // TO REMOVE
+        this.serviceLocator.getScriptingService().scientist.zoom = "none";
+        if (keysDown.KeyE) {
+            this.serviceLocator.getScriptingService().scientist.zoom = "in";
+        }
+        if (keysDown.KeyQ) {
+            this.serviceLocator.getScriptingService().scientist.zoom = "out";
+        }
+
     }
 
     public onKeyDown(key: string, keysDown: { [key: string]: boolean }) {}

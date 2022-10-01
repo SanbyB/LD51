@@ -1,10 +1,8 @@
+import { TILE_HEIGHT, TILE_WIDTH } from "./Config";
 import { Entity } from "./engine/Entity";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { CanvasHelper } from "./util/CanvasHelper";
 
-// Each tile is 64x64 pixels
-export const TILE_WIDTH = 32;
-export const TILE_HEIGHT = 32;
 
 interface Tile {
     image: string;

@@ -1,6 +1,6 @@
 import { BallEntity } from "./engine/entities/BallEntity";
 import { Entity } from "./engine/Entity";
-import { GameMap, TILE_HEIGHT, TILE_WIDTH } from "./Map";
+import { GameMap } from "./Map";
 import { Sprite } from "./resources/SpriteSheet";
 import { getImageData, loadImageData } from "./resources/TextureLoader";
 import { ServiceLocator } from "./services/ServiceLocator";
@@ -65,13 +65,6 @@ export class MapLoader {
 
         // Entites
         switch (g) {
-            case 255:
-                entities.push(new BallEntity(
-                    this.serviceLocator,
-                    x * TILE_WIDTH,
-                    y * TILE_HEIGHT
-                ));
-                break;
         }
 
         gameMap.setTile(x, y, {
