@@ -7,11 +7,11 @@ import { Entity } from "./Entity";
 export class PhysicsEntity implements Entity {
 
     // position and movement variables
-    private x: number = 0;
-    private y: number = 0;
-    private xVel: number = 0;
-    private yVel: number = 0;
-    private frictCoeff = 0.05;
+    protected x: number = 0;
+    protected y: number = 0;
+    protected xVel: number = 0;
+    protected yVel: number = 0;
+    protected frictCoeff = 0.05;
 
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {

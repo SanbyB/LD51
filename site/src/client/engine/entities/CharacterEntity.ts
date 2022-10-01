@@ -1,24 +1,27 @@
 import { ServiceLocator } from "../../services/ServiceLocator";
-import { CanvasHelper } from "../../util/CanvasHelper";
-import { Player } from "./Player";
+import { PhysicsEntity } from "../PhysicsEntity";
 
 
-const SCIENTIST_WIDTH = 30;
-const SCIENTIST_HEIGHT = 30;
 
-export class Scientist extends Player {
+export class CharacterEntity extends PhysicsEntity {
 
+    protected hp: number = 20;
+    protected attackStrength: number = 5;
+    protected speed: number = 0.5;
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y);
     }
 
     public update(serviceLocator: ServiceLocator) {
-        CanvasHelper.drawSprite(serviceLocator, "scientist", this.x, this.y, SCIENTIST_WIDTH, SCIENTIST_HEIGHT);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
+    }
+
+    public movement(){
+        
     }
 }
