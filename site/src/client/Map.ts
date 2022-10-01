@@ -33,11 +33,11 @@ export class GameMap implements Entity {
         const startX = Math.floor(Math.max(x / TILE_WIDTH - PADDING/2, 0));
         const startY = Math.floor(Math.max(y / TILE_HEIGHT - PADDING/2, 0));
 
-        const endWidth = Math.floor(Math.min(width / TILE_WIDTH + PADDING, this.mapWidth));
-        const endHeight = Math.floor(Math.min(height / TILE_HEIGHT + PADDING, this.mapHeight));
+        const endX = Math.floor(Math.min(width / TILE_WIDTH + PADDING + startX, this.mapWidth));
+        const endY = Math.floor(Math.min(height / TILE_HEIGHT + PADDING + startY, this.mapHeight));
 
-        for (let x = startX; x < startX + endWidth; x++) {
-            for (let y = startY; y < startY + endHeight; y++) {
+        for (let x = startX; x < endX; x++) {
+            for (let y = startY; y < endY; y++) {
                 const tile = this.tiles[x][y];
                 CanvasHelper.drawSprite(
                     serviceLocator, 

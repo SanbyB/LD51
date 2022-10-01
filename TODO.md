@@ -37,7 +37,7 @@
     * ~~Animation is zombie~~
     * Searches for nearest character with A* or some other path finding
     * Walks towards target
-    * When near, damages with animation
+    * ~~When near, damages with animation~~
     * (stretch) variations in zombie art / size / power
 
 * Zombie Spawn Point
