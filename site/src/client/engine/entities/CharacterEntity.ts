@@ -1,5 +1,6 @@
 import { clear } from "console";
-import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD, CHARACTER_HEALTH_HEIGHT, CHARACTER_HEALTH_SHOWN, CHARACTER_HEALTH_WIDTH } from "../../Config";
+import { config } from "process";
+import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD, CHARACTER_HAND_DISTANCE, CHARACTER_HAND_SIZE, CHARACTER_HEALTH_HEIGHT, CHARACTER_HEALTH_SHOWN, CHARACTER_HEALTH_WIDTH, CHARACTER_LOWER_DROP } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { PhysicsEntity } from "../PhysicsEntity";
@@ -23,6 +24,10 @@ export class CharacterEntity extends PhysicsEntity {
     protected show_health = false;
     protected show_health_timeout: any = undefined;
 
+    protected hand_image = "";
+    protected hand_angle = 90;
+    protected hand_dis = CHARACTER_HAND_DISTANCE;
+
     public constructor(
         private serviceLocator: ServiceLocator, 
         x: number, 
@@ -30,11 +35,13 @@ export class CharacterEntity extends PhysicsEntity {
         animation: string,
         animation_width: number, 
         animation_height: number,
+        hand_image: string
         ) {
         super(serviceLocator, x, y);
         this.animation = animation;
         this.animation_width = animation_width;
         this.animation_height = animation_height
+        this.hand_image = hand_image;
     }
 
     public update(serviceLocator: ServiceLocator) {
@@ -43,6 +50,7 @@ export class CharacterEntity extends PhysicsEntity {
         this.updateAnimationFrame();
         this.drawMovingAnimation(serviceLocator);
         this.drawHpBar(serviceLocator);
+        this.drawHand(serviceLocator);
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
@@ -100,6 +108,13 @@ export class CharacterEntity extends PhysicsEntity {
         );
     } 
 
+    private drawHand(serviceLocator: ServiceLocator) {
+        const ang = (this.hand_angle / 180) * Math.PI;
+        const x = Math.sin(ang) * this.hand_dis + this.x;
+        const y = -Math.cos(ang) * this.hand_dis + this.y + CHARACTER_LOWER_DROP;
+        CanvasHelper.drawSprite(serviceLocator, this.hand_image, x, y, CHARACTER_HAND_SIZE, CHARACTER_HAND_SIZE);
+    }
+
     public onDamage(damage: number) {
         if (this.hp == 0) return;
         
@@ -118,6 +133,11 @@ export class CharacterEntity extends PhysicsEntity {
     public onDeath() {
         this.serviceLocator.getWorld().removeEntity(this);
         this.serviceLocator.getWorld().addEntity(new DeadBody(this.x, this.y))
+    }
+
+    public setHand(angle: number, distance: number = CHARACTER_HAND_DISTANCE) {
+        this.hand_angle = angle;
+        this.hand_dis = Math.min(distance, CHARACTER_HAND_DISTANCE);
     }
 
     private updateAnimationFrame() {

@@ -13,7 +13,7 @@ export class Zombie extends CharacterEntity {
     private walking_right = true;
     
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "zombie", ZOMBIE_WIDTH, ZOMBIE_HEIGHT);
+        super(serviceLocator, x, y, "zombie", ZOMBIE_WIDTH, ZOMBIE_HEIGHT, "test_tube");
     }
 
     public update(serviceLocator: ServiceLocator) {
@@ -23,7 +23,11 @@ export class Zombie extends CharacterEntity {
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
-        setInterval(() => this.walking_right = !this.walking_right, 2000);
+        setInterval(() => {
+            this.walking_right = !this.walking_right;
+            this.setHand(this.walking_right ? 90 : -90)
+        }, 2000);
+
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
     }
