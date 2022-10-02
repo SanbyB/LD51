@@ -84,3 +84,8 @@ export const CAMERA_TWEEN = 0.2;
 export const BACKGROUND_GAIN = 0.2;
 export const MACHINE_GAIN = 0.2;
 
+
+export const GAME_BACKSTORY = "Your crew something something something something something something something something something something something something something something something something";
+export const GAME_LOST_TEXT = "Your crew were all mercilously killed.";
+export const GAME_WON_TEXT = "Your crew won";
+

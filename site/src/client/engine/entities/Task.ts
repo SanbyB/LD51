@@ -67,7 +67,6 @@ export class Task implements Entity {
         // this.serviceLocator.getGame().setUpdateWorld(false);
         OpenTask(this.serviceLocator, this.getTaskInfo(),
         (success: boolean) => {
-            console.log("Task done. Complete? ", success);
             // this.serviceLocator.getGame().setUpdateWorld(true);
             this.serviceLocator.getAudioService().playSong("background", BACKGROUND_GAIN);
             if (success) {

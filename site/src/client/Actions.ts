@@ -9,7 +9,7 @@ export const emptyActions = {
     setGameFPS: (fps: number) => {},
     setGameLoadPercentage: (percentage: number) => {},
     startGame: () => {},
-    stopGame: () => {},
+    stopGame: (won: boolean) => {},
 
     addKeyHint: (args: { id: string; keys: string[]; hint: string }) => {},
     removeKeyHint: (args: { id: string }) => {},

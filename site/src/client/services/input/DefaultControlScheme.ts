@@ -36,7 +36,7 @@ export class DefaultControlScheme implements ControlScheme {
                 }
             }
 
-            this.serviceLocator.getScriptingService().controller.bomber.onDeath();
+            this.serviceLocator.getScriptingService().controller.bomber.onDamage(100, 0);
         }
     }
 

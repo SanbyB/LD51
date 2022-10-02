@@ -25,8 +25,6 @@ export class ZombieSpawner implements Entity {
     }
 
     private spawnZombie() {
-        console.log("zombies");
-        console.log(Zombie.zombieNumber);
         if(Zombie.zombieNumber >= 15){
             return;
         }

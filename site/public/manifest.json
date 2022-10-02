@@ -24,6 +24,14 @@
         "file": "./audio/footstep.wav"
     },
     {
+        "name": "game_lost",
+        "file": "./audio/game_lost.mp3"
+    },
+    {
+        "name": "game_won",
+        "file": "./audio/game_won.mp3"
+    },
+    {
         "name": "machine_1",
         "file": "./audio/machine_1.mp3"
     },

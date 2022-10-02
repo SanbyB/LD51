@@ -79,6 +79,10 @@ export class PlayerController{
         }
         this.follow();
         this.spread();
+
+        if (this.players.length == 0) {
+            serviceLocator.getScriptingService().onGameEnd(false);
+        }
     }
 
     public follow(){

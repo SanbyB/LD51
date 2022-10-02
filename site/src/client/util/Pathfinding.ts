@@ -96,8 +96,6 @@ export function PathfindTo(serviceLocator: ServiceLocator, fromX: number, fromY:
     let foundX = 0;
     let foundY = 0;
     let foundDelta = 0;
-    // console.log();
-    // console.log("Start search");
     while (searching) {
         if (queue.length == 0) {
             break;
@@ -121,11 +119,7 @@ export function PathfindTo(serviceLocator: ServiceLocator, fromX: number, fromY:
 
     }
 
-    // console.log("End search");
-
     if (found) {
-        // console.log("Found", foundX, foundY, foundDelta);
-
         return foundDelta;
     }
 

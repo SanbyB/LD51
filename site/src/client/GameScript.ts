@@ -16,6 +16,8 @@ export class GameScript {
     private serviceLocator: ServiceLocator;
     private gameMap: GameMap;
     public controller: PlayerController;
+    private gameEnd: boolean = false;
+    private gameWon: boolean = false;
 
     public constructor(game: Game) {
         this.game = game;
@@ -53,6 +55,20 @@ export class GameScript {
     public resumeGame() {
         this.serviceLocator.getInputService().setInputState(InputState.DEFAULT);
         this.game.setUpdateWorld(true);
+    }
+
+    public onGameEnd(win: boolean) {
+        if (this.gameEnd) {
+            return;
+        }
+
+        this.gameEnd = true;
+        this.gameWon = win;
+
+        this.serviceLocator.getStore().getActions().stopGame(win);
+        this.serviceLocator.getAudioService().play(
+            win ? "game_won" : "game_lost"
+        );
     }
 
     public getMap() {
