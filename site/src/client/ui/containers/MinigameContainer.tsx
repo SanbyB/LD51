@@ -4,6 +4,7 @@ import { TaskInformation, TaskNames, TaskType } from "../../engine/commands/Task
 import { TextColour, TextComponent, TextFont, TextSize } from "../components/TextComponent";
 import { ViewportComponent } from "../components/ViewportComponent";
 import { useGlobalState } from "../effects/GlobalState";
+import { Reflex } from "./minigames/Reflex";
 import { SimonSays } from "./minigames/SimonSays";
 
 
@@ -11,6 +12,8 @@ export function getMinigame(task: TaskInformation, onDone: (success: boolean) =>
     switch (task.type) {
         case TaskType.SIMON_SAYS:
             return <SimonSays task={task} onDone={onDone}/>
+        case TaskType.REFLEX:
+            return <Reflex task={task} onDone={onDone}/>
     }
 }
 

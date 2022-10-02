@@ -85,7 +85,7 @@ export class GameScript {
 
         this.gameEnd = true;
         this.gameWon = win;
-
+        this.serviceLocator.getStore().getActions().onTaskFinished();
         this.serviceLocator.getGame().setUpdateWorld(false);
         this.serviceLocator.getStore().getActions().stopGame(win);
         this.serviceLocator.getAudioService().play(

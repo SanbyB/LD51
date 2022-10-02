@@ -1,10 +1,13 @@
 import { BACKGROUND_GAIN, MACHINE_GAIN } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
-import { randomIntRange } from "../../util/math";
+import { randomIntRange, randomSelection } from "../../util/math";
 import { OpenTask, TaskImages, TaskInformation, TaskNames, TaskType } from "../commands/TaskCommands";
 import { DeregisterKeyHint, RegisterKeyHint } from "../commands/UICommands";
 import { Entity } from "../Entity";
+import { Engineer } from "./Engineer";
+import { MinerEntity } from "./MinerEntity";
+import { Scientist } from "./Scientist";
 
 const TASK_SIZE = 32;
 const TASK_USE_DISTANCE = 32;
@@ -14,14 +17,17 @@ export class Task implements Entity {
     public canInteract = false;
     public complete = false;
     private keyHint: number = undefined;
+    private task_type: TaskType = TaskType.SIMON_SAYS;
 
     public constructor(
         private serviceLocator: ServiceLocator,
         private x: number,
         private y: number,
-        private task_type: TaskType
     ) {
-
+        this.task_type = randomSelection([
+            TaskType.SIMON_SAYS, TaskType.REFLEX
+        ]);
+        // this.task_type = TaskType.REFLEX;
     }
 
     public update(serviceLocator: ServiceLocator) {
@@ -45,6 +51,18 @@ export class Task implements Entity {
             this.y,
             TASK_SIZE,
             TASK_SIZE
+        );
+
+        CanvasHelper.drawSprite(
+            serviceLocator,
+            this.task_type == TaskType.REFLEX ? "spanner" : "test_tube",
+            this.x,
+            this.y + TASK_SIZE / 4,
+            TASK_SIZE / 3,
+            TASK_SIZE / 3,
+            1,
+            1,
+            90
         );
 
         const mainPlayer = serviceLocator.getScriptingService().controller.getMainCharacter();
@@ -90,7 +108,12 @@ export class Task implements Entity {
             case TaskType.SIMON_SAYS: 
                 return {
                     type: TaskType.SIMON_SAYS,
-                    sizeOfNumbers: 1
+                    hard: !(this.serviceLocator.getScriptingService().controller.state instanceof Scientist)
+                }
+            case TaskType.REFLEX:
+                return {
+                    type: TaskType.REFLEX,
+                    fast: !(this.serviceLocator.getScriptingService().controller.state instanceof Engineer)
                 }
         }
 

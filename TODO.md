@@ -3,9 +3,6 @@
     * (stretch) variations in zombie art / size / power
 
 * Tasks
-    * Simon Says
-    * Reflex game
-    * easier task for scientist/mechanic
     * (stretch) Number remember game
 
 * Game Scripting

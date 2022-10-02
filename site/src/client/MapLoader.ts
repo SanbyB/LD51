@@ -82,8 +82,7 @@ export class MapLoader {
             case 255:
                 entities.push(new Task(
                     this.serviceLocator, 
-                    x * TILE_WIDTH, y * TILE_HEIGHT, 
-                    TaskType.SIMON_SAYS
+                    x * TILE_WIDTH, y * TILE_HEIGHT
                 ))
                 break;
         }
