@@ -29,30 +29,43 @@ export const MinigameContainer: React.FunctionComponent = (props) => {
     }
 
     return (
-        <ViewportComponent
-            x={0}
-            y={0}
-            width={DOM_WIDTH}
-            height={DOM_HEIGHT}
+        <div
             style={{
+                width: DOM_WIDTH,
+                height: DOM_HEIGHT,
+                position: "absolute",
                 display: "flex",
-                justifyContent: "center",
+                flexDirection: "column",
                 alignItems: "center",
-                flexDirection: "column"
+                justifyContent: "center",
             }}
         >
-            <TextComponent
-                text={TaskNames[task.info.type]}
+            <div
                 style={{
-                    width: "100%",
-                    textAlign: "center",
-                    marginTop: 10,
+                    width: 600,
+                    height: 400,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#000000",
+                    borderRadius: 16,
+                    opacity: 0.95
                 }}
-                font={TextFont.REGULAR}
-                size={TextSize.BIG}
-                colour={TextColour.LIGHT}
-            />
-            { getMinigame(task.info, onDone) }
-        </ViewportComponent>
+            >
+                <TextComponent
+                    text={TaskNames[task.info.type]}
+                    style={{
+                        width: "100%",
+                        textAlign: "center",
+                        marginTop: 10,
+                    }}
+                    font={TextFont.REGULAR}
+                    size={TextSize.BIG}
+                    colour={TextColour.LIGHT}
+                />
+                { getMinigame(task.info, onDone) }
+            </div>
+        </div>
     );
 };

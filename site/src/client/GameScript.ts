@@ -18,6 +18,7 @@ export class GameScript {
     public controller: PlayerController;
     private gameEnd: boolean = false;
     private gameWon: boolean = false;
+    private tasksComplete = 0;
 
     public constructor(game: Game) {
         this.game = game;
@@ -53,6 +54,10 @@ export class GameScript {
     public resumeGame() {
         this.serviceLocator.getInputService().setInputState(InputState.DEFAULT);
         this.game.setUpdateWorld(true);
+
+
+        // const taskEntity = this.serviceLocator.getWorld().getEntityArray().find(entity => entity instanceof Task);
+        // (taskEntity as Task).use();
     }
 
     public restartGame() {
@@ -61,6 +66,16 @@ export class GameScript {
         this.gameEnd = false;
         this.gameWon = false;
         Zombie.zombieNumber = 0;
+        this.tasksComplete = 0;
+    }
+
+    public onTaskComplete() {
+        this.tasksComplete++;
+        const taskCount = this.serviceLocator.getWorld().getEntityArray().filter(entity => entity instanceof Task).length;
+        // if (this.tasksComplete == 1) {
+        if (this.tasksComplete == taskCount) {
+            this.onGameEnd(true);
+        }
     }
 
     public onGameEnd(win: boolean) {

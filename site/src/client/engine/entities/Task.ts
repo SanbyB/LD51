@@ -99,6 +99,7 @@ export class Task implements Entity {
     public onComplete() {
         this.complete = true;
         this.canInteract = false;
+        this.serviceLocator.getScriptingService().onTaskComplete();
     }
 
     private onCanInteract() {
@@ -118,7 +119,9 @@ export class Task implements Entity {
     }
 
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
-
+        if (this.keyHint != undefined) {
+            DeregisterKeyHint(this.serviceLocator)(this.keyHint);
+        }
     }
 
 }

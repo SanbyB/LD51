@@ -97,11 +97,6 @@ export const NavbarContainer: React.FunctionComponent<NavbarContainerProps> = (
                 selectedNavPage={page}
                 onClick={onSelect}
             />
-            <NavItem
-                navPage={NavPage.ABOUT}
-                selectedNavPage={page}
-                onClick={onSelect}
-            />
         </div>
     );
 };

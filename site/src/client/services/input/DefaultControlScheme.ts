@@ -35,8 +35,6 @@ export class DefaultControlScheme implements ControlScheme {
                     (entity as Task).use();
                 }
             }
-
-            this.serviceLocator.getScriptingService().controller.bomber.onDamage(100, 0);
         }
     }
 

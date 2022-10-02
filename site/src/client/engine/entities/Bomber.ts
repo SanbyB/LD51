@@ -12,7 +12,7 @@ const BOMBER_WIDTH = 30;
 const BOMBER_HEIGHT = 30;
 
 const BLOW_UP_DISTANCE = 128;
-const BLOW_UP_DAMAGE = 200;
+const BLOW_UP_DAMAGE = 20;
 const BLOW_UP_PARTICLES = 20;
 
 export class Bomber extends Player {

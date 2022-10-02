@@ -2,6 +2,7 @@ import React = require("react");
 import { KeyHintsContainer } from "./KeyHintsContainer";
 import { useGlobalState } from "../effects/GlobalState";
 import { TextComponent, TextFont, TextSize, TextColour } from "../components/TextComponent";
+import { DOM_HEIGHT, DOM_WIDTH } from "../../Config";
 
 interface PlayModeContainerProps {}
 
@@ -20,16 +21,21 @@ export const PlayModeContainer: React.FunctionComponent<PlayModeContainerProps> 
     }
 
     return (
-        <>
+        <div
+            style={{
+                width: DOM_WIDTH,
+                height: DOM_HEIGHT,
+                position: "absolute",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "start"
+            }}
+        >
             <KeyHintsContainer />
-
-            
-
             <TextComponent
                             text={"" + count}
                             style={{
                                 width: "100%",
-                                textAlign: "center",
                                 marginTop: 10,
                                 marginLeft: 10,
                             }}
@@ -37,6 +43,6 @@ export const PlayModeContainer: React.FunctionComponent<PlayModeContainerProps> 
                             size={TextSize.BIG}
                             colour={TextColour.LIGHT}
                         />
-        </>
+        </div>
     );
 };
