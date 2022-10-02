@@ -1,3 +1,4 @@
+import { ProcedureService } from "../../services/jobs/ProcedureService";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { Entity } from "../Entity";
 import { Zombie } from "./ZombieEntity";
@@ -16,7 +17,7 @@ export class ZombieSpawner implements Entity {
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
-        // this.spawn_int = setInterval(() => this.spawnZombie(), SPAWN_INTERVAL);
+        this.spawn_int = ProcedureService.setGameInterval(() => this.spawnZombie(), SPAWN_INTERVAL);
     }
 
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
@@ -24,6 +25,11 @@ export class ZombieSpawner implements Entity {
     }
 
     private spawnZombie() {
+        console.log("zombies");
+        console.log(Zombie.zombieNumber);
+        if(Zombie.zombieNumber >= 15){
+            return;
+        }
         const zombie = new Zombie(this.serviceLocator, this.x, this.y);
         this.serviceLocator.getWorld().addEntity(zombie);
     }
