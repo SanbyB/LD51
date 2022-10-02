@@ -1,4 +1,4 @@
-export const GAME_NAME = "LD51";
+export const GAME_NAME = "Da Bomb!";
 
 export const MINOR = "1";
 export const PHASE = "0";
@@ -48,6 +48,9 @@ export const CHARACTER_MOUSE_DISANCE_INFLUENCE = 0.2;
 export const CHARACTER_ATTACK_DISTANCE = 32;
 export const CHARACTER_ATTACK_ARC = 80; // degrees
 export const CHARACTER_ATTACK_BUMP_STRENGTH = 8;
+
+export const CHARACTER_SPEAD_DIST = 30;
+export const CHARACTER_FOLLOW_DIST = 60;
 
 export const ZOMBIE_ATTACK_DISTANCE = 20;
 

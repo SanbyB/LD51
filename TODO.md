@@ -3,6 +3,7 @@
     * ~~2D Grid of tiles~~
     * ~~Tile can have image or be empty + collidable~~
     * ~~Only tiles in viewport rendered~~
+    * Make a decent map - Note suggest don't have and 1 - 2 gap wide spaces to get through
 
 * Map Loader
     * ~~load PNG data in res/graphics (map.png)~~
@@ -21,6 +22,7 @@
     * Can interact with nearby task?
     * Can attack surroundings
     * Follows primary controllable character if not controlled?
+    * Collision needs checking for corners
     * Scientist
         * animation
         * Easier tasks

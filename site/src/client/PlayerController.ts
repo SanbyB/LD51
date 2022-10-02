@@ -1,3 +1,4 @@
+import { CHARACTER_FOLLOW_DIST, CHARACTER_SPEAD_DIST } from "./Config";
 import { Bomber } from "./engine/entities/Bomber";
 import { Engineer } from "./engine/entities/Engineer";
 import { Player } from "./engine/entities/Player";
@@ -39,13 +40,13 @@ export class PlayerController{
             }
         }
         this.follow();
-        console.log("folowing");
+        this.spread();
     }
 
     public follow(){
         for(const player of this.players){
             if(player != this.state){
-                if(Math.abs(player.x - this.state.x) > 50 || Math.abs(player.y - this.state.y) > 50){
+                if(Math.abs(player.x - this.state.x) > CHARACTER_FOLLOW_DIST || Math.abs(player.y - this.state.y) > CHARACTER_FOLLOW_DIST){
                     const angle = player.getDirectionToTravelTo(this.state);
                     const rads = (angle / 180) * Math.PI;
                     player.xVel += Math.sin(rads) * player.speed;
@@ -55,10 +56,24 @@ export class PlayerController{
         }
     }
 
-    // public spread(){
-    //     for(const player of this.players){
+    public spread(){
+        for(let i = 0; i < this.players.length; i++){
+            for(let j = i + 1; j < this.players.length; j++){
+                if(this.players[i] == this.state || this.players[j] == this.state){
 
-    //     }
-    // }
+                }
+                else if(this.players[i].distanceTo(this.players[j]) < CHARACTER_SPEAD_DIST){
+                    const angle = this.players[i].angleTo(this.players[j]);
+                    const rads = (angle / 180) * Math.PI;
+                    this.players[j].xVel += Math.sin(rads) * this.players[j].speed;
+                    this.players[j].yVel += -Math.cos(rads) * this.players[j].speed;
+                    // flip direction
+                    const rads180 = (angle + 180 / 180) * Math.PI;
+                    this.players[i].xVel += Math.sin(rads180) * this.players[i].speed;
+                    this.players[i].yVel += -Math.cos(rads180) * this.players[i].speed;
+                }
+            }
+        }
+    }
 
 }
