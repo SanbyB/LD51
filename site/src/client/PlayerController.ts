@@ -4,6 +4,7 @@ import { Engineer } from "./engine/entities/Engineer";
 import { Player } from "./engine/entities/Player";
 import { Scientist } from "./engine/entities/Scientist";
 import { Solider } from "./engine/entities/Soldier";
+import { ProcedureService } from "./services/jobs/ProcedureService";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { CanvasHelper } from "./util/CanvasHelper";
 import { randomIntRange } from "./util/math/Random";
@@ -31,7 +32,7 @@ export class PlayerController{
                 player.weight += 1;
             }
         }
-        setInterval(() => this.selectPlayer(), 10000);
+        ProcedureService.setGameInterval(() => this.selectPlayer(), 10000);
 
         // Force update camera initially
         CanvasHelper.setCamera(this.state.x, this.state.y, 1);

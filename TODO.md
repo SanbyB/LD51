@@ -96,5 +96,5 @@ Bomber - detonator
     * ~~Dying~~
     * ~~Click button~~
     * ~~Machine noise~~
-    * Change character
+    * ~~Change character~~
 

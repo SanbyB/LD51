@@ -61,10 +61,7 @@ export class Zombie extends CharacterEntity {
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
-        setInterval(() => {
-            this.walking_right = !this.walking_right;
-            this.setHand(this.walking_right ? 90 : -90)
-        }, 2000);
+       
 
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {

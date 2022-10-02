@@ -1,3 +1,4 @@
+import { ProcedureService } from "../../services/jobs/ProcedureService";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { Entity } from "../Entity";
 import { Zombie } from "./ZombieEntity";
@@ -16,7 +17,8 @@ export class ZombieSpawner implements Entity {
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
-        // this.spawn_int = setInterval(() => this.spawnZombie(), SPAWN_INTERVAL);
+        console.log("Added to world")
+        this.spawn_int = ProcedureService.setInterval(() => this.spawnZombie(), SPAWN_INTERVAL);
     }
 
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
