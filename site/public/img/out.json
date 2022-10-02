@@ -153,16 +153,22 @@
         "width": 33,
         "height": 33
     },
-    "zombie": {
+    "tnt_icon": {
         "x": 0,
+        "y": 141,
+        "width": 71,
+        "height": 71
+    },
+    "zombie": {
+        "x": 71,
         "y": 141,
         "width": 65,
         "height": 33,
         "frames": 2
     },
     "zombie_hand": {
-        "x": 65,
-        "y": 141,
+        "x": 71,
+        "y": 174,
         "width": 17,
         "height": 17
     }

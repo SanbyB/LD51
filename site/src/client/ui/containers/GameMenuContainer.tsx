@@ -95,7 +95,11 @@ export const MainMenuContainer: React.FunctionComponent<GameMenuContainerProps> 
 
     const onStartPress = () => {
         dispatch.startGame();
-        serviceLocator.getScriptingService().resumeGame();
+        if (state.gameStart.gameWon == undefined) {
+            serviceLocator.getScriptingService().resumeGame();
+        } else {
+            serviceLocator.getScriptingService().restartGame();
+        }
     };
 
     return (

@@ -45,8 +45,6 @@ export class GameScript {
             this.serviceLocator.getWorld().addEntity(player);
         }
 
-        const zombie = new Zombie(this.serviceLocator, 60, 10);
-
         this.serviceLocator.getAudioService().playSong("background", BACKGROUND_GAIN);
         // this.serviceLocator.getWorld().addEntity(zombie);
 
@@ -57,6 +55,14 @@ export class GameScript {
         this.game.setUpdateWorld(true);
     }
 
+    public restartGame() {
+        this.newGame();
+        this.resumeGame();
+        this.gameEnd = false;
+        this.gameWon = false;
+        Zombie.zombieNumber = 0;
+    }
+
     public onGameEnd(win: boolean) {
         if (this.gameEnd) {
             return;
@@ -65,10 +71,15 @@ export class GameScript {
         this.gameEnd = true;
         this.gameWon = win;
 
+        this.serviceLocator.getGame().setUpdateWorld(false);
         this.serviceLocator.getStore().getActions().stopGame(win);
         this.serviceLocator.getAudioService().play(
             win ? "game_won" : "game_lost"
         );
+        for (let entity of this.serviceLocator.getWorld().getEntityArray()) {
+            this.serviceLocator.getWorld().removeEntity(entity);
+        }
+        this.serviceLocator.getWorld().performSync(this.serviceLocator);
     }
 
     public getMap() {
