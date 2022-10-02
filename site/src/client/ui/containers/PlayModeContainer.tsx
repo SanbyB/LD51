@@ -28,7 +28,9 @@ export const PlayModeContainer: React.FunctionComponent<PlayModeContainerProps> 
                 position: "absolute",
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "start"
+                justifyContent: "start",
+                pointerEvents: "none"
+
             }}
         >
             <KeyHintsContainer />
