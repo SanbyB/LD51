@@ -23,6 +23,7 @@ export class PlayerController{
         this.bomber = new Bomber(serviceLocator, 512, 480);
         this.players = [this.scientist, this.soldier, this.engineer, this.bomber];
         this.state = this.players[randomIntRange(0, this.players.length)];
+        this.state.onFocussed();
         for(const player of this.players){
             if(player == this.state){
                 player.weight = 0;
@@ -31,6 +32,10 @@ export class PlayerController{
             }
         }
         setInterval(() => this.selectPlayer(), 10000);
+
+        // Force update camera initially
+        CanvasHelper.setCamera(this.state.x, this.state.y, 1);
+        CanvasHelper.updateCamera(true);
     }
 
     private selectPlayer(){
@@ -42,7 +47,9 @@ export class PlayerController{
         for(const player of this.players){
             rand -= player.weight;
             if(rand <= 0){
+                this.state.onUnfocussed();
                 this.state = player;
+                this.state.onFocussed();
                 for(const player of this.players){
                     if(player == this.state){
                         player.weight = 0;
@@ -59,6 +66,7 @@ export class PlayerController{
     public update(serviceLocator: ServiceLocator){
         const camera = CanvasHelper.getCamera();
         CanvasHelper.setCamera(this.state.x, this.state.y, camera.scale);
+        CanvasHelper.updateCamera(false);
         for(const i in this.players){
             if(this.players[i].hp <= 0){
                 this.players.splice(parseInt(i), 1);

@@ -23,7 +23,7 @@
     * ~~Can attack surroundings~~
     * ~~Follows primary controllable character if not controlled?~~
     * ~~Collision needs checking for corners~~
-    * Shows when character is moved to
+    * ~~Shows when character is moved to~~
     * Scientist
         * animation
         * Easier tasks

@@ -1,4 +1,4 @@
-import { HEIGHT, WIDTH } from "../Config";
+import { CAMERA_TWEEN, HEIGHT, WIDTH } from "../Config";
 import { Sprite } from "../resources/SpriteSheet";
 import { ServiceLocator } from "../services/ServiceLocator";
 
@@ -19,10 +19,26 @@ export class CanvasHelper {
     private static camera_y: number = 0;
     private static scale: number = 1;
 
+    private static target_camera_x: number = 0;
+    private static target_camera_y: number = 0;
+
     public static setCamera(x: number, y: number, scale: number) {
-        this.camera_x = x;
-        this.camera_y = y;
+        this.target_camera_x = x;
+        this.target_camera_y = y;
         this.scale = scale;
+    }
+
+    public static updateCamera(force: boolean) {
+        if (force) {
+            this.camera_x = this.target_camera_x;
+            this.camera_y = this.target_camera_y;
+        }
+
+        const diffX = this.target_camera_x - this.camera_x;
+        const diffY = this.target_camera_y - this.camera_y;
+        
+        this.camera_x += diffX * CAMERA_TWEEN;
+        this.camera_y += diffY * CAMERA_TWEEN;
     }
 
     public static getCamera(): Camera {
