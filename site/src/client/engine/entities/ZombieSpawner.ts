@@ -16,7 +16,7 @@ export class ZombieSpawner implements Entity {
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
-        this.spawn_int = setInterval(() => this.spawnZombie(), SPAWN_INTERVAL);
+        // this.spawn_int = setInterval(() => this.spawnZombie(), SPAWN_INTERVAL);
     }
 
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
@@ -24,8 +24,8 @@ export class ZombieSpawner implements Entity {
     }
 
     private spawnZombie() {
-        // const zombie = new Zombie(this.serviceLocator, this.x, this.y);
-        // this.serviceLocator.getWorld().addEntity(zombie);
+        const zombie = new Zombie(this.serviceLocator, this.x, this.y);
+        this.serviceLocator.getWorld().addEntity(zombie);
     }
 
 }

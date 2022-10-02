@@ -23,6 +23,7 @@
     * ~~Can attack surroundings~~
     * ~~Follows primary controllable character if not controlled?~~
     * ~~Collision needs checking for corners~~
+    * ~~Shows when character is moved to~~
     * Scientist
         * animation
         * Easier tasks
@@ -71,6 +72,7 @@
 * UI
     * Key hints / tutorial
     * 10s countdwn / clock display
+    * Show character faces in corner / who you are / when they're dead
 
 * Juice
     * Screen shake

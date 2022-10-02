@@ -1,6 +1,7 @@
 import React = require("react");
 import { KeyHintsContainer } from "./KeyHintsContainer";
 import { useGlobalState } from "../effects/GlobalState";
+import { TextComponent, TextFont, TextSize, TextColour } from "../components/TextComponent";
 
 interface PlayModeContainerProps {}
 

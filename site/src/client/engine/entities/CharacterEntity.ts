@@ -1,9 +1,10 @@
-import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD, CHARACTER_ATTACK_ARC, CHARACTER_ATTACK_BUMP_STRENGTH, CHARACTER_ATTACK_DISTANCE, CHARACTER_HAND_DISTANCE, CHARACTER_HAND_SIZE, CHARACTER_HEALTH_HEIGHT, CHARACTER_HEALTH_SHOWN, CHARACTER_HEALTH_WIDTH, CHARACTER_LOWER_DROP } from "../../Config";
+import { CHARACTER_ANIMATION_MULTIPLIER, CHARACTER_ANIMATION_SPEED_THRESHOLD, CHARACTER_ATTACK_ARC, CHARACTER_ATTACK_BUMP_STRENGTH, CHARACTER_ATTACK_DISTANCE, CHARACTER_HAND_DISTANCE, CHARACTER_HAND_SIZE, CHARACTER_HEALTH_HEIGHT, CHARACTER_HEALTH_SHOWN, CHARACTER_HEALTH_WIDTH, CHARACTER_LOWER_DROP, PATHFIND_EVERY_FRAMES, TILE_HEIGHT, TILE_WIDTH } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { animation } from "../../util/animation/Animations";
 import { GameAnimation } from "../../util/animation/GameAnimation";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { randomFloatRange, randomIntRange } from "../../util/math";
+import { RemoveCharacterFromGird, AddCharacterToGrid, PathfindTo } from "../../util/Pathfinding";
 import { Entity } from "../Entity";
 import { PhysicsEntity } from "../PhysicsEntity";
 import { DeadBody } from "./DeadBody";
@@ -33,6 +34,9 @@ export class CharacterEntity extends PhysicsEntity {
 
     public hand_attack: GameAnimation;
 
+    public tileX = -1;
+    public tileY = -1;
+
     public constructor(
         private serviceLocator: ServiceLocator, 
         x: number, 
@@ -59,12 +63,27 @@ export class CharacterEntity extends PhysicsEntity {
         this.drawMovingAnimation(serviceLocator);
         this.drawHpBar(serviceLocator);
         this.drawHand(serviceLocator);
+        this.updateGridPosition();
     }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
-   
+        this.updateGridPosition();
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
+        this.updateGridPosition();
+    }
+
+    private updateGridPosition() {
+        const tileX = Math.floor(this.x / TILE_WIDTH);
+        const tileY = Math.floor(this.y / TILE_HEIGHT);
+
+        if (this.tileX != tileX || this.tileY != tileY) {
+            RemoveCharacterFromGird(this.tileX, this.tileY, this);
+            AddCharacterToGrid(tileX, tileY, this);
+        }
+
+        this.tileX = tileX;
+        this.tileY = tileY;
     }
 
     public movement(){
@@ -224,9 +243,18 @@ export class CharacterEntity extends PhysicsEntity {
         }
     }
 
-    // TODO replace with pathfinding 
-    public getDirectionToTravelTo(otherEntity: PhysicsEntity): number {
-        return this.angleTo(otherEntity);
+    private pathfindNumber = 0;
+    private cacheDelta = -1;
+    public getDirectionToTravelTo(otherEntity: CharacterEntity): number {
+        if (this.tileX == otherEntity.tileX && this.tileY == otherEntity.tileY) {
+            return this.angleTo(otherEntity);
+        }
+
+        if (this.cacheDelta == -1 || this.pathfindNumber % PATHFIND_EVERY_FRAMES == 0) {
+            this.cacheDelta =  PathfindTo(this.serviceLocator, this.tileX, this.tileY, otherEntity, this)
+        } 
+        this.pathfindNumber += 1;
+        return this.cacheDelta;
     }
 
 }

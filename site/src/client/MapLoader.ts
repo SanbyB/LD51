@@ -9,6 +9,7 @@ import { Sprite } from "./resources/SpriteSheet";
 import { getImageData, loadImageData } from "./resources/TextureLoader";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { randomFloat, randomIntRange } from "./util/math";
+import { InitCharacterTileMap } from "./util/Pathfinding";
 
 export class MapLoader {
     private imagedata: ImageData;
@@ -24,6 +25,8 @@ export class MapLoader {
         const mapWidth = this.imagesprite.pixelCoordinate.textureWidth;
         const mapHeight = this.imagesprite.pixelCoordinate.textureHeight;
         
+
+        InitCharacterTileMap(mapWidth, mapHeight);
 
         const gameMap = new GameMap(
             this.serviceLocator,
