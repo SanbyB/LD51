@@ -122,7 +122,8 @@ export class CharacterEntity extends PhysicsEntity {
         const ang = (this.hand_angle / 180) * Math.PI;
         const x = Math.sin(ang) * this.hand_dis + this.x;
         const y = -Math.cos(ang) * this.hand_dis + this.y + CHARACTER_LOWER_DROP;
-        CanvasHelper.drawSprite(serviceLocator, this.hand_image, x, y, CHARACTER_HAND_SIZE, CHARACTER_HAND_SIZE);
+        const scaleX = Math.sign(Math.sin(ang));
+        CanvasHelper.drawSprite(serviceLocator, this.hand_image, x, y, CHARACTER_HAND_SIZE, CHARACTER_HAND_SIZE, scaleX);
     }
 
     public onDamage(damage: number, from_angle: number) {

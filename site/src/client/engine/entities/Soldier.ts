@@ -10,7 +10,7 @@ export class Solider extends Player {
 
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "soldier", SOLDIER_WIDTH, SOLDIER_HEIGHT);
+        super(serviceLocator, x, y, "soldier", SOLDIER_WIDTH, SOLDIER_HEIGHT, "knife");
     }
 
     public update(serviceLocator: ServiceLocator) {
