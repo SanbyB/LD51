@@ -9,12 +9,7 @@
     * (stretch) Number remember game
 
 * Game Scripting
-    * After completing all tasks, win game? Or just score boost?
-    * If all dying get score?
-    * Ending screen
-    * Starting screen
-    * Restart game
-    * Display score
+    * Score?
     * (stretch) leaderboard
 
 * UI
