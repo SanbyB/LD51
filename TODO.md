@@ -3,7 +3,7 @@
     * ~~2D Grid of tiles~~
     * ~~Tile can have image or be empty + collidable~~
     * ~~Only tiles in viewport rendered~~
-    * Make a decent map - Note suggest don't have and 1 - 2 gap wide spaces to get through
+    * ~~Make a decent map - Note suggest don't have and 1 - 2 gap wide spaces to get through~~
 
 * Map Loader
     * ~~load PNG data in res/graphics (map.png)~~
@@ -19,7 +19,7 @@
 
 * Controllable Character
     * ~~Move character with input service~~
-    * Can interact with nearby task?
+    * ~~Can interact with nearby task?~~
     * ~~Can attack surroundings~~
     * ~~Follows primary controllable character if not controlled?~~
     * ~~Collision needs checking for corners~~
@@ -38,7 +38,7 @@
     
 * Zombie Entity
     * ~~Animation is zombie~~
-    * Searches for nearest character with A* or some other path finding
+    * ~~Searches for nearest character with A* or some other path finding~~
     * ~~Walks towards target~~
     * ~~When near, damages with animation~~
     * (stretch) variations in zombie art / size / power
@@ -59,7 +59,7 @@
 * Game Scripting
     * ~~Create entities from map~~
     * ~~Every 10s move to different character (in cyclic but random)~~
-    * If character dies, don't move to that character
+    * ~~If character dies, don't move to that character~~
     * After completing all tasks, win game? Or just score boost?
     * If all dying get score?
     * Ending screen
@@ -81,7 +81,7 @@
 * Bugs
     * ~~Image has weird lines when drawing, add padding to CompileArt~~
     * ~~Kill zombies after death~~
-    * Player dies, needs to switch to another player
+    * ~~Player dies, needs to switch to another player~~
 
 Engineer - Spanner
 Axe - Soldier
