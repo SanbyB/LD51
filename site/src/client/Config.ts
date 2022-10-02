@@ -75,3 +75,5 @@ export const SCIENTIST_SPEED = 0.7
 // Engineer stats
 export const ENGINEER_ATTACK_STRENGTH = 3
 export const ENGINEER_SPEED = 1
+
+export const PATHFIND_EVERY_FRAMES = 8;
