@@ -1,19 +1,12 @@
-* Controllable Character
-    * Scientist
-        * Easier tasks
-    * Bomber 
-        * opens alert randomly  
-        * blows up on death
-    
+
 * Zombie Entity
     * (stretch) variations in zombie art / size / power
 
 * Tasks
     * Simon Says
-    * Number remember game
     * Reflex game
-    * Random bomb alert thing
-    * More?
+    * easier task for scientist/mechanic
+    * (stretch) Number remember game
 
 * Game Scripting
     * After completing all tasks, win game? Or just score boost?

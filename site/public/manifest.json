@@ -16,6 +16,10 @@
         "file": "./audio/change_player.wav"
     },
     {
+        "name": "explosion",
+        "file": "./audio/explosion.wav"
+    },
+    {
         "name": "footstep",
         "file": "./audio/footstep.wav"
     },
