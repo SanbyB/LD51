@@ -50,9 +50,12 @@ export class DefaultControlScheme implements ControlScheme {
     }   
 
     public onMouseDown = (event: MouseEvent) => {
-        this.serviceLocator.getScriptingService().controller.state.doAttack(
-            this.serviceLocator.getScriptingService().controller.state.getHandAngle()
-        );
+        let player = this.serviceLocator.getScriptingService().controller.state;
+        if(player.hp > 0){
+            player.doAttack(
+                player.getHandAngle()
+            );
+        }
     }
 
     public onMouseUp = (event: MouseEvent) => {

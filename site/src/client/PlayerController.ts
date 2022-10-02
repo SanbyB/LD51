@@ -64,6 +64,9 @@ export class PlayerController{
                 this.players.splice(parseInt(i), 1);
             }
         }
+        if(this.state.hp <= 0){
+            this.selectPlayer();
+        }
         this.follow();
         this.spread();
     }

@@ -25,9 +25,15 @@ export class Player extends CharacterEntity {
 
     public update(serviceLocator: ServiceLocator) {
         super.update(serviceLocator);
+        this.speedLimit();
     }
 
-    // public speedLimit()
+    public speedLimit(){
+        if(Math.abs(this.xVel) + Math.abs(this.yVel) > this.speed){
+            this.xVel /= 1.2;
+            this.yVel /= 1.2;
+        }
+    }
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
     }

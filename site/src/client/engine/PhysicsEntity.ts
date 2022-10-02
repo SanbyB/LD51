@@ -97,7 +97,7 @@ export class PhysicsEntity implements Entity {
         if (!this.collides) return;
 
         let left: number = Math.floor(this.x/TILE_WIDTH);
-        let lleft: number = Math.floor(this.x + 1/TILE_WIDTH);
+        let lleft: number = Math.floor((this.x + 1)/TILE_WIDTH);
         let right: number = Math.floor((this.x + this.width)/TILE_WIDTH);
         let rright: number = Math.floor((this.x + this.width - 1)/TILE_WIDTH);
         let up: number = Math.floor(this.y/TILE_HEIGHT);
@@ -111,10 +111,12 @@ export class PhysicsEntity implements Entity {
         if(tile(left, up) && tile(left, uup)){
             this.xVel = -this.xVel;
             this.x = right * TILE_WIDTH;
+            console.log("left");
         }
         else if(tile(left, low) && tile(left, llow)){
             this.xVel = -this.xVel;
             this.x = right * TILE_WIDTH;
+            console.log("left2");
         }
 
         // right collision
@@ -128,13 +130,15 @@ export class PhysicsEntity implements Entity {
         }
 
         // up collision
-        else if(tile(right, up) && tile(rright, up)){
+        if(tile(right, up) && tile(rright, up)){
             this.yVel = -this.yVel;
             this.y = low * TILE_HEIGHT;
+            console.log("up");
         }
         else if(tile(left, up) && tile(lleft, up)){
             this.yVel = -this.yVel;
             this.y = low * TILE_HEIGHT;
+            console.log("up2");
         }
 
         // low collision

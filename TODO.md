@@ -22,7 +22,7 @@
     * Can interact with nearby task?
     * ~~Can attack surroundings~~
     * ~~Follows primary controllable character if not controlled?~~
-    * Collision needs checking for corners
+    * ~~Collision needs checking for corners~~
     * Scientist
         * animation
         * Easier tasks
@@ -43,6 +43,7 @@
     * ~~When near, damages with animation~~
     * (stretch) variations in zombie art / size / power
     * ~~Dead body is removed after time~~
+    * Zombies need nerfing
 
 * Zombie Spawn Point
     * ~~Every 10 s?~~
@@ -79,6 +80,8 @@
 
 * Bugs
     * ~~Image has weird lines when drawing, add padding to CompileArt~~
+    * ~~Kill zombies after death~~
+    * Player dies, needs to switch to another player
 
 Engineer - Spanner
 Axe - Soldier
