@@ -1,5 +1,6 @@
 import { CHARACTER_MOUSE_DISANCE_INFLUENCE } from "../../Config";
 import { Scientist } from "../../engine/entities/Scientist";
+import { Task } from "../../engine/entities/Task";
 import { Zombie } from "../../engine/entities/ZombieEntity";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { ServiceLocator } from "../ServiceLocator";
@@ -28,7 +29,13 @@ export class DefaultControlScheme implements ControlScheme {
     }
 
     public onKeyDown(key: string, keysDown: { [key: string]: boolean }) {
-
+        if (key == "Space") {
+            for (let entity of this.serviceLocator.getWorld().getEntityArray()) {
+                if (entity instanceof Task && (entity as Task).canInteract) {
+                    (entity as Task).use();
+                }
+            }
+        }
     }
 
     public onKeyUp(key: string, keysDown: { [key: string]: boolean }) {}

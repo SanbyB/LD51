@@ -1,5 +1,8 @@
+import { Console } from "console";
 import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT } from "./Config";
+import { OpenTask, TaskNames, TaskType } from "./engine/commands/TaskCommands";
 import { Scientist } from "./engine/entities/Scientist";
+import { Task } from "./engine/entities/Task";
 import { Zombie } from "./engine/entities/ZombieEntity";
 import { Game } from "./Game";
 import { GameMap } from "./Map";
@@ -42,6 +45,15 @@ export class GameScript {
 
         const zombie = new Zombie(this.serviceLocator, 60, 10);
         // this.serviceLocator.getWorld().addEntity(zombie);
+
+        this.serviceLocator.getWorld().addEntity(
+            new Task(
+                this.serviceLocator, 
+                10, 
+                10, 
+                TaskType.SIMON_SAYS
+            )
+        );
     }
 
     public resumeGame() {

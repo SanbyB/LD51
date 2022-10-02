@@ -101,4 +101,8 @@ export class PlayerController{
         }
     }
 
+    public getMainCharacter() {
+        return this.state;
+    }
+
 }

@@ -5,6 +5,7 @@ import { GameMenuContainer } from "./containers/GameMenuContainer";
 import { GameFadeContainer } from "./containers/GameFadeContainer";
 import { PlayModeContainer } from "./containers/PlayModeContainer";
 import { LoadingScreenContainer } from "./containers/LoadingScreenContainer";
+import { MinigameContainer } from "./containers/MinigameContainer";
 
 export interface UIContainerProps {}
 
@@ -20,6 +21,7 @@ export const UIContainer: React.FunctionComponent<UIContainerProps> = (
                     <PlayModeContainer />
                     <GameFadeContainer />
                     <GameMenuContainer />
+                    <MinigameContainer />
                 </>
             ) : (
                 <>

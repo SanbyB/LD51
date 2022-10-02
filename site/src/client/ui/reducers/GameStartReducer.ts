@@ -1,5 +1,6 @@
 import { Reducer } from "@cimacmillan/refunc";
 import { Actions } from "../../Actions";
+import { TaskInformation } from "../../engine/commands/TaskCommands";
 
 type MenuType = "MAIN" | "CREDITS";
 
@@ -10,6 +11,10 @@ export interface GameStartState {
     fps: number;
     currentStage: number;
     menu: MenuType;
+    task: {
+        info: TaskInformation,
+        onDone: (success: boolean) => void
+    } | undefined
 }
 
 export const gameStartReducer: Reducer<GameStartState, Actions> = {
@@ -19,7 +24,8 @@ export const gameStartReducer: Reducer<GameStartState, Actions> = {
         gameLoadPercentage: 0,
         fps: 0,
         currentStage: 0,
-        menu: "MAIN"
+        menu: "MAIN",
+        task: undefined
     },
     actions: {
         startGame: (state: GameStartState) => ({
@@ -49,6 +55,16 @@ export const gameStartReducer: Reducer<GameStartState, Actions> = {
         setGameFPS: (state: GameStartState, x: number) => ({
             ...state,
             fps: x,
+        }),
+        onTaskOpened: (state: GameStartState, info: TaskInformation, onDone: (success: boolean) => void) => ({
+            ...state,
+            task: {
+                info, onDone
+            }
+        }),
+        onTaskFinished: (state: GameStartState) => ({
+            ...state,
+            task: undefined
         })
     },
 };

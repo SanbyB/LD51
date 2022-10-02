@@ -1,3 +1,4 @@
+import { TaskInformation } from "./engine/commands/TaskCommands";
 import { Vector2D } from "./types";
 
 export const emptyActions = {
@@ -10,8 +11,6 @@ export const emptyActions = {
     startGame: () => {},
     stopGame: () => {},
 
-    closeMiniGame: () => {},
-
     addKeyHint: (args: { id: string; keys: string[]; hint: string }) => {},
     removeKeyHint: (args: { id: string }) => {},
 
@@ -19,14 +18,11 @@ export const emptyActions = {
     onEntityDeleted: () => {},
     onStateTransition: (from: any, to: any) => {},
 
-    onDamagedByPlayer: (damage: number, ancientPower: boolean) => {},
-    onBeatGame: () => {},
 
-    // Game script events
-    onChestOpened: () => {},
-    onEnemyKilled: () => {},
-    onStageReached: (stage: number) => {},
-    onMaxStageReached: (stage: number) => {},
+    onTaskOpened: (info: TaskInformation, onDone: (success: boolean) => void) => {},
+    onTaskFinished: () => {}
+
+
 
 }
 

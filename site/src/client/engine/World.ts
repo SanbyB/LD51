@@ -39,5 +39,11 @@ export class World {
         for (let i = 0; i < toRemove.length; i++) {
             toRemove[i].onRemovedFromWorld(serviceLocator);
         }
+
+        this.entityArray.getArray().sort((a: any, b: any) => {
+            if (a.y == undefined) return -1;
+            if (b.y == undefined) return 1;
+            return a.y < b.y ? -1 : 1;
+        });
     }
 }
