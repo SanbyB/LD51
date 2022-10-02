@@ -1,5 +1,7 @@
 import { TILE_HEIGHT, TILE_WIDTH } from "./Config";
+import { TaskType } from "./engine/commands/TaskCommands";
 import { BallEntity } from "./engine/entities/BallEntity";
+import { Task } from "./engine/entities/Task";
 import { ZombieSpawner } from "./engine/entities/ZombieSpawner";
 import { Entity } from "./engine/Entity";
 import { GameMap } from "./Map";
@@ -72,6 +74,16 @@ export class MapLoader {
         switch (g) {
             case 255:
                 entities.push(new ZombieSpawner(this.serviceLocator, x * TILE_WIDTH, y * TILE_HEIGHT))
+                break;
+        }
+
+        switch (b) {
+            case 255:
+                entities.push(new Task(
+                    this.serviceLocator, 
+                    x * TILE_WIDTH, y * TILE_HEIGHT, 
+                    TaskType.SIMON_SAYS
+                ))
                 break;
         }
 
