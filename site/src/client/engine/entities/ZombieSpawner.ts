@@ -24,8 +24,8 @@ export class ZombieSpawner implements Entity {
     }
 
     private spawnZombie() {
-        // const zombie = new Zombie(this.serviceLocator, this.x, this.y);
-        // this.serviceLocator.getWorld().addEntity(zombie);
+        const zombie = new Zombie(this.serviceLocator, this.x, this.y);
+        this.serviceLocator.getWorld().addEntity(zombie);
     }
 
 }
