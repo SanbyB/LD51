@@ -15,13 +15,13 @@
     * ~~Has health~~
     * ~~Has death image~~
     * ~~Display health bar~~
-    * Hand rendering
+    * ~~Hand rendering~~
 
 * Controllable Character
-    * Move character with input service
+    * ~~Move character with input service~~
     * Can interact with nearby task?
-    * Can attack surroundings
-    * Follows primary controllable character if not controlled?
+    * ~~Can attack surroundings~~
+    * ~~Follows primary controllable character if not controlled?~~
     * Collision needs checking for corners
     * Scientist
         * animation
@@ -34,6 +34,7 @@
         * opens alert randomly  
     * (stretch) Mechanic
     * (stretch) not sure?
+    * Tuning stats
     
 * Zombie Entity
     * ~~Animation is zombie~~
@@ -41,7 +42,7 @@
     * ~~Walks towards target~~
     * ~~When near, damages with animation~~
     * (stretch) variations in zombie art / size / power
-    * Dead body is removed after time
+    * ~~Dead body is removed after time~~
 
 * Zombie Spawn Point
     * ~~Every 10 s?~~
@@ -55,8 +56,8 @@
     * More?
 
 * Game Scripting
-    * Create entities from map
-    * Every 10s move to different character (in cyclic but random)
+    * ~~Create entities from map~~
+    * ~~Every 10s move to different character (in cyclic but random)~~
     * If character dies, don't move to that character
     * After completing all tasks, win game? Or just score boost?
     * If all dying get score?

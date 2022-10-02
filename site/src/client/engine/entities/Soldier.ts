@@ -1,3 +1,4 @@
+import { SOLDIER_ATTACK_STRENGTH, SOLDIER_SPEED } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { Player } from "./Player";
@@ -12,6 +13,8 @@ export class Solider extends Player {
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y, "soldier", SOLDIER_WIDTH, SOLDIER_HEIGHT, "knife");
+        this.damage = SOLDIER_ATTACK_STRENGTH;
+        this.speed = SOLDIER_SPEED;
     }
 
     public update(serviceLocator: ServiceLocator) {

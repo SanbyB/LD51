@@ -60,3 +60,18 @@ export const CHARACTER_SELECT = 1;
 export const ZOMBIE_ATTACK_DISTANCE = 20;
 
 
+// Bomber stats
+export const BOMBER_ATTACK_STRENGTH = 2
+export const BOMBER_SPEED = 2
+
+// Soldier stats
+export const SOLDIER_ATTACK_STRENGTH = 6
+export const SOLDIER_SPEED = 1
+
+// Scientist stats
+export const SCIENTIST_ATTACK_STRENGTH = 1
+export const SCIENTIST_SPEED = 0.7
+
+// Engineer stats
+export const ENGINEER_ATTACK_STRENGTH = 3
+export const ENGINEER_SPEED = 1

@@ -27,6 +27,8 @@ export class Player extends CharacterEntity {
         super.update(serviceLocator);
     }
 
+    // public speedLimit()
+
     public onAddedToWorld(serviceLocator: ServiceLocator) {
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {

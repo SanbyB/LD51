@@ -30,7 +30,7 @@ export class PlayerController{
                 player.weight += 1;
             }
         }
-        setInterval(() => this.selectPlayer(), 5000);
+        setInterval(() => this.selectPlayer(), 10000);
     }
 
     private selectPlayer(){

@@ -1,3 +1,4 @@
+import { BOMBER_ATTACK_STRENGTH, BOMBER_SPEED } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { Player } from "./Player";
@@ -12,6 +13,8 @@ export class Bomber extends Player {
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y, "miner", BOMBER_WIDTH, BOMBER_HEIGHT, "test_tube");
+        this.damage = BOMBER_ATTACK_STRENGTH;
+        this.speed = BOMBER_SPEED;
     }
 
     public update(serviceLocator: ServiceLocator) {
