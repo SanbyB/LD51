@@ -12,7 +12,7 @@ export class Bomber extends Player {
     public name: string = "Bomber";
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "miner", BOMBER_WIDTH, BOMBER_HEIGHT, "test_tube");
+        super(serviceLocator, x, y, "bomber", BOMBER_WIDTH, BOMBER_HEIGHT, "tnt");
         this.damage = BOMBER_ATTACK_STRENGTH;
         this.speed = BOMBER_SPEED;
     }
