@@ -8,7 +8,7 @@ import { GameMap } from "./Map";
 import { Sprite } from "./resources/SpriteSheet";
 import { getImageData, loadImageData } from "./resources/TextureLoader";
 import { ServiceLocator } from "./services/ServiceLocator";
-import { randomFloat } from "./util/math";
+import { randomFloat, randomIntRange } from "./util/math";
 
 export class MapLoader {
     private imagedata: ImageData;
@@ -23,9 +23,7 @@ export class MapLoader {
     public getEntities(): Entity[] {
         const mapWidth = this.imagesprite.pixelCoordinate.textureWidth;
         const mapHeight = this.imagesprite.pixelCoordinate.textureHeight;
-        console.log("map");
-        console.log(mapWidth);
-        console.log(mapHeight);
+        
 
         const gameMap = new GameMap(
             this.serviceLocator,
@@ -58,7 +56,7 @@ export class MapLoader {
 
     private loadPixel(gameMap: GameMap, x: number, y: number, r: number, g: number, b: number, a: number): Entity[] {
         let entities: Entity[] = [];
-        let image: string = "tile";
+        let image: string = "tile".concat(randomIntRange(1, 6).toString());
         let collides: boolean = false;
 
         // Tile images
