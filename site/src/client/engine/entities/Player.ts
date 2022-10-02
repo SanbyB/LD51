@@ -7,6 +7,9 @@ import { CharacterEntity } from "./CharacterEntity";
 
 export class Player extends CharacterEntity {
 
+    public weight: number;
+    public name: string;
+
     public constructor(
         serviceLocator: ServiceLocator, 
         x: number, 
@@ -17,6 +20,7 @@ export class Player extends CharacterEntity {
         hand_image: string) {
         super(serviceLocator, x, y, animation, animation_width, animation_height, hand_image);
         this.speed = 1;
+        this.weight = 1;
     }
 
     public update(serviceLocator: ServiceLocator) {

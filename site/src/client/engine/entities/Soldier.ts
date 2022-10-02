@@ -8,6 +8,7 @@ const SOLDIER_HEIGHT = 30;
 
 export class Solider extends Player {
 
+    public name: string = "Soldier";
 
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y, "soldier", SOLDIER_WIDTH, SOLDIER_HEIGHT, "knife");

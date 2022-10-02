@@ -23,12 +23,37 @@ export class PlayerController{
         this.bomber = new Bomber(serviceLocator, 50, 50);
         this.players = [this.scientist, this.soldier, this.engineer, this.bomber];
         this.state = this.players[randomIntRange(0, this.players.length)];
-        setInterval(() => this.selectPlayer(), 10000);
+        for(const player of this.players){
+            if(player == this.state){
+                player.weight = 0;
+            }else{
+                player.weight += 1;
+            }
+        }
+        setInterval(() => this.selectPlayer(), 5000);
     }
 
     private selectPlayer(){
-        this.state = this.players[randomIntRange(0, this.players.length)];
-        console.log(this.state);
+        let sum = 0;
+        for(const player of this.players){
+            sum += player.weight;
+        }
+        let rand = randomIntRange(1, sum + 1);
+        for(const player of this.players){
+            rand -= player.weight;
+            if(rand <= 0){
+                this.state = player;
+                for(const player of this.players){
+                    if(player == this.state){
+                        player.weight = 0;
+                    }else{
+                        player.weight += 1;
+                    }
+                }
+                return;
+            }
+        }
+        
     }
 
     public update(serviceLocator: ServiceLocator){

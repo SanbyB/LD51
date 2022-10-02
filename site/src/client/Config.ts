@@ -52,6 +52,11 @@ export const CHARACTER_ATTACK_BUMP_STRENGTH = 8;
 export const CHARACTER_SPEAD_DIST = 30;
 export const CHARACTER_FOLLOW_DIST = 60;
 
+// The weighting of the character selection,
+// higher values make it less random and more likely to follow a pattern,
+// lower values make it more random
+export const CHARACTER_SELECT = 1;
+
 export const ZOMBIE_ATTACK_DISTANCE = 20;
 
 

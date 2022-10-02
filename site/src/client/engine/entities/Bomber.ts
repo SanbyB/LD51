@@ -8,6 +8,8 @@ const BOMBER_HEIGHT = 30;
 
 export class Bomber extends Player {
 
+    public name: string = "Bomber";
+
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y, "miner", BOMBER_WIDTH, BOMBER_HEIGHT, "test_tube");
     }

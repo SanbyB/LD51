@@ -12,19 +12,15 @@ export class DefaultControlScheme implements ControlScheme {
     public poll(keysDown: { [key: string]: boolean }) {
        
         if (keysDown.KeyW) {
-            console.log("w");
             this.serviceLocator.getScriptingService().controller.state.moveDown(-0.2);
         }
         if (keysDown.KeyS) {
-            console.log("s");
             this.serviceLocator.getScriptingService().controller.state.moveDown(0.2);
         }
         if (keysDown.KeyA) {
-            console.log("a");
             this.serviceLocator.getScriptingService().controller.state.moveRight(-0.2);
         }
         if (keysDown.KeyD) {
-            console.log("d");
             this.serviceLocator.getScriptingService().controller.state.moveRight(0.2);
         }
 
