@@ -62,7 +62,7 @@ export const ZOMBIE_ATTACK_DISTANCE = 20;
 
 // Bomber stats
 export const BOMBER_ATTACK_STRENGTH = 2
-export const BOMBER_SPEED = 1.4
+export const BOMBER_SPEED = 1.3
 
 // Soldier stats
 export const SOLDIER_ATTACK_STRENGTH = 6

@@ -17,10 +17,10 @@ export class PlayerController{
     public state: Player;
 
     public constructor(serviceLocator: ServiceLocator) {
-        this.scientist = new Scientist(serviceLocator, 10, 10);
-        this.soldier = new Solider(serviceLocator, 50, 10);       
-        this.engineer = new Engineer(serviceLocator, 10, 50);        
-        this.bomber = new Bomber(serviceLocator, 50, 50);
+        this.scientist = new Scientist(serviceLocator, 512, 512);
+        this.soldier = new Solider(serviceLocator, 480, 480);       
+        this.engineer = new Engineer(serviceLocator, 480, 512);        
+        this.bomber = new Bomber(serviceLocator, 512, 480);
         this.players = [this.scientist, this.soldier, this.engineer, this.bomber];
         this.state = this.players[randomIntRange(0, this.players.length)];
         for(const player of this.players){

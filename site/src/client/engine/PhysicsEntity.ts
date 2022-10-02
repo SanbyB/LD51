@@ -80,16 +80,16 @@ export class PhysicsEntity implements Entity {
         if(this.x < 0){
             this.xVel = -this.xVel;
             this.x = 0;
-        }else if(this.x > DOM_WIDTH){
+        }else if(this.x > 32 * 32){
             this.xVel = -this.xVel;
-            this.x = DOM_WIDTH;
+            this.x = 32 * 32;
         }
         if(this.y < 0){
             this.yVel = -this.yVel;
             this.y = 0;
-        }else if(this.y > DOM_HEIGHT){
+        }else if(this.y > 32 * 32){
             this.yVel = -this.yVel;
-            this.y = DOM_HEIGHT;
+            this.y = 32 * 32;
         }
     }
 

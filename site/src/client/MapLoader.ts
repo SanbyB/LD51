@@ -21,6 +21,9 @@ export class MapLoader {
     public getEntities(): Entity[] {
         const mapWidth = this.imagesprite.pixelCoordinate.textureWidth;
         const mapHeight = this.imagesprite.pixelCoordinate.textureHeight;
+        console.log("map");
+        console.log(mapWidth);
+        console.log(mapHeight);
 
         const gameMap = new GameMap(
             this.serviceLocator,

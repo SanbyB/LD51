@@ -43,6 +43,12 @@
         "width": 33,
         "height": 33
     },
+    "penis_map": {
+        "x": 98,
+        "y": 50,
+        "width": 33,
+        "height": 33
+    },
     "scientist": {
         "x": 0,
         "y": 99,
@@ -64,26 +70,26 @@
         "height": 17
     },
     "test_tube": {
-        "x": 98,
-        "y": 50,
+        "x": 99,
+        "y": 0,
         "width": 17,
         "height": 17
     },
     "tile": {
         "x": 99,
-        "y": 0,
+        "y": 17,
         "width": 33,
         "height": 33
     },
     "tile_crate": {
-        "x": 115,
-        "y": 33,
+        "x": 130,
+        "y": 83,
         "width": 33,
         "height": 33
     },
     "tnt": {
-        "x": 115,
-        "y": 66,
+        "x": 131,
+        "y": 50,
         "width": 33,
         "height": 33
     },
