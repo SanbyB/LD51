@@ -1,5 +1,7 @@
+import { BACKGROUND_GAIN, MACHINE_GAIN } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
+import { randomIntRange } from "../../util/math";
 import { OpenTask, TaskImages, TaskInformation, TaskNames, TaskType } from "../commands/TaskCommands";
 import { DeregisterKeyHint, RegisterKeyHint } from "../commands/UICommands";
 import { Entity } from "../Entity";
@@ -67,13 +69,21 @@ export class Task implements Entity {
         (success: boolean) => {
             console.log("Task done. Complete? ", success);
             this.serviceLocator.getGame().setUpdateWorld(true);
+            this.serviceLocator.getAudioService().playSong("background", BACKGROUND_GAIN);
             if (success) {
                 this.onComplete();
+                this.serviceLocator.getAudioService().play("machine_win");
+            } else {
+                this.serviceLocator.getAudioService().play("machine_dead");
             }
         })
         if (this.keyHint != undefined) {
             DeregisterKeyHint(this.serviceLocator)(this.keyHint);
         }
+        this.serviceLocator.getAudioService().playSong(
+            "machine_" + randomIntRange(1, 7),
+            MACHINE_GAIN
+        );
     }
 
     private getTaskInfo(): TaskInformation {

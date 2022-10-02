@@ -16,6 +16,38 @@
         "file": "./audio/footstep.wav"
     },
     {
+        "name": "machine_1",
+        "file": "./audio/machine_1.mp3"
+    },
+    {
+        "name": "machine_2",
+        "file": "./audio/machine_2.mp3"
+    },
+    {
+        "name": "machine_3",
+        "file": "./audio/machine_3.mp3"
+    },
+    {
+        "name": "machine_4",
+        "file": "./audio/machine_4.mp3"
+    },
+    {
+        "name": "machine_5",
+        "file": "./audio/machine_5.mp3"
+    },
+    {
+        "name": "machine_6",
+        "file": "./audio/machine_6.mp3"
+    },
+    {
+        "name": "machine_dead",
+        "file": "./audio/machine_dead.wav"
+    },
+    {
+        "name": "machine_win",
+        "file": "./audio/machine_win.wav"
+    },
+    {
         "name": "player_hit",
         "file": "./audio/player_hit.mp3"
     },

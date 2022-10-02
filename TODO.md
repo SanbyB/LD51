@@ -95,6 +95,6 @@ Bomber - detonator
     * ~~Punching~~
     * ~~Dying~~
     * ~~Click button~~
-    * Machine noise
+    * ~~Machine noise~~
     * Change character
 
