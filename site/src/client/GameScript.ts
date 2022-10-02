@@ -1,5 +1,5 @@
 import { Console } from "console";
-import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT } from "./Config";
+import { FOV, ASPECT_RATIO, ZNEAR, ZFAR, WIDTH, HEIGHT, BACKGROUND_GAIN } from "./Config";
 import { OpenTask, TaskNames, TaskType } from "./engine/commands/TaskCommands";
 import { Scientist } from "./engine/entities/Scientist";
 import { Task } from "./engine/entities/Task";
@@ -44,6 +44,8 @@ export class GameScript {
         }
 
         const zombie = new Zombie(this.serviceLocator, 60, 10);
+
+        this.serviceLocator.getAudioService().playSong("background", BACKGROUND_GAIN);
         // this.serviceLocator.getWorld().addEntity(zombie);
 
     }

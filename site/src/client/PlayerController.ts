@@ -4,6 +4,7 @@ import { Engineer } from "./engine/entities/Engineer";
 import { Player } from "./engine/entities/Player";
 import { Scientist } from "./engine/entities/Scientist";
 import { Solider } from "./engine/entities/Soldier";
+import { ProcedureService } from "./services/jobs/ProcedureService";
 import { ServiceLocator } from "./services/ServiceLocator";
 import { CanvasHelper } from "./util/CanvasHelper";
 import { randomIntRange } from "./util/math/Random";
@@ -16,7 +17,7 @@ export class PlayerController{
     public players: Player[];
     public state: Player;
 
-    public constructor(serviceLocator: ServiceLocator) {
+    public constructor(private serviceLocator: ServiceLocator) {
         this.scientist = new Scientist(serviceLocator, 512, 512);
         this.soldier = new Solider(serviceLocator, 480, 480);       
         this.engineer = new Engineer(serviceLocator, 480, 512);        
@@ -31,7 +32,7 @@ export class PlayerController{
                 player.weight += 1;
             }
         }
-        setInterval(() => this.selectPlayer(), 10000);
+        ProcedureService.setGameInterval(() => this.selectPlayer(), 10000);
 
         // Force update camera initially
         CanvasHelper.setCamera(this.state.x, this.state.y, 1);
@@ -49,6 +50,7 @@ export class PlayerController{
             if(rand <= 0){
                 this.state.onUnfocussed();
                 this.state = player;
+                this.serviceLocator.getAudioService().play("change_player", 0.4);
                 this.state.onFocussed();
                 for(const player of this.players){
                     if(player == this.state){

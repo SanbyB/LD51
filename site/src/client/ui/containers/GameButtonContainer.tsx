@@ -40,6 +40,7 @@ export const GameButtonContainer: React.FunctionComponent<GameButtonContainerPro
             onMouseUp={() => {
                 setDown(false);
                 props.onSelect();
+                serviceLocator.getAudioService().play("button_press")
                 // serviceLocator
                 //     .getAudioService()
                 //     .play(

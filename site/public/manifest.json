@@ -1,6 +1,74 @@
 [
     {
+        "name": "background",
+        "file": "./audio/background.mp3"
+    },
+    {
         "name": "boing",
         "file": "./audio/boing.mp3"
+    },
+    {
+        "name": "button_press",
+        "file": "./audio/button_press.mp3"
+    },
+    {
+        "name": "change_player",
+        "file": "./audio/change_player.wav"
+    },
+    {
+        "name": "footstep",
+        "file": "./audio/footstep.wav"
+    },
+    {
+        "name": "machine_1",
+        "file": "./audio/machine_1.mp3"
+    },
+    {
+        "name": "machine_2",
+        "file": "./audio/machine_2.mp3"
+    },
+    {
+        "name": "machine_3",
+        "file": "./audio/machine_3.mp3"
+    },
+    {
+        "name": "machine_4",
+        "file": "./audio/machine_4.mp3"
+    },
+    {
+        "name": "machine_5",
+        "file": "./audio/machine_5.mp3"
+    },
+    {
+        "name": "machine_6",
+        "file": "./audio/machine_6.mp3"
+    },
+    {
+        "name": "machine_dead",
+        "file": "./audio/machine_dead.wav"
+    },
+    {
+        "name": "machine_win",
+        "file": "./audio/machine_win.wav"
+    },
+    {
+        "name": "player_hit",
+        "file": "./audio/player_hit.mp3"
+    },
+    {
+        "name": "point",
+        "file": "./audio/point.mp3"
+    },
+    {
+        "name": "slam",
+        "file": "./audio/slam.mp3"
+    },
+    {
+        "name": "whoosh 2",
+        "file": "./audio/whoosh 2.mp3"
+    },
+    {
+        "name": "whoosh",
+        "file": "./audio/whoosh.mp3"
     }
 ]

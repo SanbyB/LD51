@@ -79,3 +79,8 @@ export const ENGINEER_SPEED = 1
 export const PATHFIND_EVERY_FRAMES = 8;
 
 export const CAMERA_TWEEN = 0.2;
+
+// SOUND
+export const BACKGROUND_GAIN = 0.2;
+export const MACHINE_GAIN = 0.2;
+

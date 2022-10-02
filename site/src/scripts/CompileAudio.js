@@ -14,7 +14,7 @@ function main() {
 
     const output = fs.readdirSync(site_dir + audio_dir)
         .map(file => audio_dir + file)
-        .filter(file => file.substring(file.length - 3) == "mp3")
+        .filter(file => file.substring(file.length - 3) == "mp3" || file.substring(file.length - 3) == "wav")
         .map(file => {
             let paths = file.split("/");
             let filename = paths[paths.length - 1];
