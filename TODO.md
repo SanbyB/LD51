@@ -44,7 +44,7 @@
     * ~~When near, damages with animation~~
     * (stretch) variations in zombie art / size / power
     * ~~Dead body is removed after time~~
-    * Zombies need nerfing
+    * ~~Zombies need nerfing~~
 
 * Zombie Spawn Point
     * ~~Every 10 s?~~
