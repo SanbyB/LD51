@@ -39,6 +39,28 @@ export class Player extends CharacterEntity {
         this.drawFocus(serviceLocator);
         super.update(serviceLocator);
         this.speedLimit();
+        this.playFootstep(serviceLocator);
+
+    }
+
+    public doAttack(angle: number) {
+        super.doAttack(angle);
+        this.serviceLocator.getAudioService().play("whoosh")
+    }
+
+    private footstepNum = 0;
+    private playFootstep(serviceLocator: ServiceLocator) {
+        if (!this.isFocussed) return;
+        const speed = Math.sqrt((this.xVel*this.xVel) + (this.yVel*this.yVel));
+        if (speed < 0.1) return;
+
+        this.footstepNum += speed;
+        const val = Math.floor(this.footstepNum);
+
+        if (this.footstepNum > 10) {
+            this.footstepNum = 0;
+            serviceLocator.getAudioService().play("footstep")
+        }
     }
 
     public drawFocus(serviceLocator: ServiceLocator) {

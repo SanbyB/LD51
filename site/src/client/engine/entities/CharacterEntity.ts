@@ -38,7 +38,7 @@ export class CharacterEntity extends PhysicsEntity {
     public tileY = -1;
 
     public constructor(
-        private serviceLocator: ServiceLocator, 
+        protected serviceLocator: ServiceLocator, 
         x: number, 
         y: number, 
         animation_name: string,
@@ -154,6 +154,9 @@ export class CharacterEntity extends PhysicsEntity {
         if (this.hp <= 0) {
             this.hp = 0;
             this.onDeath();
+            this.serviceLocator.getAudioService().play("point");
+        } else {
+            this.serviceLocator.getAudioService().play("slam");
         }
 
         // this.show_health = true;

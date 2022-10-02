@@ -48,10 +48,11 @@ export class AudioService {
     private fadeInInterval: any;
  
     public playSong(
-        audioObject: AudioObject,
+        audio: string,
         gain: number = 1,
         shouldFade: boolean = true
     ) {
+        const audioObject = this.resourceManager.getAudio(audio);
         this.fadeOutInterval && clearInterval(this.fadeOutInterval);
         this.fadeInInterval && clearInterval(this.fadeInInterval);
         if (this.currentSong && shouldFade) {

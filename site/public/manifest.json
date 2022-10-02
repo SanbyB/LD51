@@ -1,6 +1,38 @@
 [
     {
+        "name": "background",
+        "file": "./audio/background.mp3"
+    },
+    {
         "name": "boing",
         "file": "./audio/boing.mp3"
+    },
+    {
+        "name": "button_press",
+        "file": "./audio/button_press.mp3"
+    },
+    {
+        "name": "footstep",
+        "file": "./audio/footstep.wav"
+    },
+    {
+        "name": "player_hit",
+        "file": "./audio/player_hit.mp3"
+    },
+    {
+        "name": "point",
+        "file": "./audio/point.mp3"
+    },
+    {
+        "name": "slam",
+        "file": "./audio/slam.mp3"
+    },
+    {
+        "name": "whoosh 2",
+        "file": "./audio/whoosh 2.mp3"
+    },
+    {
+        "name": "whoosh",
+        "file": "./audio/whoosh.mp3"
     }
 ]

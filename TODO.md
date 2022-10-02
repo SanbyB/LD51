@@ -90,3 +90,11 @@ Axe - Soldier
 Thermometer - Scientist
 Bomber - detonator
 
+* Audio
+    * ~~Walking~~ 
+    * ~~Punching~~
+    * ~~Dying~~
+    * ~~Click button~~
+    * Machine noise
+    * Change character
+
