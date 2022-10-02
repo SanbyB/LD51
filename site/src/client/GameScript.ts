@@ -46,14 +46,6 @@ export class GameScript {
         const zombie = new Zombie(this.serviceLocator, 60, 10);
         // this.serviceLocator.getWorld().addEntity(zombie);
 
-        this.serviceLocator.getWorld().addEntity(
-            new Task(
-                this.serviceLocator, 
-                10, 
-                10, 
-                TaskType.SIMON_SAYS
-            )
-        );
     }
 
     public resumeGame() {
