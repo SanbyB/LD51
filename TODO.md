@@ -1,7 +1,5 @@
-* UI
-    * Show character faces in corner / who you are / when they're dead
-
 * Tune everything in the game
+* Come up with better starting text
 * Create game in LD website
 
 
