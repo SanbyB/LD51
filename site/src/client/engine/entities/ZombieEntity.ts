@@ -76,4 +76,9 @@ export class Zombie extends CharacterEntity {
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {
         Zombie.zombieNumber -= 1;
     }
+
+    public getDirectionToTravelTo(otherEntity: CharacterEntity): number {
+        return this.angleTo(otherEntity);
+    }
+
 }
