@@ -17,7 +17,7 @@ export class Task implements Entity {
     public canInteract = false;
     public complete = false;
     private keyHint: number = undefined;
-    private task_type: TaskType = TaskType.SIMON_SAYS;
+    public task_type: TaskType = TaskType.SIMON_SAYS;
 
     public constructor(
         private serviceLocator: ServiceLocator,
