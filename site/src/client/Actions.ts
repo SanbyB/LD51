@@ -20,7 +20,8 @@ export const emptyActions = {
 
 
     onTaskOpened: (info: TaskInformation, onDone: (success: boolean) => void) => {},
-    onTaskFinished: () => {}
+    onTaskFinished: () => {},
+    onCharacterChanged: () => {}
 
 
 

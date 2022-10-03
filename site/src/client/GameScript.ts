@@ -52,6 +52,7 @@ export class GameScript {
     }
 
     public resumeGame() {
+        this.serviceLocator.getStore().getActions().onCharacterChanged();
         this.serviceLocator.getInputService().setInputState(InputState.DEFAULT);
         this.game.setUpdateWorld(true);
 

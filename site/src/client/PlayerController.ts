@@ -40,6 +40,7 @@ export class PlayerController{
     }
 
     private selectPlayer(){
+        this.serviceLocator.getStore().getActions().onCharacterChanged();
         let sum = 0;
         for(const player of this.players){
             sum += player.weight;
