@@ -1,25 +1,29 @@
 import { CHARACTER_ATTACK_DISTANCE, ZOMBIE_ATTACK_DISTANCE } from "../../Config";
 import { ServiceLocator } from "../../services/ServiceLocator";
 import { CanvasHelper } from "../../util/CanvasHelper";
+import { randomIntRange } from "../../util/math";
 import { World } from "../World";
 import { CharacterEntity } from "./CharacterEntity";
 import { Player } from "./Player";
 
 
-const ZOMBIE_WIDTH = 30;
-const ZOMBIE_HEIGHT = 30;
 const ZOMBIE_SPEED = 0.07;
 const ZOMBIE_ATTACK_STRENGTH = 0.3;
+const ZOMBIE_SIZE_VARIATION = 10;
 
 export class Zombie extends CharacterEntity {
 
     static zombieNumber = 0;
 
     private walking_right = true;
-    
+
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
-        super(serviceLocator, x, y, "zombie", ZOMBIE_WIDTH, ZOMBIE_HEIGHT, "zombie_hand");
+        super(serviceLocator, x, y, "zombie", 
+            30 + randomIntRange(0, ZOMBIE_SIZE_VARIATION), 
+            30 + randomIntRange(0, ZOMBIE_SIZE_VARIATION), 
+            "zombie_hand");
         this.damage = ZOMBIE_ATTACK_STRENGTH;
+        
     }
 
     public update(serviceLocator: ServiceLocator) {
