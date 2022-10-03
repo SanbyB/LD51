@@ -10,6 +10,7 @@ import { CanvasHelper } from "./util/CanvasHelper";
 import { randomIntRange } from "./util/math/Random";
 
 export class PlayerController{
+    public static interval: any = undefined;
     public scientist: Scientist;
     public soldier: Solider;    
     public engineer: Engineer;    
@@ -32,7 +33,10 @@ export class PlayerController{
                 player.weight += 1;
             }
         }
-        ProcedureService.setGameInterval(() => this.selectPlayer(), 10000);
+        if (PlayerController.interval) {
+            ProcedureService.clearInterval(PlayerController.interval);
+        }
+        PlayerController.interval = ProcedureService.setGameInterval(() => this.selectPlayer(), 10000);
 
         // Force update camera initially
         CanvasHelper.setCamera(this.state.x, this.state.y, 1);
