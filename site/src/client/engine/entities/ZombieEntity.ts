@@ -7,8 +7,8 @@ import { CharacterEntity } from "./CharacterEntity";
 import { Player } from "./Player";
 
 
-const ZOMBIE_SPEED = 0.07;
-const ZOMBIE_ATTACK_STRENGTH = 0.3;
+const ZOMBIE_SPEED = 0.08;
+const ZOMBIE_ATTACK_STRENGTH = 0.4;
 const ZOMBIE_SIZE_VARIATION = 10;
 
 export class Zombie extends CharacterEntity {
