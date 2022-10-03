@@ -42,9 +42,11 @@ export class InputService {
                 this.controlScheme = new DefaultControlScheme(
                     this.serviceLocator
                 );
+                this.controlScheme.onEnter();
                 break;
             case InputState.MENU:
                 this.controlScheme = new MenuControlScheme(this.serviceLocator);
+                this.controlScheme.onEnter();
                 break;
         }
     };

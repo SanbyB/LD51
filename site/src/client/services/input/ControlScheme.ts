@@ -5,4 +5,5 @@ export interface ControlScheme {
     onMouseMove: (event: MouseEvent) => void;
     onMouseDown: (event: MouseEvent) => void;
     onMouseUp: (event: MouseEvent) => void;
+    onEnter: () => void
 }

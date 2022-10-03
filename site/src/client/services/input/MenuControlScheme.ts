@@ -18,4 +18,8 @@ export class MenuControlScheme implements ControlScheme {
 
     public onMouseUp = (event: MouseEvent) => {
     }
+
+    public onEnter = () => {
+        
+    }
 }
