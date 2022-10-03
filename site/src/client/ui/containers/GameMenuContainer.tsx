@@ -61,17 +61,31 @@ export const GameEndContainer: React.FunctionComponent<GameMenuContainerProps> =
     }
 
     if (gameWon) {
-        return <TextComponent
-            text={GAME_WON_TEXT + score.toString()}
-            style={{
-                width: "100%",
-                textAlign: "center",
-                marginTop: 10,
-            }}
-            font={TextFont.REGULAR}
-            size={TextSize.BIG}
-            colour={TextColour.LIGHT}
-        />
+        return <>
+        <TextComponent
+        text={GAME_WON_TEXT}
+        style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: 10,
+        }}
+        font={TextFont.REGULAR}
+        size={TextSize.BIG}
+        colour={TextColour.LIGHT}
+    />
+    <TextComponent
+        text={"Your score is: " + score.toString()}
+        style={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: 10,
+        }}
+        font={TextFont.REGULAR}
+        size={TextSize.BIG}
+        colour={TextColour.LIGHT}
+    />
+    
+    </> 
     } else {
         return <TextComponent
             text={GAME_LOST_TEXT}
