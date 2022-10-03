@@ -16,7 +16,7 @@ Would lose an arm wrestle to a baby.
 
 Da Bomb - Who knows how he got into this mess but he finds himself with a bomb strapped to his chest,
 as a result he runs around like a headless chicken and has no focus when attempting to complete tasks.
-One thing for sure, don't let him die as the explosion will kill you all.
+One thing for sure, don't let him die as the explosion may kill you all.
 
 ### The Tasks
 Panel Passcode - Memorise then reinsert the pattern that appears on the screen to solve this task
