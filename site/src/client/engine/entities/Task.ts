@@ -21,8 +21,8 @@ export class Task implements Entity {
 
     public constructor(
         private serviceLocator: ServiceLocator,
-        private x: number,
-        private y: number,
+        public x: number,
+        public y: number,
     ) {
         this.task_type = randomSelection([
             TaskType.SIMON_SAYS, TaskType.REFLEX

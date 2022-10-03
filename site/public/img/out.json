@@ -1,56 +1,62 @@
 {
-    "bomber": {
+    "arrow": {
         "x": 0,
         "y": 0,
+        "width": 17,
+        "height": 9
+    },
+    "bomber": {
+        "x": 0,
+        "y": 9,
         "width": 65,
         "height": 33,
         "frames": 2
     },
     "character_focus": {
-        "x": 0,
-        "y": 33,
+        "x": 17,
+        "y": 0,
         "width": 17,
         "height": 9
     },
     "character_focus_flash": {
-        "x": 17,
-        "y": 33,
+        "x": 34,
+        "y": 0,
         "width": 17,
         "height": 9
     },
     "character_focus_ring": {
-        "x": 34,
-        "y": 33,
+        "x": 51,
+        "y": 0,
         "width": 17,
         "height": 9
     },
     "character_shadow": {
-        "x": 51,
-        "y": 33,
+        "x": 0,
+        "y": 42,
         "width": 17,
         "height": 9
     },
     "dead_body": {
-        "x": 0,
+        "x": 17,
         "y": 42,
         "width": 33,
         "height": 33
     },
     "glorp": {
-        "x": 33,
+        "x": 50,
         "y": 42,
         "width": 33,
         "height": 33
     },
     "knife": {
-        "x": 65,
-        "y": 0,
+        "x": 0,
+        "y": 51,
         "width": 17,
         "height": 17
     },
     "map": {
-        "x": 66,
-        "y": 42,
+        "x": 65,
+        "y": 9,
         "width": 33,
         "height": 33
     },
@@ -68,8 +74,8 @@
         "height": 33
     },
     "penis_map": {
-        "x": 82,
-        "y": 0,
+        "x": 83,
+        "y": 42,
         "width": 33,
         "height": 33
     },
@@ -89,19 +95,19 @@
     },
     "spanner": {
         "x": 98,
-        "y": 75,
+        "y": 0,
         "width": 17,
         "height": 17
     },
     "task_buttons": {
-        "x": 99,
-        "y": 33,
+        "x": 98,
+        "y": 17,
         "width": 17,
         "height": 17
     },
     "task_buttons_complete": {
-        "x": 99,
-        "y": 50,
+        "x": 98,
+        "y": 75,
         "width": 17,
         "height": 17
     },
@@ -113,7 +119,7 @@
     },
     "tile1": {
         "x": 115,
-        "y": 67,
+        "y": 75,
         "width": 33,
         "height": 33
     },
@@ -125,7 +131,7 @@
     },
     "tile3": {
         "x": 130,
-        "y": 100,
+        "y": 108,
         "width": 33,
         "height": 33
     },

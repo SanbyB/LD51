@@ -5,6 +5,7 @@ import { animation } from "../../util/animation/Animations";
 import { GameAnimation } from "../../util/animation/GameAnimation";
 import { CanvasHelper } from "../../util/CanvasHelper";
 import { CharacterEntity } from "./CharacterEntity";
+import { Task } from "./Task";
 
 
 const FOCUS_WIDTH = 16;
@@ -41,6 +42,59 @@ export class Player extends CharacterEntity {
         this.speedLimit();
         this.playFootstep(serviceLocator);
 
+        const size_drop = 16;
+        const dis_from_pos = 32;
+        if (this.isFocussed) {
+            const [angle, distance] = this.getClosestPendingTask();
+            const size = Math.min(distance / size_drop, 16);
+            const rads = (angle / 180) * Math.PI;
+            const x = Math.sin(rads) * dis_from_pos;
+            const y = -Math.cos(rads) * dis_from_pos;
+    
+            if (Math.floor(size) < 4) {
+                return;
+            }
+            CanvasHelper.drawSprite(
+                serviceLocator, 
+                "arrow",
+                this.x + x,
+                this.y + y,
+                size,
+                size / 2,
+                1,
+                1,
+                angle
+            );
+        }
+    }
+
+    private getClosestPendingTask(): [number, number] | undefined {
+        const tasks = this.serviceLocator.getWorld().getEntityArray().filter(ent => (ent instanceof Task && !ent.complete)) as Task[]
+        if (tasks.length == 0) return undefined;
+
+        let distance = -1;
+        let angle = 0;
+        for (let task of tasks) {
+            let diffX = task.x - this.x;
+            let diffY = task.y - this.y;
+            let newDis = Math.sqrt((diffX * diffX) + (diffY * diffY));
+
+            if (distance == -1) {
+                distance = newDis;
+                angle = (Math.atan2(diffX, -diffY) / Math.PI) * 180;
+                continue;
+            }
+
+            if (newDis > distance) {
+                continue;
+            }
+            
+            angle = (Math.atan2(diffX, -diffY) / Math.PI) * 180;
+            distance = newDis;
+
+        }
+        
+        return [angle, distance];
     }
 
     public doAttack(angle: number) {
@@ -96,7 +150,6 @@ export class Player extends CharacterEntity {
                 )
         }
     }
-
     public speedLimit(){
         if(Math.abs(this.xVel) + Math.abs(this.yVel) > this.speed){
             this.xVel /= 1.2;
