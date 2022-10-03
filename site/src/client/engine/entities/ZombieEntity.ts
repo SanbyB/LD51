@@ -15,8 +15,6 @@ export class Zombie extends CharacterEntity {
 
     static zombieNumber = 0;
 
-    private walking_right = true;
-
     public constructor(serviceLocator: ServiceLocator, x: number, y: number) {
         super(serviceLocator, x, y, "zombie", 
             30 + randomIntRange(0, ZOMBIE_SIZE_VARIATION), 
@@ -71,10 +69,6 @@ export class Zombie extends CharacterEntity {
 
     public onAddedToWorld(serviceLocator: ServiceLocator) {
         Zombie.zombieNumber += 1;
-        setInterval(() => {
-            this.walking_right = !this.walking_right;
-            this.setHand(this.walking_right ? 90 : -90)
-        }, 2000);
 
     }
     public onRemovedFromWorld(serviceLocator: ServiceLocator) {

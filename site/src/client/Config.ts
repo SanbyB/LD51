@@ -85,7 +85,7 @@ export const BACKGROUND_GAIN = 0.2;
 export const MACHINE_GAIN = 0.2;
 
 
-export const GAME_BACKSTORY = "Your crew something something something something something something something something something something something something something something something something";
-export const GAME_LOST_TEXT = "Your crew were all mercilously killed.";
-export const GAME_WON_TEXT = "Your crew won";
+export const GAME_BACKSTORY = "Your crew have boarded the ISS Last Dab. The ship has been overrun by crazed crew members, infected by a canabalistic virus. Your mission is to gain control of the ships systems through various terminals. Use your crew's unique abilities to your advantage. However, the virus is taking hold, and only one is able to think for 10 seconds before needing rest. Good luck!";
+export const GAME_LOST_TEXT = "Your crew were mercilously killed!";
+export const GAME_WON_TEXT = "You stabilised the vessel!";
 
