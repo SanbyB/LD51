@@ -57,7 +57,7 @@ export class GameScript {
         this.game.setUpdateWorld(true);
 
 
-        // const taskEntity = this.serviceLocator.getWorld().getEntityArray().find(entity => entity instanceof Task);
+        // const taskEntity = this.serviceLocator.getWorld().getEntityArray().find(entity => entity instanceof Task && entity.task_type == TaskType.REFLEX);
         // (taskEntity as Task).use();
     }
 

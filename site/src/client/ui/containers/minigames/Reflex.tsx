@@ -8,6 +8,7 @@ const BAR_WIDTH = 400;
 const BAR_HEIGHT = 20;
 const INNER_BAR = 40;
 const SELECTOR = 10;
+const FAST_SPEED = 14;
 
 export const Reflex: React.FunctionComponent<{
     task: ReflexGame,
@@ -16,9 +17,7 @@ export const Reflex: React.FunctionComponent<{
     const [position, setPosition] = React.useState(0);
     const [travelRight, setTravelRight] = React.useState(true);
 
-    console.log(props.task.fast)
-
-    const speed = props.task.fast ? 30 : 10;
+    const speed = props.task.fast ? FAST_SPEED : 8;
     React.useEffect(() => {
         const timeout = setTimeout(() => {
             let newPosition = position + (travelRight ? speed : -speed);

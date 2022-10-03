@@ -14,18 +14,23 @@ interface SimonSaysButtonProps {
     showDisplay: boolean
 }
 
-const SIMON_WIDTH = 6;
+const SIMON_WIDTH = 3;
 const SIMON_HEIGHT = 2;
 
 const SimonSaysButton: React.FunctionComponent<SimonSaysButtonProps> = (props) => {
     const childStyle = props.showDisplay ? {
-        backgroundColor: "#FF0000"
-    } : {};
+        backgroundColor: "#FF0000",
+        margin: 8
+    } : {
+        margin: 8
+    };
     
     return <GameButtonContainer
         width={64}
         height={64}
-        style={{}}
+        style={{
+
+        }}
         childStyle={childStyle}
         onSelect={props.onSelect}
     />
@@ -68,13 +73,24 @@ const SimonSaysButtonGrid: React.FunctionComponent<{
     </>)
 }
 
+
+
 function generateOrders(hard: boolean) {
-    const orderCount = hard ? 6 : 3;
+    const orderCount = hard ? 5 : 3;
     const newOrders = [];
     for (let x = 0; x < orderCount; x++) {
+        let numX = 0;
+        let numY = 0;
+        while (true && x > 0) {
+            numX = randomIntRange(0, SIMON_WIDTH);
+            numY = randomIntRange(0, SIMON_HEIGHT);
+            if (numX != newOrders[x - 1].x || numY != newOrders[x - 1].y) {
+                break;
+            }
+        }
         newOrders.push({
-            x: randomIntRange(0, SIMON_WIDTH),
-            y: randomIntRange(0, SIMON_HEIGHT)
+            x: numX,
+            y: numY
         });
     }
     return newOrders;
