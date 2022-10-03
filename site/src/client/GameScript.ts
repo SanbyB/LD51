@@ -12,6 +12,9 @@ import { InputState } from "./services/input/InputService";
 import { ServiceLocator } from "./services/ServiceLocator";
 
 export class GameScript {
+    private counter = 0;
+    private score = 100;
+    private endScore: number;
     private game: Game;
     private serviceLocator: ServiceLocator;
     private gameMap: GameMap;
@@ -30,6 +33,14 @@ export class GameScript {
 
     public update() {
         this.controller.update(this.serviceLocator);
+        this.counter += 1;
+        if(this.counter == 200){
+            this.score -= 1;
+            this.counter = 0;
+            if(this.score <= 0){
+                this.score = 0;
+            }
+        }
     }
 
     public newGame() {
@@ -55,6 +66,8 @@ export class GameScript {
         this.serviceLocator.getStore().getActions().onCharacterChanged();
         this.serviceLocator.getInputService().setInputState(InputState.DEFAULT);
         this.game.setUpdateWorld(true);
+        this.score = 100;
+        this.counter = 100;
 
 
         // const taskEntity = this.serviceLocator.getWorld().getEntityArray().find(entity => entity instanceof Task && entity.task_type == TaskType.REFLEX);
@@ -83,6 +96,9 @@ export class GameScript {
         if (this.gameEnd) {
             return;
         }
+
+        this.endScore = this.score;
+        this.endScore += 10 * this.controller.players.length;
 
         this.gameEnd = true;
         this.gameWon = win;
