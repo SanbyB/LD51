@@ -31,6 +31,7 @@ export const GameEndContainer: React.FunctionComponent<GameMenuContainerProps> =
 ) => {
     const [state, dispatch] = useGlobalState();
     const gameWon = state.gameStart.gameWon;
+    const score = state.gameStart.score;
     if (gameWon === undefined) {
         return <>
         <TextComponent
@@ -61,7 +62,7 @@ export const GameEndContainer: React.FunctionComponent<GameMenuContainerProps> =
 
     if (gameWon) {
         return <TextComponent
-            text={GAME_WON_TEXT}
+            text={GAME_WON_TEXT + score.toString()}
             style={{
                 width: "100%",
                 textAlign: "center",

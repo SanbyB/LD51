@@ -10,6 +10,7 @@ export const emptyActions = {
     setGameLoadPercentage: (percentage: number) => {},
     startGame: () => {},
     stopGame: (won: boolean) => {},
+    updateScore: (score: number) => {},
 
     addKeyHint: (args: { id: string; keys: string[]; hint: string }) => {},
     removeKeyHint: (args: { id: string }) => {},

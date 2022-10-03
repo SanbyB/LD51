@@ -100,6 +100,8 @@ export class GameScript {
         this.endScore = this.score;
         this.endScore += 10 * this.controller.players.length;
 
+        this.serviceLocator.getStore().getActions().updateScore(this.endScore);
+
         this.gameEnd = true;
         this.gameWon = win;
         this.serviceLocator.getStore().getActions().onTaskFinished();

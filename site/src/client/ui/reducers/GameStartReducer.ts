@@ -12,6 +12,7 @@ export interface GameStartState {
     currentStage: number;
     menu: MenuType;
     gameWon: boolean | undefined;
+    score: number;
     task: {
         info: TaskInformation,
         onDone: (success: boolean) => void
@@ -27,7 +28,8 @@ export const gameStartReducer: Reducer<GameStartState, Actions> = {
         currentStage: 0,
         menu: "MAIN",
         task: undefined,
-        gameWon: undefined
+        gameWon: undefined,
+        score: 0
     },
     actions: {
         startGame: (state: GameStartState) => ({
@@ -42,6 +44,10 @@ export const gameStartReducer: Reducer<GameStartState, Actions> = {
             showingFade: true,
             menu: "MAIN",
             gameWon
+        }),
+        updateScore: (state, score: number) => ({
+            ...state,
+            score: score,
         }),
         fadeBackground: (state: GameStartState) => ({
             ...state,
