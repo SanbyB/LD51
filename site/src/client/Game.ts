@@ -81,13 +81,13 @@ export class Game {
 
     public setIsHidden(isHidden: boolean) {
         this.isHidden = isHidden;
-        if (this.serviceLocator) {
-            if (isHidden) {
-                this.serviceLocator.getAudioService().pauseSong();
-            } else {
-                this.serviceLocator.getAudioService().resumeSong();
-            }
-        }
+        // if (this.serviceLocator) {
+        //     if (isHidden) {
+        //         this.serviceLocator.getAudioService().pauseSong();
+        //     } else {
+        //         this.serviceLocator.getAudioService().resumeSong();
+        //     }
+        // }
     }
 
     private update = () => {
